@@ -1,0 +1,2649 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{A487A618-C308-48E3-9B5D-CBC2434A20AD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DimAddress"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="84"
+  DTS:VersionGUID="{68128946-7CB5-433A-A0D9-2096AB9A0072}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{811286B5-F5E5-410F-AA6D-09B512F26707}"
+      DTS:ObjectName="LoadDate"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">1/1/1900</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{DE6BF643-6E45-4674-B7FA-56EC5DF5F118}"
+      DTS:ObjectName="LoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{C82677F0-ABBE-4DB3-9FF9-738B152D8121}"
+      DTS:ObjectName="SourceLoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_DimAddress_ups"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5FE027E4-687A-45A2-8ABB-E381FADCC6CF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_DimAddress_ups"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_DimAddress_ups\Audit"
+              componentClassID="Microsoft.Lineage"
+              contactInfo="Audit;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Adds audit information to rows in a dataset."
+              localeId="1033"
+              name="Audit">
+              <inputs>
+                <input
+                  refId="Package\dft_DimAddress_ups\Audit.Inputs[Audit Input 1]"
+                  name="Audit Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\Audit.Outputs[Audit Output 1]"
+                  exclusionGroup="1"
+                  name="Audit Output 1"
+                  synchronousInputId="Package\dft_DimAddress_ups\Audit.Inputs[Audit Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimAddress_ups\der_LoadExecutionId"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              localeId="1033"
+              name="der_LoadExecutionId"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DimAddress_ups\der_LoadExecutionId.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\der_LoadExecutionId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      name="LoadExecutionId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionId]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionId]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\der_LoadExecutionId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Looks up values in a reference dataset by using exact matching."
+              localeId="1033"
+              name="lkp_DimAddress_idaddress"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        IDAddress, Address, City, ProvState, Country, PostalCode FROM            DW.DimAddress</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        IDAddress, Address, City, ProvState, Country, PostalCode FROM            DW.DimAddress) [refTable]
+where [refTable].[IDAddress] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IDAddress" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_STR" length="500" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="City" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProvState" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Country" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PostalCode" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Inputs[Lookup Input].Columns[AddressID]"
+                      cachedDataType="i4"
+                      cachedName="AddressID"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IDAddress</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimIDAddress]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimIDAddress]"
+                      name="DimIDAddress"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IDAddress</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="500"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimAddress]"
+                      name="DimAddress"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Address</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimCity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimCity]"
+                      name="DimCity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">City</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimProvState]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimProvState]"
+                      name="DimProvState"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProvState</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimCountry]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimCountry]"
+                      name="DimCountry"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Country</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimPostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="25"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimPostalCode]"
+                      name="DimPostalCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PostalCode</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Executes an SQL command for each row in a dataset."
+              localeId="1033"
+              name="ole_cmd_upd_DimAddress"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [DW].[DimAddress] SET 
+[Address] = ?,
+[City] = ?,
+[ProvState] = ?,
+[Country] = ?,
+[PostalCode] = ?, 
+LoadExecutionId = ? 
+WHERE [IDAddress] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[LoadID]"
+                      cachedDataType="i8"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      name="LoadID" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[AddressLine1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="AddressLine1"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine1]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvince"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[StateProvince]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[CountryRegion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[CountryRegion]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[PostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].Columns[AddressID]"
+                      cachedDataType="i4"
+                      cachedName="AddressID"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i8"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimAddress_ups\ole_dst_DimAddress"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              localeId="1033"
+              name="ole_dst_DimAddress"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DimAddress]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destinaton. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[AddressID]"
+                      cachedDataType="i4"
+                      cachedName="AddressID"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[IDAddress]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[AddressLine1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="AddressLine1"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine1]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvince"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[ProvState]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[StateProvince]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[CountryRegion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[CountryRegion]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[PostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].Columns[LoadExecutionId]"
+                      cachedDataType="i8"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      lineageId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[IDAddress]"
+                      dataType="i4"
+                      name="IDAddress" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[ProvState]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ProvState" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      dataType="i8"
+                      name="LoadExecutionId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimAddress_ups\ole_src_StgAddress"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              localeId="1033"
+              name="ole_src_StgAddress"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        AddressID, AddressLine1, AddressLine2, City, StateProvince, PostalCode, CountryRegion, ModifiedDate
+FROM            Staging.StgAddress
+WHERE        (LoadExecutionId =?)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{C82677F0-5441-4DB3-9FF9-738B152D8121};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[AddressID]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]"
+                      name="AddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[AddressLine1]"
+                      length="60"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine1]"
+                      name="AddressLine1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[AddressLine2]"
+                      length="60"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine2]"
+                      name="AddressLine2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="30"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[StateProvince]"
+                      length="50"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[StateProvince]"
+                      name="StateProvince"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="15"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[CountryRegion]"
+                      length="50"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[CountryRegion]"
+                      name="CountryRegion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[AddressID]"
+                      dataType="i4"
+                      name="AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CountryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[AddressID]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[AddressID]"
+                      name="AddressID" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[AddressLine1]"
+                      name="AddressLine1" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[AddressLine2]"
+                      name="AddressLine2" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[StateProvince]"
+                      name="StateProvince" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[CountryRegion]"
+                      name="CountryRegion" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Executes a custom script."
+              localeId="1033"
+              name="scr_CheckForDifferentColumns"
+              version="10">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_72e74680927f43a0adb422f1243dc2ce.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("SC_72e74680927f43a0adb422f1243dc2ce.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2010")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* Microsoft SQL Server Integration Services Script Component
+*  Write scripts using Microsoft Visual C# 2008.
+*  ScriptMain is the entry point class of the script.*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+
+  
+
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        bool _RowIsDifferent = false;
+
+        if (Row.AddressLine1 != Row.DimAddress)
+            _RowIsDifferent = true;
+
+        if ((!_RowIsDifferent) && (Row.City != Row.DimCity))
+            _RowIsDifferent = true;
+
+        /* a continuer pour toutes les autres colonnes*/
+
+
+        if (_RowIsDifferent == true)
+            Row.DirectRowToDifferentColumns();
+        else
+            Row.DirectRowToSameColumns();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 AddressID
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[0]);
+        }
+    }
+    public bool AddressID_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String AddressLine1
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[1]);
+        }
+    }
+    public bool AddressLine1_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String AddressLine2
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[2]);
+        }
+    }
+    public bool AddressLine2_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public String City
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[3]);
+        }
+    }
+    public bool City_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    public String StateProvince
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[4]);
+        }
+    }
+    public bool StateProvince_IsNull
+    {
+        get
+        {
+            return IsNull(4);
+        }
+    }
+
+    public String PostalCode
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[5]);
+        }
+    }
+    public bool PostalCode_IsNull
+    {
+        get
+        {
+            return IsNull(5);
+        }
+    }
+
+    public String CountryRegion
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[6]);
+        }
+    }
+    public bool CountryRegion_IsNull
+    {
+        get
+        {
+            return IsNull(6);
+        }
+    }
+
+    public DateTime ModifiedDate
+    {
+        get
+        {
+            return Buffer.GetDateTime(BufferColumnIndexes[7]);
+        }
+    }
+    public bool ModifiedDate_IsNull
+    {
+        get
+        {
+            return IsNull(7);
+        }
+    }
+
+    public Int64 LoadExecutionId
+    {
+        get
+        {
+            return Buffer.GetInt64(BufferColumnIndexes[8]);
+        }
+    }
+    public bool LoadExecutionId_IsNull
+    {
+        get
+        {
+            return IsNull(8);
+        }
+    }
+
+    public Int32 DimIDAddress
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[9]);
+        }
+    }
+    public bool DimIDAddress_IsNull
+    {
+        get
+        {
+            return IsNull(9);
+        }
+    }
+
+    public String DimAddress
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[10]);
+        }
+    }
+    public bool DimAddress_IsNull
+    {
+        get
+        {
+            return IsNull(10);
+        }
+    }
+
+    public String DimCity
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[11]);
+        }
+    }
+    public bool DimCity_IsNull
+    {
+        get
+        {
+            return IsNull(11);
+        }
+    }
+
+    public String DimProvState
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[12]);
+        }
+    }
+    public bool DimProvState_IsNull
+    {
+        get
+        {
+            return IsNull(12);
+        }
+    }
+
+    public String DimCountry
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[13]);
+        }
+    }
+    public bool DimCountry_IsNull
+    {
+        get
+        {
+            return IsNull(13);
+        }
+    }
+
+    public String DimPostalCode
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[14]);
+        }
+    }
+    public bool DimPostalCode_IsNull
+    {
+        get
+        {
+            return IsNull(14);
+        }
+    }
+
+    public void DirectRowToDifferentColumns()
+    {
+        base.DirectRow(@"DifferentColumns");
+    }
+
+    public void DirectRowToSameColumns()
+    {
+        base.DirectRow(@"SameColumns");
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[sc_72e74680927f43a0adb422f1243dc2ce.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>SC_72e74680927f43a0adb422f1243dc2ce.csproj</RootNamespace>
+    <AssemblyName>SC_0E4FA9AF57214E49849C9C6612B5A86D</AssemblyName>
+    <ProjectGuid>{4963EF04-0D5D-489D-B7D4-68466F5743A4}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to the add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="SSIS_ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>sc_72e74680927f43a0adb422f1243dc2ce</msb:CodeName>
+		<msb:NoContent>Reference;Import;Folder</msb:NoContent>
+		<msb:ProjectId>{20831581-55B5-4A5F-92F0-3C1EBFE707D7}</msb:ProjectId>
+		<msb:DisplayName>sc_72e74680927f43a0adb422f1243dc2ce</msb:DisplayName>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:Project Include="sc_72e74680927f43a0adb422f1243dc2ce.csproj"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Settings.get_Default():SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Sett" +
+    "ings")]
+
+namespace SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_0E4FA9AF57214E49849C9C6612B5A86D.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAATvEVkAAAAAAAAAAOAAIiALATAAABoAAAAIAAAAAAAALjgA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAANw3AABPAAAAAEAAAIwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAANBgAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAIwEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAQ
+OAAAAAAAAEgAAAACAAUAgCMAAKQTAAABAAAAAAAAACQ3AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAACoCAwQFKBAAAAoqUgJ7EQAACgJ7EgAAChaUbxMAAAoqIgIW
+KBQAAAoqUgJ7EQAACgJ7EgAACheUbxUAAAoqIgIXKBQAAAoqUgJ7EQAACgJ7EgAAChiUbxUAAAoq
+IgIYKBQAAAoqUgJ7EQAACgJ7EgAAChmUbxUAAAoqIgIZKBQAAAoqUgJ7EQAACgJ7EgAAChqUbxUA
+AAoqIgIaKBQAAAoqUgJ7EQAACgJ7EgAAChuUbxUAAAoqIgIbKBQAAAoqUgJ7EQAACgJ7EgAAChyU
+bxUAAAoqIgIcKBQAAAoqUgJ7EQAACgJ7EgAACh2UbxYAAAoqIgIdKBQAAAoqUgJ7EQAACgJ7EgAA
+Ch6UbxcAAAoqIgIeKBQAAAoqVgJ7EQAACgJ7EgAACh8JlG8TAAAKKiYCHwkoFAAACipWAnsRAAAK
+AnsSAAAKHwqUbxUAAAoqJgIfCigUAAAKKlYCexEAAAoCexIAAAofC5RvFQAACiomAh8LKBQAAAoq
+VgJ7EQAACgJ7EgAACh8MlG8VAAAKKiYCHwwoFAAACipWAnsRAAAKAnsSAAAKHw2UbxUAAAoqJgIf
+DSgUAAAKKlYCexEAAAoCexIAAAofDpRvFQAACiomAh8OKBQAAAoqMgJyAQAAcCgYAAAKKjICciMA
+AHAoGAAACioeAigZAAAKKh4CKBoAAAoqfgIoGwAACgICcygAAAZ9AQAABAICcykAAAZ9AgAABCqS
+BHI7AABwGm8cAAAKLBUCBQIDKB0AAAoOBHMBAAAGbyYAAAYqSisHAgNvJwAABgNvIgAABi3xKgYq
+OgIoHgAACgIDfQMAAAQqOgIoHgAACgIDfQQAAAQqABMwAgBAAAAAAQAAERYKA28EAAAGA28WAAAG
+KB8AAAosAhcKBi0VA28IAAAGA28YAAAGKB8AAAosAhcKBiwHA28gAAAGKgNvIQAABioeAigkAAAG
+Kh4CKB4AAAoqrn4FAAAELR5ySwAAcNAHAAACKCAAAApvIQAACnMiAAAKgAUAAAR+BQAABCoafgYA
+AAQqHgKABgAABCoafgcAAAQqHgIoIwAACiouczEAAAaABwAABCoAAEJTSkIBAAEAAAAAAAwAAAB2
+NC4wLjMwMzE5AAAAAAUAbAAAAAQIAAAjfgAAcAgAAHAIAAAjU3RyaW5ncwAAAADgEAAAzAAAACNV
+UwCsEQAAEAAAACNHVUlEAAAAvBEAAOgBAAAjQmxvYgAAAAAAAAACAAABVxWiAQkBAAAA+gEzABYA
+AAEAAAAfAAAACAAAAAcAAAAyAAAADQAAACMAAAAQAAAAAQAAAAMAAAAhAAAAIgAAAAEAAAAEAAAA
+AQAAAAAAjQMBAAAAAAAGAJsCCwYGAC8DCwYGAOcB+AUPAIYGAAAGABQCZwUGAH4CZwUGAF8CZwUG
+ABYDZwUGALsCZwUGANQCZwUGACsCZwUGAEYCUwMKAMoFEgEOALsFEgEKAJYFEgEGAAkBDQUKAKYH
+EgEGAGkHDQUKAO8CEgEGAMoB+AUGANsFKwYGAIoFUgUSAIkBdwMSAPsBdwMSAGABPQUGAK8BCwYG
+AHADDQUGAHkFDQUGADMBDQUGANgADQUGADUIZwUAAAAANQAAAAAAAQABAAEAEACuBQAANQABAAEA
+AQAQAIgHAABFAAEAJAABABAAPQcAAEkAAwAoAAEAEADLBgAASQAEACkAAQAQACAFAAAMAAUAKgAA
+ABAAMgaVBkkABQAsAAABEAD6BpUGZQAHADAABgA9B4cABgDLBosAAQCWB48AAQCWB48AEQAUBZMA
+EQBQAZcAEQCVAJsAUCAAAAAAhhjrBRsAAQBbIAAAAACGCGIAnwAEAHAgAAAAAIYI5QNHAAQAeSAA
+AAAAhggBAKMABACOIAAAAACGCLUDRwAEAJcgAAAAAIYIGwCjAAQArCAAAAAAhgjNA0cABAC1IAAA
+AACGCE0IowAEAMogAAAAAIYI6gRHAAQA0yAAAAAAhgilAKMABADoIAAAAACGCBUERwAEAPEgAAAA
+AIYItwCjAAQABiEAAAAAhgguBEcABAAPIQAAAACGCCsFowAEACQhAAAAAIYIjQRHAAQALSEAAAAA
+hgh4AacABABCIQAAAACGCF0ERwAEAEshAAAAAIYIgQCsAAQAYCEAAAAAhgj6A0cABABpIQAAAACG
+CEkHnwAEAH8hAAAAAIYIpgRHAAQAiSEAAAAAhghaB6MABACfIQAAAACGCL4ERwAEAKkhAAAAAIYI
+VgijAAQAvyEAAAAAhgj6BEcABADJIQAAAACGCJ4BowAEAN8hAAAAAIYIdQRHAAQA6SEAAAAAhgg+
+CKMABAD/IQAAAACGCNQERwAEAAkiAAAAAIYIxgCjAAQAHyIAAAAAhghEBEcABAApIgAAAACGACEH
+BgAEADYiAAAAAIYACgcGAAQAQyIAAAAAhgApCEcABABLIgAAAACGAHAHRwAEAFMiAAAAAIYY6wUG
+AAQAcyIAAAAAxgD7B7AABACYIgAAAADGAfQHugAIAKsiAAAAAMYBEgi6AAkArSIAAAAAhhjrBcAA
+CgC8IgAAAACGGOsFwAALAMwiAAAAAMYAEgi6AAwAGCMAAAAAhhjrBQYADQAgIwAAAACDGOsFBgAN
+ACgjAAAAAJMI1wXGAA0AVCMAAAAAkwg4AcsADQBbIwAAAACTCEQB0AANAGMjAAAAAJYIfAfWAA4A
+aiMAAAAAhhjrBQYADgByIwAAAACRGPEF2wAOAAAAAQDQBQAAAgDVBgAAAwCkBQAAAQBwAAAAAgD8
+AAAAAwDQBQAABACkBQAAAQDQBQAAAQAtCAAAAQCsBwAAAQCsBwAAAQAtCAAAAQBNAwkA6wUBABEA
+6wUGABkA6wUKACkA6wUQADEA6wUQADkA6wUQAEEA6wUQAEkA6wUQAFEA6wUQAFkA6wUQAGEA6wUQ
+AJkA6wUGAKEA6wUGAMEA6wUVANEA6wUGAGkA6wUbAGkA0AUlAGkA1QYpAHEAEgAtAGkABgUyAHEA
+bQM3AHEABgE8AHEALABCAGkACAgQAGkAKQhHAGkAcAdHAIkA6wUGANkAAwdLAIkA6QZSAJEA6wUG
+ANkAYghcAOkA6gBiAOkAMQhpAKkA6wVuAMkA6wUGAC4ACwADAS4AEwAMAS4AGwArAS4AIwA0AS4A
+KwBkAS4AMwBkAS4AOwBqAS4AQwA0AS4ASwB5AS4AUwBkAS4AWwCZAcMAYwDhAeEAewDhAeMAawDh
+AekDcwArAQkEcwArAVgAAgABAAcAHwAIACEAAABmAN8AAADpA+MAAAAFAOcAAAC5A+MAAAAfAOcA
+AADRA+MAAABdCOcAAAABBeMAAACpAOcAAAAZBOMAAADNAOcAAABLBOMAAAAvBecAAACRBOMAAAB8
+AesAAABhBOMAAACFAPAAAAD+A+MAAABNB98AAACqBOMAAABeB+cAAADCBOMAAABaCOcAAAD+BOMA
+AACiAecAAAB5BOMAAABCCOcAAADYBOMAAADKAOcAAABIBOMAAADbBfQAAABYAfkAAACAB/4AAgAC
+AAMAAgADAAUAAgAEAAcAAgAFAAkAAgAGAAsAAgAHAA0AAgAIAA8AAgAJABEAAgAKABMAAgALABUA
+AgAMABcAAgANABkAAgAOABsAAgAPAB0AAgAQAB8AAgARACEAAgASACMAAgATACUAAgAUACcAAgAV
+ACkAAgAWACsAAgAXAC0AAgAYAC8AAgAZADEAAgAaADMAAgAbADUAAgAcADcAAgAdADkAAgAeADsA
+AgAfAD0AAgAtAD8AAgAuAEEAAQAvAEEAAgAwAEMABIAAAAEAAAAAAAAAAAAAAAAAPgAAAAQAAAAA
+AAAAAAAAAHUAeAAAAAAADQAAAAAAAAAAAAAAfgC2BwAAAAANAAAAAAAAAAAAAAB+ANMHAAAAAAQA
+AAAAAAAAAAAAAHUADQUAAAAAAAAAAAEAAAA8BgAAAAAAAABnZXRfQWRkcmVzc0xpbmUxAEdldElu
+dDMyAGdldF9BZGRyZXNzTGluZTIAR2V0SW50NjQAPE1vZHVsZT4AU0NfMEU0RkE5QUY1NzIxNEU0
+OTg0OUM5QzY2MTJCNUE4NkQAZ2V0X0FkZHJlc3NJRABJbnB1dElEAG1zY29ybGliAGdldF9Mb2Fk
+RXhlY3V0aW9uSWQAZGVmYXVsdEluc3RhbmNlAGdldF9TdGF0ZVByb3ZpbmNlAGdldF9Qb3N0YWxD
+b2RlAGdldF9EaW1Qb3N0YWxDb2RlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxl
+AElucHV0TmFtZQBHZXREYXRlVGltZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBU
+eXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNl
+dHRpbmdzQmFzZQBnZXRfTW9kaWZpZWREYXRlAEVkaXRvckJyb3dzYWJsZVN0YXRlAGdldF9EaW1Q
+cm92U3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0
+dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1l
+d29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNj
+cmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5
+UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29t
+cG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGlt
+ZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBH
+ZXRTdHJpbmcAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDXzBFNEZBOUFGNTcyMTRFNDk4NDlDOUM2
+NjEyQjVBODZELmRsbABnZXRfQWRkcmVzc0xpbmUxX0lzTnVsbABnZXRfQWRkcmVzc0xpbmUyX0lz
+TnVsbABnZXRfQWRkcmVzc0lEX0lzTnVsbABnZXRfTG9hZEV4ZWN1dGlvbklkX0lzTnVsbABnZXRf
+U3RhdGVQcm92aW5jZV9Jc051bGwAZ2V0X1Bvc3RhbENvZGVfSXNOdWxsAGdldF9EaW1Qb3N0YWxD
+b2RlX0lzTnVsbABnZXRfTW9kaWZpZWREYXRlX0lzTnVsbABnZXRfRGltUHJvdlN0YXRlX0lzTnVs
+bABnZXRfQ291bnRyeVJlZ2lvbl9Jc051bGwAZ2V0X0RpbUlEQWRkcmVzc19Jc051bGwAZ2V0X0Rp
+bUFkZHJlc3NfSXNOdWxsAGdldF9EaW1Db3VudHJ5X0lzTnVsbABnZXRfQ2l0eV9Jc051bGwAZ2V0
+X0RpbUNpdHlfSXNOdWxsAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAGdldF9Db3VudHJ5
+UmVnaW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5S
+ZWZsZWN0aW9uAFN0cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRw
+dXRNYXAASW5wdXQwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3Vy
+Y2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUu
+Q29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzcyZTc0NjgwOTI3ZjQzYTBhZGI0
+MjJmMTI0M2RjMmNlLmNzcHJvai5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdn
+aW5nTW9kZXMAU0NfNzJlNzQ2ODA5MjdmNDNhMGFkYjQyMmYxMjQzZGMyY2UuY3Nwcm9qLlByb3Bl
+cnRpZXMAVmFyaWFibGVzAEJ1ZmZlckNvbHVtbkluZGV4ZXMAR2V0Q29sdW1uSW5kZXhlcwBTZXR0
+aW5ncwBFcXVhbHMARGlyZWN0Um93VG9TYW1lQ29sdW1ucwBEaXJlY3RSb3dUb0RpZmZlcmVudENv
+bHVtbnMAQ29ubmVjdGlvbnMAZ2V0X0RpbUlEQWRkcmVzcwBnZXRfRGltQWRkcmVzcwBPYmplY3QA
+RW5kT2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2Ny
+aXB0Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNl
+cnZlci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABEaXJlY3RSb3cASW5wdXQwX1By
+b2Nlc3NJbnB1dFJvdwBOZXh0Um93AGdldF9Bc3NlbWJseQBnZXRfRGltQ291bnRyeQBnZXRfQ2l0
+eQBnZXRfRGltQ2l0eQBvcF9JbmVxdWFsaXR5AAAhRABpAGYAZgBlAHIAZQBuAHQAQwBvAGwAdQBt
+AG4AcwAAF1MAYQBtAGUAQwBvAGwAdQBtAG4AcwAAD0kAbgBwAHUAdAAgADAAAH9TAEMAXwA3ADIA
+ZQA3ADQANgA4ADAAOQAyADcAZgA0ADMAYQAwAGEAZABiADQAMgAyAGYAMQAyADQAMwBkAGMAMgBj
+AGUALgBjAHMAcAByAG8AagAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUA
+cwAAAIbhUoDjql9LkQ8ABRVbQNoABCABAQgDIAABBSABARERBCABAQ4FIAEBEV0JIAMBEjkdCBI9
+AwYSOQMGHQgEIAEICAQgAQIIBCABDggFIAERQQgEIAEKCAMgAAIGIAICDhFxBSABHQgIAwcBAgUA
+AgIODgYAARJ1EXkEIAASfQYgAgEOEn0It3pcVhk04IkIiYRdzYCAzJEDBhIQAwYSFAMGEkUDBhJV
+AwYSWQMGEiADIAAIAyAADgQgABFBAyAACgkgBAEIDhI5Ej0FIAEBEggFIAEBEkUEAAASVQQAABJZ
+BQABARJZBAAAEiADAAABAygACAMoAAIDKAAOBCgAEUEDKAAKBAgAElUECAASWQQIABIgCAEACAAA
+AAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAAC8BACpTQ183MmU3NDY4
+MDkyN2Y0M2EwYWRiNDIyZjEyNDNkYzJjZS5jc3Byb2oAAAUBAAAAAA4BAAlNaWNyb3NvZnQAAB8B
+ABpDb3B5cmlnaHQgQCBNaWNyb3NvZnQgMjAxMAAARwEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12
+NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1ld29yayA0BAEAAAAAALQAAADO
+yu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZl
+cnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5
+MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFE
+UEFEULQAAAAEOAAAAAAAAAAAAAAeOAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEDgAAAAAAAAA
+AAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAAAwBAAAAAAAAAAAAAAwBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAEkAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAbAMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAADQACgABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAATQBpAGMAcgBvAHMAbwBmAHQAAAB+ACsAAQBGAGkAbABlAEQAZQBzAGMAcgBp
+AHAAdABpAG8AbgAAAAAAUwBDAF8ANwAyAGUANwA0ADYAOAAwADkAMgA3AGYANAAzAGEAMABhAGQA
+YgA0ADIAMgBmADEAMgA0ADMAZABjADIAYwBlAC4AYwBzAHAAcgBvAGoAAAAAADAACAABAEYAaQBs
+AGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEA
+bABOAGEAbQBlAAAAUwBDAF8AMABFADQARgBBADkAQQBGADUANwAyADEANABFADQAOQA4ADQAOQBD
+ADkAQwA2ADYAMQAyAEIANQBBADgANgBEAC4AZABsAGwAAABaABsAAQBMAGUAZwBhAGwAQwBvAHAA
+eQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIABNAGkAYwByAG8AcwBvAGYAdAAg
+ADIAMAAxADAAAAAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBhAHIAawBzAAAAAAAAAAAA
+eAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAQwBfADAARQA0AEYAQQA5
+AEEARgA1ADcAMgAxADQARQA0ADkAOAA0ADkAQwA5AEMANgA2ADEAMgBCADUAQQA4ADYARAAuAGQA
+bABsAAAAdgArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwA3ADIAZQA3ADQANgA4
+ADAAOQAyADcAZgA0ADMAYQAwAGEAZABiADQAMgAyAGYAMQAyADQAMwBkAGMAMgBjAGUALgBjAHMA
+cAByAG8AagAAAAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAw
+AC4AMAAAADgACAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAA
+LgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAMDgAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_0e4fa9af57214e49849c9c6612b5a86d</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">879aff8a3d72a185b90238c77c98762b</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataShaChecksum"
+                  typeConverter="NOTBROWSABLE">ebdae5d2a56225d05b678e6e77197dd3340abde7</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[AddressID]"
+                      cachedDataType="i4"
+                      cachedName="AddressID"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressID]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[AddressLine1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="AddressLine1"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine1]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[AddressLine2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="AddressLine2"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[AddressLine2]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="City"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvince"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[StateProvince]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[PostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[CountryRegion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[CountryRegion]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      lineageId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[LoadExecutionId]"
+                      cachedDataType="i8"
+                      cachedName="LoadExecutionId"
+                      lineageId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimIDAddress]"
+                      cachedDataType="i4"
+                      cachedName="DimIDAddress"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimIDAddress]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="500"
+                      cachedName="DimAddress"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimAddress]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimCity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="DimCity"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimCity]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimProvState]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="DimProvState"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimProvState]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimCountry]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="DimCountry"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimCountry]" />
+                    <inputColumn
+                      refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimPostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="DimPostalCode"
+                      lineageId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output].Columns[DimPostalCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Outputs[DifferentColumns]"
+                  exclusionGroup="1"
+                  name="DifferentColumns"
+                  synchronousInputId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Outputs[SameColumns]"
+                  exclusionGroup="1"
+                  name="SameColumns"
+                  synchronousInputId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_DimAddress_ups.Paths[Derived Column Output]"
+              endId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DimAddress_ups\der_LoadExecutionId.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DimAddress_ups.Paths[DifferentColumns]"
+              endId="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress.Inputs[OLE DB Command Input]"
+              name="DifferentColumns"
+              startId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Outputs[DifferentColumns]" />
+            <path
+              refId="Package\dft_DimAddress_ups.Paths[Lookup Match Output]"
+              endId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Inputs[Input 0]"
+              name="Lookup Match Output"
+              startId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\dft_DimAddress_ups.Paths[Lookup No Match Output]"
+              endId="Package\dft_DimAddress_ups\ole_dst_DimAddress.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dft_DimAddress_ups.Paths[OLE DB Source Output]"
+              endId="Package\dft_DimAddress_ups\der_LoadExecutionId.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft_DimAddress_ups\ole_src_StgAddress.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\dft_DimAddress_ups.Paths[SameColumns]"
+              endId="Package\dft_DimAddress_ups\Audit.Inputs[Audit Input 1]"
+              name="SameColumns"
+              startId="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns.Outputs[SameColumns]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="219,42"
+          Id="Package\dft_DimAddress_ups"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_DimAddress_ups">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\ole_cmd_upd_DimAddress"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress"
+          TopLeft="289.5,209.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\scr_CheckForDifferentColumns"
+          TopLeft="289.5,311.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\ole_dst_DimAddress"
+          TopLeft="5.50000000000006,311.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\ole_src_StgAddress"
+          TopLeft="289.5,5.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\der_LoadExecutionId"
+          TopLeft="289.5,107.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\dft_DimAddress_ups\Audit"
+          TopLeft="289.5,413.5" />
+        <EdgeLayout
+          Id="Package\dft_DimAddress_ups.Paths[SameColumns]"
+          TopLeft="436.833333333333,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-35.8333333333333,60"
+              Start="0,0"
+              End="-35.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2564559216385"
+                    Point2="0,24.2564559216385"
+                    Point3="-4,24.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-31.8333333333333,24.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.8333333333333,24.2564559216385"
+                    Point2="-35.8333333333333,24.2564559216385"
+                    Point3="-35.8333333333333,28.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-35.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-49.7499088541666,29.2564559216385,63.666484375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimAddress_ups.Paths[OLE DB Source Output]"
+          TopLeft="401,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimAddress_ups.Paths[Lookup No Match Output]"
+          TopLeft="365.166666666667,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-248.166666666667,60"
+              Start="0,0"
+              End="-248.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2564559216385"
+                    Point2="0,24.2564559216385"
+                    Point3="-4,24.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-244.166666666667,24.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-244.166666666667,24.2564559216385"
+                    Point2="-248.166666666667,24.2564559216385"
+                    Point3="-248.166666666667,28.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-248.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-179.889720052084,29.2564559216385,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimAddress_ups.Paths[Lookup Match Output]"
+          TopLeft="436.833333333333,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-35.8333333333333,60"
+              Start="0,0"
+              End="-35.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2564559216385"
+                    Point2="0,24.2564559216385"
+                    Point3="-4,24.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-31.8333333333333,24.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.8333333333333,24.2564559216385"
+                    Point2="-35.8333333333333,24.2564559216385"
+                    Point3="-35.8333333333333,28.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-35.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.1080533854166,29.2564559216385,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimAddress_ups.Paths[DifferentColumns]"
+          TopLeft="365.166666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-248.166666666667,60"
+              Start="0,0"
+              End="-248.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2564559216385"
+                    Point2="0,24.2564559216385"
+                    Point3="-4,24.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-244.166666666667,24.2564559216385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-244.166666666667,24.2564559216385"
+                    Point2="-248.166666666667,24.2564559216385"
+                    Point3="-248.166666666667,28.2564559216385" />
+                  <mssgle:LineSegment
+                    End="-248.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-162.730911458333,29.2564559216385,77.29515625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimAddress_ups.Paths[Derived Column Output]"
+          TopLeft="401,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DimAddress_ups\lkp_DimAddress_idaddress">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DimAddress_ups\ole_dst_DimAddress">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DimAddress_ups\ole_src_StgAddress">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

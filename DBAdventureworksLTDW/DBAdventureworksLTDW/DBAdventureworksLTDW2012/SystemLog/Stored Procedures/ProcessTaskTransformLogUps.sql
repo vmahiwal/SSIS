@@ -1,0 +1,212 @@
+﻿CREATE PROCEDURE [SystemLog].[ProcessTaskTransformLogUps]
+@LoadID INT, @ExecutionID UNIQUEIDENTIFIER, @VersionBuild SMALLINT, @VersionMajor SMALLINT, @VersionMinor SMALLINT, @VersionComment VARCHAR (1000)
+AS
+BEGIN
+ -- DECLARE @sysssisdtsStats TABLE
+ -- (
+ --   ExecutionID uniqueidentifier,
+ --   Computer varchar(128),
+ --   Operator varchar(128),
+ --   PackageID uniqueidentifier,
+ --   PackageName varchar(1024),
+ --   PackageStartDate datetime,
+ --   PackageEndDate datetime,
+ --   TaskID uniqueidentifier,
+ --   TaskName varchar(1024),
+ --   TransformID VARCHAR (200),
+ --   TransformStatisticID tinyint,
+ --   TransformStatisticName varchar(60),
+ --   TransformName varchar(1024),
+ --   BuffersToInputCount int,
+ --   RowsSent int,
+ --   TransformStartDate datetime,
+ --   TransformEndDate datetime,
+ --   SecondsElapsed int
+ -- )
+ -- BEGIN TRY  
+ --   INSERT INTO @sysssisdtsStats 
+ --   SELECT 
+ --     StartLog.executionid, 
+ --     StartLog.computer, 
+ --     StartLog.operator,
+ --     StartLog.sourceid AS PackageID, 
+ --     StartLog.source AS PackageName, 
+ --     StartLog.starttime AS PackageStartDate,
+ --     EndLog.endtime AS PackageEndDate,
+ --     l.TaskID, 
+ --     l.TaskName AS TaskName, 
+ --     l.SSIS_PATH_ID as TransformID,
+ --     ts.[TransformStatisticMapID],
+ --     ts.[TransformStatisticMapName], 
+ --     l.SSIS_PATH_Name AS TransformName,
+ --     COUNT(l.SSIS_PATH_ID) AS BuffersToInputCount, 
+ --     SUM(l.RowSent) AS RowsSent, 
+ --     MIN(l.TransformStartDate ) AS TransformStartDate, 
+ --     MAX(l.TransformEndDate) AS TransformEndDate, 
+ --     DATEDIFF(s, MIN(l.TransformStartDate), MAX(l.TransformEndDate)) AS SecondsElapsed  
+ --   FROM dbo.sysssislog AS StartLog 
+ --        LEFT OUTER JOIN dbo.sysssislog AS EndLog ON StartLog.executionid = EndLog.executionid AND StartLog.source = EndLog.source AND EndLog.event = 'PackageEnd'
+ --        LEFT OUTER JOIN SystemLog.v_Task_ComponentLogDtl_Statistics AS l ON l.ExecutionID = StartLog.executionid
+ --        INNER JOIN SystemLog.[TransformStatisticMap] AS ts ON UPPER(l.SSIS_PATH_Name) LIKE '%' + UPPER(ts.[TransformStatisticMapObjectLinkCode]) + '%'
+ --   WHERE (StartLog.event = 'PackageStart')
+ --     AND (StartLog.ExecutionID = @ExecutionID)
+ --   GROUP BY
+ --     StartLog.executionid, 
+ --     StartLog.computer, 
+ --     StartLog.operator,
+ --     StartLog.sourceid, 
+ --     StartLog.source, 
+ --     StartLog.starttime,
+ --     EndLog.endtime,
+ --     l.TaskName, 
+ --     l.SSIS_PATH_Name, 
+ --     l.ExecutionID, 
+ --     ts.[TransformStatisticMapID],
+ --     ts.[TransformStatisticMapName],
+ --     l.TaskID,
+ --     l.SSIS_PATH_ID
+ --   UNION ALL
+ --   SELECT 
+ --     StartLog.executionid, 
+ --     StartLog.computer, 
+ --     StartLog.operator,
+ --     StartLog.sourceid AS PackageID, 
+ --     StartLog.source AS PackageName, 
+ --     StartLog.starttime AS PackageStartDate,
+ --     EndLog.endtime AS PackageEndDate,
+ --     l.TaskID, 
+ --     l.TaskName AS TaskName,
+ --     l.TransformID as TransformID,
+ --     ts.[TransformStatisticMapID],
+ --     ts.[TransformStatisticMapName], 
+ --     l.TransformName AS TransformName,
+ --     COUNT(l.SSIS_PATH_ID) AS BuffersToInputCount, 
+ --     SUM(l.RowSent) AS RowsSent, 
+ --     MIN(l.TransformStartDate ) AS TransformStartDate, 
+ --     MAX(l.TransformEndDate) AS TransformEndDate, 
+ --     DATEDIFF(s, MIN(l.TransformStartDate), MAX(l.TransformEndDate)) AS SecondsElapsed  
+ --   FROM dbo.sysssislog AS StartLog 
+ --        LEFT OUTER JOIN dbo.sysssislog AS EndLog ON StartLog.executionid = EndLog.executionid AND StartLog.source = EndLog.source AND EndLog.event = 'PackageEnd'
+ --        LEFT OUTER JOIN SystemLog.v_Task_ComponentLogDtl_Statistics AS l ON l.ExecutionID = StartLog.executionid
+ --        INNER JOIN SystemLog.[TransformStatisticMap] AS ts ON UPPER(l.TransformName) LIKE '%' + UPPER(ts.[TransformStatisticMapObjectLinkCode]) + '%'
+ --   WHERE (StartLog.event = 'PackageStart')
+ --     AND (StartLog.ExecutionID = @ExecutionID)
+ --   GROUP BY
+ --     StartLog.executionid, 
+ --     StartLog.computer, 
+ --     StartLog.operator,
+ --     StartLog.sourceid, 
+ --     StartLog.source, 
+ --     StartLog.starttime,
+ --     EndLog.endtime,
+ --     l.TaskName, 
+ --     l.TransformName, 
+ --     l.ExecutionID, 
+ --     ts.[TransformStatisticMapID],
+ --     ts.[TransformStatisticMapName],
+ --     l.TaskID,
+ --     l.TransformID
+      
+ -- MERGE INTO SystemLog.PackageLog trg
+ -- USING (
+ --         SELECT DISTINCT PackageID, PackageName
+ --         FROM @sysssisdtsStats
+ --       ) src ON (trg.PackageGUID = src.PackageID
+ --                 AND trg.VersionBuild = @VersionBuild
+ --                 AND trg.VersionMajor = @VersionMajor
+ --                 AND trg.VersionMinor = @VersionMinor)
+ -- WHEN MATCHED THEN
+ --   UPDATE SET PackageName = src.PackageName, VersionComment = @VersionComment
+ -- WHEN NOT MATCHED THEN
+ --   INSERT VALUES (src.PackageName, src.PackageID, @VersionBuild, @VersionMajor, @VersionMinor, @VersionComment);
+
+ -- MERGE INTO SystemLog.TaskLog trg
+ -- USING (
+ --         SELECT DISTINCT t2.PackageLogID, t1.TaskID, t1.TaskName
+ --         FROM @sysssisdtsStats t1
+ --              JOIN SystemLog.PackageLog t2 ON (t1.PackageID = t2.PackageGUID
+ --                                               AND t2.VersionBuild = @VersionBuild
+ --                                               AND t2.VersionMajor = @VersionMajor
+ --                                               AND t2.VersionMinor = @VersionMinor)
+ --       ) src ON (trg.TaskId = src.TaskID AND trg.PackageLogID = src.PackageLogID)
+ -- WHEN MATCHED THEN
+ --   UPDATE SET TaskName = src.TaskName
+ -- WHEN NOT MATCHED THEN
+ --   INSERT VALUES (src.TaskID, src.TaskName, src.PackageLogID);
+
+
+ -- MERGE INTO SystemLog.TransformLog trg
+ -- USING (
+ --         SELECT DISTINCT t2.TaskLogID, t1.TransformID, t1.TransformName
+ --         FROM @sysssisdtsStats t1
+ --             JOIN SystemLog.PackageLog t3 ON (t1.PackageID = t3.PackageGUID
+ --                                               AND t3.VersionBuild = @VersionBuild
+ --                                               AND t3.VersionMajor = @VersionMajor
+ --                                               AND t3.VersionMinor = @VersionMinor)
+ --            JOIN SystemLog.TaskLog t2 ON (t1.TaskID = t2.TaskID AND t2.PackageLogID = t3.PackageLogID )
+ --       ) src ON (trg.TransformID = src.TransformID AND trg.TaskLogID = src.TaskLogID)
+ -- WHEN MATCHED THEN
+ --   UPDATE SET TransformName = src.TransformName
+ -- WHEN NOT MATCHED THEN
+ --   INSERT VALUES (CAST(src.TransformID AS VARCHAR(200)), src.TransformName, src.TaskLogID);
+    
+
+ -- INSERT INTO [SystemLog].[ProcessTaskTransformLog]
+ --            ([ExecutionID]
+ --            ,[StatisticValue]
+ --            ,[PackageStartDate]
+ --            ,[PackageEndDate]
+ --            ,[TransformStatisticID]
+ --            ,[LoadID]
+ --            ,[StatusID]
+ --            ,[PackageLogID]
+ --            ,[TaskLogID]
+ --            ,[TransformLogID]
+ --            ,[TaskStartDate]
+ --            ,[TaskEndDate]
+ --            ,[TransformStartDate]
+ --            ,[TransformEndDate])
+ -- SELECT t.ExecutionID, t.RowsSent, t.PackageStartDate, ISNULL(t.PackageEndDate, GetDate()), t.TransformStatisticID,
+ -- @LoadID, t2.StatusID, t3.PackageLogID, t4.TaskLogID, t5.TransformLogID, t.TransformStartDate,
+ -- t.TransformEndDate, t.TransformStartDate, t.TransformEndDate
+ -- FROM @sysssisdtsStats t
+ --      JOIN SystemLog.LoadLog t2 ON (@LoadID = t2.LoadID)
+ --      JOIN SystemLog.PackageLog t3 ON (t.PackageID = t3.PackageGUID
+ --                                      AND t3.VersionBuild = @VersionBuild
+	--								   AND t3.VersionMajor = @VersionMajor
+	--								   AND t3.VersionMinor = @VersionMinor)
+ --      JOIN SystemLog.TaskLog t4 ON (t.TaskID = t4.TaskID AND t4.PackageLogID = t3.PackageLogID)
+ --      JOIN SystemLog.TransformLog t5 ON (t.TransformID = t5.TransformID AND t5.TaskLogID = t4.TaskLogID)
+ -- END TRY
+ -- BEGIN CATCH
+ --   INSERT INTO SystemLog.MessageLog([LoadID], [InformationTypeID], [Message], [PackageLogID], [TaskLogID], [Code], [ErrorDate], [CycleID])
+ --   SELECT 
+ --     ISNULL(@LoadID, 0) AS LoadID,
+ --     inf.InformationTypeID, 
+ --     (
+ --       SELECT 
+	--	      ERROR_NUMBER() AS "@Number",
+	--	      ERROR_STATE() AS "@State",
+	--	      ERROR_SEVERITY() AS "@Severity",
+	--	      ERROR_MESSAGE() AS "Message",
+	--	      ERROR_LINE() AS "Procedure/@Line",
+	--	      ERROR_PROCEDURE() AS "Procedure"
+	--	    FOR XML PATH('Error')
+	--	  ) AS [Message],
+	--	  0 AS PackageLogID,
+	--	  0 AS TaskLogID,
+	--	  ERROR_NUMBER() AS Code,
+	--	  GETDATE() AS ErrorDate,
+	--	  ISNULL(ld.CycleID, 0) AS CycleID
+ --   FROM [SystemLog].[InformationType] inf
+ --        LEFT JOIN SystemLog.LoadLog ld ON ld.LoadID = @LoadID
+ --   WHERE [InformationTypeName] = 'Error'
+    
+	--DECLARE @ERRORMESSAGE VARCHAR(200);
+
+	--SELECT @ERRORMESSAGE = ERROR_MESSAGE();
+
+	--RAISERROR('Error processing statistics - %s', 16, 1, @ERRORMESSAGE);
+ -- END CATCH    
+ select 1   
+END

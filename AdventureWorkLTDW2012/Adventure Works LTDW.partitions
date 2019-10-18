@@ -1,0 +1,115 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="69f903d4-cf7d-4673-8206-f0c7f2c77001" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Adventure Works LTDW2012</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Fact Orders</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="fd90b6ec-58f7-4e98-ba80-1b816451e45a">
+          <ID>Fact Orders</ID>
+          <Name>Fact Orders</Name>
+          <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="fb7246a7-f0f6-4934-a1e7-4f4e1dd0967b">
+            <DataSourceViewID>Adventure Works LTDW2012</DataSourceViewID>
+            <TableID>DW_FactOrders</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <EstimatedRows>542</EstimatedRows>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Orders Big DW</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="4238f2e8-12da-456b-8fd9-3a22be7bacb3">
+          <ID>Fact Order VW</ID>
+          <Name>Fact Orders DW 2005</Name>
+          <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="e5947823-15e3-4181-9868-493cfb5a0408">
+            <DataSourceID>Adventure Works LTDW2012</DataSourceID>
+            <QueryDefinition>SELECT        oh.IDOrderDate, oh.IDShipDate, oh.IDDueDate, oh.IDProduct, oh.IDCustomer, oh.IDBillingAddress, oh.IDShippingAddress, oh.IDOrderProvenance, oh.OrderQy, 
+                         oh.UnitPrice, oh.Discount, oh.TaxAmount, oh.Freight, oh.LoadID, oh.IDSalesOrder, oh.IDPurchaseOrder
+FROM            Cube.FactOrder_VW AS oh INNER JOIN
+                         DW.DimTime AS t ON oh.IDOrderDate = t.IDTime
+WHERE        (t.YearNb = 2005)</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Slice>[Order Date].[Year-Month].[Year].&amp;[2005]</Slice>
+          <EstimatedRows>2120000</EstimatedRows>
+        </Partition>
+        <Partition dwd:design-time-name="44a51bff-f4c0-4291-8bfc-71cf2011fa33">
+          <ID>Fact Orders DW 2006</ID>
+          <Name>Fact Orders DW 2006</Name>
+          <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="e0afe06f-49eb-460b-9b64-80c53d9fffe1">
+            <DataSourceID>Adventure Works LTDW2012</DataSourceID>
+            <QueryDefinition>SELECT        oh.IDOrderDate, oh.IDShipDate, oh.IDDueDate, oh.IDProduct, oh.IDCustomer, oh.IDBillingAddress, oh.IDShippingAddress, oh.IDOrderProvenance, oh.OrderQy, 
+                         oh.UnitPrice, oh.Discount, oh.TaxAmount, oh.Freight, oh.LoadID, oh.IDSalesOrder, oh.IDPurchaseOrder
+FROM            Cube.FactOrder_VW AS oh INNER JOIN
+                         DW.DimTime AS t ON oh.IDOrderDate = t.IDTime
+WHERE        (t.YearNb = 2006)</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Slice>[Order Date].[Year-Month].[Year].&amp;[2006]</Slice>
+          <EstimatedRows>460000</EstimatedRows>
+        </Partition>
+        <Partition dwd:design-time-name="d32465ef-482a-40cc-bf22-3fbc7f36f57e">
+          <ID>Fact Orders DW 2007</ID>
+          <Name>Fact Orders DW 2007</Name>
+          <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="46443955-3de1-4e40-bab6-2692090c2f8b">
+            <DataSourceID>Adventure Works LTDW2012</DataSourceID>
+            <QueryDefinition>SELECT        oh.IDOrderDate, oh.IDShipDate, oh.IDDueDate, oh.IDProduct, oh.IDCustomer, oh.IDBillingAddress, oh.IDShippingAddress, oh.IDOrderProvenance, oh.OrderQy, 
+                         oh.UnitPrice, oh.Discount, oh.TaxAmount, oh.Freight, oh.LoadID, oh.IDSalesOrder, oh.IDPurchaseOrder
+FROM            Cube.FactOrder_VW AS oh INNER JOIN
+                         DW.DimTime AS t ON oh.IDOrderDate = t.IDTime
+WHERE        (t.YearNb = 2007)</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Slice>[Order Date].[Year-Month].[Year].&amp;[2007]</Slice>
+          <EstimatedRows>2480000</EstimatedRows>
+        </Partition>
+        <Partition dwd:design-time-name="bc4f6896-4f7c-48e6-9090-3ee17247399e">
+          <ID>Fact Orders DW 2002</ID>
+          <Name>Fact Orders DW 2002-2004</Name>
+          <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="1bd6a203-b307-4aee-bceb-79b9dd47bcb0">
+            <DataSourceID>Adventure Works LTDW2012</DataSourceID>
+            <QueryDefinition>SELECT        oh.IDOrderDate, oh.IDShipDate, oh.IDDueDate, oh.IDProduct, oh.IDCustomer, oh.IDBillingAddress, oh.IDShippingAddress, oh.IDOrderProvenance, oh.OrderQy, 
+                         oh.UnitPrice, oh.Discount, oh.TaxAmount, oh.Freight, oh.LoadID, oh.IDSalesOrder, oh.IDPurchaseOrder
+FROM            Cube.FactOrder_VW AS oh INNER JOIN
+                         DW.DimTime AS t ON oh.IDOrderDate = t.IDTime
+WHERE        (t.YearNb BETWEEN 2002 AND 2004)</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Slice>{[Order Date].[Year-Month].[Year].&amp;[2002], [Order Date].[Year-Month].[Year].&amp;[2003],[Order Date].[Year-Month].[Year].&amp;[2004]}</Slice>
+          <EstimatedRows>780000</EstimatedRows>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

@@ -1,0 +1,3505 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{BE486F07-F446-4160-8FA0-B1B82D1E7C18}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DimCustomerLookup"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{FA4FCF1E-DBAC-4743-873B-B26E11CBA153}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{B5F8FFD0-217E-4F42-A76E-1B76A6F4C73C}"
+      DTS:ObjectName="LoadExecutionDate"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">1/1/1900</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{00B6CA61-99E4-461E-BC90-5B3C93769339}"
+      DTS:ObjectName="LoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{F78DA03F-62F2-489A-A8DE-8E494786E55C}"
+      DTS:ObjectName="SourceLoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C316A269-C74D-405C-9D82-A50FC8E449D4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NullCode">
+      <DTS:VariableValue
+        DTS:DataType="8">n/a</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F1DCFEC8-0CBF-44CA-B6FD-ECEFF5DA2D6D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NullDescription">
+      <DTS:VariableValue
+        DTS:DataType="8">Not available</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_DimCustomer_ups"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5FE027E4-687A-45A2-8ABB-E381FADCC6CF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_DimCustomer_ups"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_DimCustomer_ups\Audit"
+              componentClassID="Microsoft.Lineage"
+              contactInfo="Audit;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Adds audit information to rows in a dataset."
+              name="Audit">
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\Audit.Inputs[Audit Input 1]"
+                  name="Audit Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\Audit.Outputs[Audit Output 1]"
+                  exclusionGroup="1"
+                  name="Audit Output 1"
+                  synchronousInputId="Package\dft_DimCustomer_ups\Audit.Inputs[Audit Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\der_CurrentFlag"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="der_CurrentFlag"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\der_CurrentFlag.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_CurrentFlag.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Output].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"> TRUE </property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"> TRUE </property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_CurrentFlag.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="der_EndDate_CurrentFlag"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Output].Columns[EndDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Output].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionDate]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Output].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"> FALSE </property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"> FALSE </property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="der_LoadExecutionId_StartDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[StartDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionDate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionDate]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      name="LoadExecutionId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionId]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionId]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\der_NullColumns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="der_NullColumns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(FirstName) ? @NullDescription : FirstName</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[MiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(MiddleName) ? @NullDescription : MiddleName</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(LastName) ? @NullDescription : LastName</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[EmailAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(EmailAddress) ? @NullDescription : EmailAddress</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Phone"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Phone) ? @NullDescription : Phone</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[Title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Title"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]}) ? @[NullCode] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Title) ? @NullCode : Title</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[Suffix]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Suffix"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]}) ? @[NullCode] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Suffix) ? @NullCode : Suffix</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[CompanyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="CompanyName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(CompanyName) ? @NullDescription : CompanyName</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input].Columns[SalesPerson]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="256"
+                      cachedName="SalesPerson"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]}) ? @[NullDescription] : #{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(SalesPerson) ? @NullDescription : SalesPerson</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Looks up values in a reference dataset by using exact matching."
+              name="lkp_DimCustomer_customerid"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        IDCustomer, Title, FirstName, MiddleName, Suffix, LastName, CompanyName, ADWSalesPerson, Phone, EmailAddress,  CustomerID
+FROM            DW.DimCustomer</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        IDCustomer, Title, FirstName, MiddleName, Suffix, LastName, CompanyName, ADWSalesPerson, Phone, EmailAddress, AccountNumber, CustomerID
+FROM            DW.DimCustomer) [refTable]
+where [refTable].[CustomerID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IDCustomer" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_STR" length="8" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MiddleName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Suffix" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LastName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CompanyName" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ADWSalesPerson" dataType="DT_STR" length="256" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Phone" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EmailAddress" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Inputs[Lookup Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[IDCustomer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[IDCustomer]"
+                      name="IDCustomer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IDCustomer</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimTitle]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="8"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimTitle]"
+                      name="DimTitle"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Title</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimFirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimFirstName]"
+                      name="DimFirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">FirstName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimMiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimMiddleName]"
+                      name="DimMiddleName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">MiddleName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimSuffix]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="10"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimSuffix]"
+                      name="DimSuffix"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Suffix</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimLastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimLastName]"
+                      name="DimLastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LastName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimCompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="128"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimCompanyName]"
+                      name="DimCompanyName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CompanyName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimADWSalesPerson]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="256"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimADWSalesPerson]"
+                      name="DimADWSalesPerson"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ADWSalesPerson</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimPhone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="25"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimPhone]"
+                      name="DimPhone"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Phone</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimEmailAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimEmailAddress]"
+                      name="DimEmailAddress"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EmailAddress</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Executes an SQL command for each row in a dataset."
+              name="ole_cmd_upd_DimCustomer"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [DW].[DimCustomer] SET [EmailAddress] = ?,[FirstName] = ?,[LastName] = ?,[MiddleName] = ?,[Phone] = ?, LoadExecutionId = ? WHERE [IDCustomer] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[EmailAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[MiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].Columns[LoadExecutionId]"
+                      cachedDataType="i4"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i8"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ole_dst_DimCustomer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DimCustomer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destinaton. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[MiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[EmailAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[Title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[Suffix]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Suffix"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Suffix]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[CompanyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CompanyName]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      cachedDataType="date"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerEffDate]"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[StartDate]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerCurrent]"
+                      lineageId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Output].Columns[CurrentFlag]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[SalesPerson]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="256"
+                      cachedName="SalesPerson"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[ADWSalesPerson]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].Columns[LoadExecutionId]"
+                      cachedDataType="i4"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      lineageId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[IDCustomer]"
+                      dataType="i4"
+                      name="IDCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[Suffix]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[ADWSalesPerson]"
+                      codePage="1252"
+                      dataType="str"
+                      length="256"
+                      name="ADWSalesPerson" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerEffDate]"
+                      dataType="dbTimeStamp"
+                      name="CustomerEffDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerEndDate]"
+                      dataType="dbTimeStamp"
+                      name="CustomerEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerCurrent]"
+                      dataType="bool"
+                      name="CustomerCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      dataType="i8"
+                      name="LoadExecutionId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ole_src_StgCustomer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        CustomerID, FirstName, MiddleName, LastName, EmailAddress, Phone, NameStyle, Title, Suffix, CompanyName, SalesPerson
+FROM            Staging.StgCustomer
+WHERE        (LoadExecutionId = ?)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{F78DA03F-9D0D-489A-A8DE-8E494786E55C};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]"
+                      name="EmailAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="25"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[NameStyle]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[NameStyle]"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[NameStyle]"
+                      name="NameStyle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="8"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[Suffix]"
+                      length="10"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]"
+                      name="Suffix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      length="128"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      name="CompanyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[SalesPerson]"
+                      length="256"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]"
+                      name="SalesPerson"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[NameStyle]"
+                      dataType="bool"
+                      name="NameStyle" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[Suffix]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].ExternalColumns[SalesPerson]"
+                      codePage="1252"
+                      dataType="str"
+                      length="256"
+                      name="SalesPerson" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[EmailAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[EmailAddress]"
+                      name="EmailAddress" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[NameStyle]"
+                      dataType="bool"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[NameStyle]"
+                      name="NameStyle" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[Suffix]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[Suffix]"
+                      name="Suffix" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      name="CompanyName" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[SalesPerson]"
+                      codePage="1252"
+                      dataType="str"
+                      length="256"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[SalesPerson]"
+                      name="SalesPerson" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Executes a custom script."
+              name="scr_CheckForDifferentColumns"
+              version="10">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_72e74680927f43a0adb422f1243dc2ce.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("SC_72e74680927f43a0adb422f1243dc2ce.csproj")]
+[assembly: AssemblyCopyright("Copyright @ Microsoft 2010")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* Microsoft SQL Server Integration Services Script Component
+*  Write scripts using Microsoft Visual C# 2008.
+*  ScriptMain is the entry point class of the script.*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+
+  
+
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        bool _RowIsDifferent = false;
+
+        if (Row.CompanyName != Row.DimCompanyName)
+            _RowIsDifferent = true;
+
+        if ((!_RowIsDifferent) && (Row.SalesPerson != Row.DimADWSalesPerson))
+            _RowIsDifferent = true;
+
+        /* a continuer pour toutes les autres colonnes*/
+
+
+        if (_RowIsDifferent == true)
+            Row.DirectRowToDifferentColumns();
+        else
+            Row.DirectRowToSameColumns();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String FirstName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+    }
+    public bool FirstName_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String MiddleName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[1]);
+        }
+    }
+    public bool MiddleName_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String LastName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[2]);
+        }
+    }
+    public bool LastName_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public String EmailAddress
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[3]);
+        }
+    }
+    public bool EmailAddress_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    public String Phone
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[4]);
+        }
+    }
+    public bool Phone_IsNull
+    {
+        get
+        {
+            return IsNull(4);
+        }
+    }
+
+    public Boolean NameStyle
+    {
+        get
+        {
+            return Buffer.GetBoolean(BufferColumnIndexes[5]);
+        }
+    }
+    public bool NameStyle_IsNull
+    {
+        get
+        {
+            return IsNull(5);
+        }
+    }
+
+    public String Title
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[6]);
+        }
+    }
+    public bool Title_IsNull
+    {
+        get
+        {
+            return IsNull(6);
+        }
+    }
+
+    public String Suffix
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[7]);
+        }
+    }
+    public bool Suffix_IsNull
+    {
+        get
+        {
+            return IsNull(7);
+        }
+    }
+
+    public String CompanyName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[8]);
+        }
+    }
+    public bool CompanyName_IsNull
+    {
+        get
+        {
+            return IsNull(8);
+        }
+    }
+
+    public String SalesPerson
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[9]);
+        }
+    }
+    public bool SalesPerson_IsNull
+    {
+        get
+        {
+            return IsNull(9);
+        }
+    }
+
+    public String DimTitle
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[10]);
+        }
+    }
+    public bool DimTitle_IsNull
+    {
+        get
+        {
+            return IsNull(10);
+        }
+    }
+
+    public String DimFirstName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[11]);
+        }
+    }
+    public bool DimFirstName_IsNull
+    {
+        get
+        {
+            return IsNull(11);
+        }
+    }
+
+    public String DimMiddleName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[12]);
+        }
+    }
+    public bool DimMiddleName_IsNull
+    {
+        get
+        {
+            return IsNull(12);
+        }
+    }
+
+    public String DimSuffix
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[13]);
+        }
+    }
+    public bool DimSuffix_IsNull
+    {
+        get
+        {
+            return IsNull(13);
+        }
+    }
+
+    public String DimLastName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[14]);
+        }
+    }
+    public bool DimLastName_IsNull
+    {
+        get
+        {
+            return IsNull(14);
+        }
+    }
+
+    public String DimCompanyName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[15]);
+        }
+    }
+    public bool DimCompanyName_IsNull
+    {
+        get
+        {
+            return IsNull(15);
+        }
+    }
+
+    public String DimADWSalesPerson
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[16]);
+        }
+    }
+    public bool DimADWSalesPerson_IsNull
+    {
+        get
+        {
+            return IsNull(16);
+        }
+    }
+
+    public String DimPhone
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[17]);
+        }
+    }
+    public bool DimPhone_IsNull
+    {
+        get
+        {
+            return IsNull(17);
+        }
+    }
+
+    public String DimEmailAddress
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[18]);
+        }
+    }
+    public bool DimEmailAddress_IsNull
+    {
+        get
+        {
+            return IsNull(18);
+        }
+    }
+
+    public void DirectRowToDifferentColumns()
+    {
+        base.DirectRow(@"DifferentColumns");
+    }
+
+    public void DirectRowToSameColumns()
+    {
+        base.DirectRow(@"SameColumns");
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[sc_72e74680927f43a0adb422f1243dc2ce.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>SC_72e74680927f43a0adb422f1243dc2ce.csproj</RootNamespace>
+    <AssemblyName>SC_72e74680927f43a0adb422f1243dc2ce.csproj</AssemblyName>
+    <ProjectGuid>{4963EF04-0D5D-489D-B7D4-68466F5743A4}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to the add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="SSIS_ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:NoContent>Reference;Import;Folder</msb:NoContent>
+		<msb:ProjectId>{081EF447-55B5-4DD5-A4CE-D2BB86E0A3F3}</msb:ProjectId>
+		<msb:CodeName>sc_72e74680927f43a0adb422f1243dc2ce</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>sc_72e74680927f43a0adb422f1243dc2ce</msb:DisplayName>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:Project Include="sc_72e74680927f43a0adb422f1243dc2ce.csproj"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Settings.get_Default():SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Sett" +
+    "ings")]
+
+namespace SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_72e74680927f43a0adb422f1243dc2ce.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_72e74680927f43a0adb422f1243dc2ce.csproj.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGKYKVkAAAAAAAAAAOAAIiALATAAABoAAAAIAAAAAAAAujkA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGg5AABPAAAAAEAAAKwEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAwBkAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAKwEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACc
+OQAAAAAAAEgAAAACAAUAACQAALAUAAABAAAAAAAAALA4AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAACoCAwQFKBAAAAoqUgJ7EQAACgJ7EgAAChaUbxMAAAoqIgIW
+KBQAAAoqUgJ7EQAACgJ7EgAACheUbxMAAAoqIgIXKBQAAAoqUgJ7EQAACgJ7EgAAChiUbxMAAAoq
+IgIYKBQAAAoqUgJ7EQAACgJ7EgAAChmUbxMAAAoqIgIZKBQAAAoqUgJ7EQAACgJ7EgAAChqUbxMA
+AAoqIgIaKBQAAAoqUgJ7EQAACgJ7EgAAChuUbxUAAAoqIgIbKBQAAAoqUgJ7EQAACgJ7EgAAChyU
+bxMAAAoqIgIcKBQAAAoqUgJ7EQAACgJ7EgAACh2UbxMAAAoqIgIdKBQAAAoqUgJ7EQAACgJ7EgAA
+Ch6UbxMAAAoqIgIeKBQAAAoqVgJ7EQAACgJ7EgAACh8JlG8TAAAKKiYCHwkoFAAACipWAnsRAAAK
+AnsSAAAKHwqUbxMAAAoqJgIfCigUAAAKKlYCexEAAAoCexIAAAofC5RvEwAACiomAh8LKBQAAAoq
+VgJ7EQAACgJ7EgAACh8MlG8TAAAKKiYCHwwoFAAACipWAnsRAAAKAnsSAAAKHw2UbxMAAAoqJgIf
+DSgUAAAKKlYCexEAAAoCexIAAAofDpRvEwAACiomAh8OKBQAAAoqVgJ7EQAACgJ7EgAACh8PlG8T
+AAAKKiYCHw8oFAAACipWAnsRAAAKAnsSAAAKHxCUbxMAAAoqJgIfECgUAAAKKlYCexEAAAoCexIA
+AAofEZRvEwAACiomAh8RKBQAAAoqVgJ7EQAACgJ7EgAACh8SlG8TAAAKKiYCHxIoFAAACioyAnIB
+AABwKBYAAAoqMgJyIwAAcCgWAAAKKh4CKBcAAAoqHgIoGAAACip+AigZAAAKAgJzMAAABn0BAAAE
+AgJzMQAABn0CAAAEKpIEcjsAAHAabxoAAAosFQIFAgMoGwAACg4EcwEAAAZvLgAABipKKwcCA28v
+AAAGA28qAAAGLfEqBio6AigcAAAKAgN9AwAABCo6AigcAAAKAgN9BAAABCoAEzACAEAAAAABAAAR
+FgoDbxIAAAYDbyAAAAYoHQAACiwCFwoGLRUDbxQAAAYDbyIAAAYoHQAACiwCFwoGLAcDbygAAAYq
+A28pAAAGKh4CKCwAAAYqHgIoHAAACiqufgUAAAQtHnJLAABw0AcAAAIoHgAACm8fAAAKcyAAAAqA
+BQAABH4FAAAEKhp+BgAABCoeAoAGAAAEKhp+BwAABCoeAighAAAKKi5zOQAABoAHAAAEKgAAQlNK
+QgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAwAgAACN+AAAsCQAA7AgAACNTdHJpbmdz
+AAAAABgSAADMAAAAI1VTAOQSAAAQAAAAI0dVSUQAAAD0EgAAvAEAACNCbG9iAAAAAAAAAAIAAAFX
+FaIBCQEAAAD6ATMAFgAAAQAAAB4AAAAIAAAABwAAADoAAAANAAAAIQAAABAAAAABAAAAAwAAACkA
+AAAqAAAAAQAAAAQAAAABAAAAAACZAwEAAAAAAAYAfAKKBgYAEAOKBgYAyAF3Bg8ABQcAAAYA9QHA
+BQYAXwLABQYAQALABQYA9wLABQYAnALABQYAtQLABQYADALABQYAJwI0AwoASQb+AA4AOgb+AAoA
+FQb+AAoAKgj+AAYA7QdtBQoA0AL+AAYAqwF3BgYAWgaqBgYACQarBRIAewGDAxIA3AGDAxIAYwGW
+BQYAkAGKBgYAUQNtBQYA0gVtBQYANgFtBQYAKwBtBQYA0gjABQAAAAABAAAAAAABAAEAAQAQAC0G
+AAA1AAEAAQABABAADAgAAEEAAQAsAAEAEAC8BwAARQADADAAAQAQAEoHAABFAAQAMQABABAAiwUA
+AAwABQAyAAAAEACxBhQHRQAFADQAAAEQAHkHFAdhAAcAOAAGALwHdwAGAEoHewABABoIfwABABoI
+fwARAHQFgwARAFMBhwARABsAiwBQIAAAAACGGGoGGwABAFsgAAAAAIYIsgCPAAQAcCAAAAAAhghc
+BDcABAB5IAAAAACGCHQAjwAEAI4gAAAAAIYIAgQ3AAQAlyAAAAAAhgiVAI8ABACsIAAAAACGCDEE
+NwAEALUgAAAAAIYIyAePAAQAyiAAAAAAhggTBTcABADTIAAAAACGCB8BjwAEAOggAAAAAIYIugQ3
+AAQA8SAAAAAAhghmADcABAAGIQAAAACGCO0DNwAEAA8hAAAAAIYITwCPAAQAJCEAAAAAhgjIAzcA
+BAAtIQAAAACGCLUIjwAEAEIhAAAAAIYIRgU3AAQASyEAAAAAhgjbAI8ABABgIQAAAACGCIkENwAE
+AGkhAAAAAIYI+QWPAAQAfyEAAAAAhgj8BDcABACJIQAAAACGCFkAjwAEAJ8hAAAAAIYI2QM3AAQA
+qSEAAAAAhgjAAI8ABAC/IQAAAACGCHEENwAEAMkhAAAAAIYIgwCPAAQA3yEAAAAAhggYBDcABADp
+IQAAAACGCMAIjwAEAP8hAAAAAIYIWAU3AAQACSIAAAAAhgiiAI8ABAAfIgAAAACGCEUENwAEACki
+AAAAAIYI6wCPAAQAPyIAAAAAhgigBDcABABJIgAAAACGCOMFjwAEAF8iAAAAAIYI3wQ3AAQAaSIA
+AAAAhggpAY8ABAB/IgAAAACGCMsENwAEAIkiAAAAAIYI2QePAAQAnyIAAAAAhggrBTcABACpIgAA
+AACGAKAHBgAEALYiAAAAAIYAiQcGAAQAwyIAAAAAhgCtCDcABADLIgAAAACGAPQHNwAEANMiAAAA
+AIYYagYGAAQA8yIAAAAAxgB/CJMABAAYIwAAAADGAXgInQAIACsjAAAAAMYBlgidAAkALSMAAAAA
+hhhqBqMACgA8IwAAAACGGGoGowALAEwjAAAAAMYAlgidAAwAmCMAAAAAhhhqBgYADQCgIwAAAACD
+GGoGBgANAKgjAAAAAJMIVgapAA0A1CMAAAAAkwg7Aa4ADQDbIwAAAACTCEcBswANAOMjAAAAAJYI
+AAi5AA4A6iMAAAAAhhhqBgYADgDyIwAAAACRGHAGvgAOAAAAAQBPBgAAAgBUBwAAAwAjBgAAAQAK
+AAAAAgDRAAAAAwBPBgAABAAjBgAAAQBPBgAAAQCxCAAAAQAwCAAAAQAwCAAAAQCxCAAAAQAuAwkA
+agYBABEAagYGABkAagYKACkAagYQADEAagYQADkAagYQAEEAagYQAEkAagYQAFEAagYQAFkAagYQ
+AGEAagYQAJEAagYGAJkAagYGALkAagYVAMkAagYGAGkAagYbAGkATwYlAGkAVAcpAHEATgMtAGkA
+ZgUyAHEAgAUyAGkAjAgQAGkArQg3AGkA9Ac3AIEAagYGANEAggc7AIEAaAdCAIkAagYGANEA2whM
+AOEAPQBSAOEAzghZAKEAagZeAMEAagYGAC4ACwDZAC4AEwDiAC4AGwABAS4AIwAKAS4AKwA6AS4A
+MwA6AS4AOwBAAS4AQwAKAS4ASwBPAS4AUwA6AS4AWwBvAcMAYwC3AeEAewC3AeMAawC3AekEcwAB
+AQkFcwABAUgAAgABAAcAJwAIACkAAADHAMIAAAB4BMYAAACKAMIAAAAfBMYAAACpAMIAAABMBMYA
+AADgB8IAAAAyBcYAAAAwAcIAAADSBMYAAABqAMYAAADxA8YAAABgAMIAAADgA8YAAADHCMIAAABf
+BcYAAADyAMIAAACnBMYAAAD9BcIAAAAABcYAAABdAMIAAADdA8YAAADEAMIAAAB1BMYAAACHAMIA
+AAAcBMYAAADECMIAAABcBcYAAACmAMIAAABJBMYAAADvAMIAAACkBMYAAADnBcIAAADjBMYAAAAt
+AcIAAADPBMYAAADdB8IAAAAvBcYAAABaBsoAAABbAc8AAAAECNQAAgACAAMAAgADAAUAAgAEAAcA
+AgAFAAkAAgAGAAsAAgAHAA0AAgAIAA8AAgAJABEAAgAKABMAAgALABUAAgAMABcAAgANABkAAgAO
+ABsAAgAPAB0AAgAQAB8AAgARACEAAgASACMAAgATACUAAgAUACcAAgAVACkAAgAWACsAAgAXAC0A
+AgAYAC8AAgAZADEAAgAaADMAAgAbADUAAgAcADcAAgAdADkAAgAeADsAAgAfAD0AAgAgAD8AAgAh
+AEEAAgAiAEMAAgAjAEUAAgAkAEcAAgAlAEkAAgAmAEsAAgAnAE0AAgA1AE8AAgA2AFEAAQA3AFEA
+AgA4AFMABIAAAAEAAAAAAAAAAAAAAAAAWAMAAAQAAAAAAAAAAAAAAGUAEgAAAAAADQAAAAAAAAAA
+AAAAbgA6CAAAAAANAAAAAAAAAAAAAABuAFcIAAAAAAQAAAAAAAAAAAAAAGUAbQUAAAAAAAAAAAEA
+AAC7BgAAAAAAPE1vZHVsZT4ASW5wdXRJRABtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVudGlt
+ZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAZ2V0X1RpdGxlAGdldF9EaW1UaXRsZQBnZXRf
+TmFtZVN0eWxlAGdldF9NaWRkbGVOYW1lAGdldF9EaW1NaWRkbGVOYW1lAGdldF9MYXN0TmFtZQBn
+ZXRfRGltTGFzdE5hbWUAZ2V0X0ZpcnN0TmFtZQBnZXRfRGltRmlyc3ROYW1lAElucHV0TmFtZQBn
+ZXRfQ29tcGFueU5hbWUAZ2V0X0RpbUNvbXBhbnlOYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRz
+LlBpcGVsaW5lAGdldF9QaG9uZQBnZXRfRGltUGhvbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3Vs
+dHVyZQByZXNvdXJjZUN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARWRpdG9yQnJvd3Nh
+YmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0
+dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1l
+d29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNj
+cmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5
+UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29t
+cG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGlt
+ZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBH
+ZXRTdHJpbmcAU0NfNzJlNzQ2ODA5MjdmNDNhMGFkYjQyMmYxMjQzZGMyY2UuY3Nwcm9qAFN5c3Rl
+bS5Db21wb25lbnRNb2RlbABTQ183MmU3NDY4MDkyN2Y0M2EwYWRiNDIyZjEyNDNkYzJjZS5jc3By
+b2ouZGxsAGdldF9UaXRsZV9Jc051bGwAZ2V0X0RpbVRpdGxlX0lzTnVsbABnZXRfTmFtZVN0eWxl
+X0lzTnVsbABnZXRfTWlkZGxlTmFtZV9Jc051bGwAZ2V0X0RpbU1pZGRsZU5hbWVfSXNOdWxsAGdl
+dF9MYXN0TmFtZV9Jc051bGwAZ2V0X0RpbUxhc3ROYW1lX0lzTnVsbABnZXRfRmlyc3ROYW1lX0lz
+TnVsbABnZXRfRGltRmlyc3ROYW1lX0lzTnVsbABnZXRfQ29tcGFueU5hbWVfSXNOdWxsAGdldF9E
+aW1Db21wYW55TmFtZV9Jc051bGwAZ2V0X1Bob25lX0lzTnVsbABnZXRfRGltUGhvbmVfSXNOdWxs
+AGdldF9EaW1BRFdTYWxlc1BlcnNvbl9Jc051bGwAZ2V0X1NhbGVzUGVyc29uX0lzTnVsbABnZXRf
+RW1haWxBZGRyZXNzX0lzTnVsbABnZXRfRGltRW1haWxBZGRyZXNzX0lzTnVsbABnZXRfU3VmZml4
+X0lzTnVsbABnZXRfRGltU3VmZml4X0lzTnVsbABTeXN0ZW0AcmVzb3VyY2VNYW4AR2V0Qm9vbGVh
+bgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5
+c3RlbS5SZWZsZWN0aW9uAFN0cmluZ0NvbXBhcmlzb24AZ2V0X0RpbUFEV1NhbGVzUGVyc29uAGdl
+dF9TYWxlc1BlcnNvbgBDdWx0dXJlSW5mbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABJbnB1dDBC
+dWZmZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0
+b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZp
+Y2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfNzJlNzQ2ODA5MjdmNDNhMGFkYjQyMmYxMjQzZGMyY2Uu
+Y3Nwcm9qLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ183
+MmU3NDY4MDkyN2Y0M2EwYWRiNDIyZjEyNDNkYzJjZS5jc3Byb2ouUHJvcGVydGllcwBWYXJpYWJs
+ZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVxdWFscwBE
+aXJlY3RSb3dUb1NhbWVDb2x1bW5zAERpcmVjdFJvd1RvRGlmZmVyZW50Q29sdW1ucwBDb25uZWN0
+aW9ucwBnZXRfRW1haWxBZGRyZXNzAGdldF9EaW1FbWFpbEFkZHJlc3MAT2JqZWN0AEVuZE9mUm93
+c2V0AGdldF9EZWZhdWx0AFVzZXJDb21wb25lbnQAUGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBv
+bmVudABNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlw
+ZWxpbmVIb3N0AElucHV0MF9Qcm9jZXNzSW5wdXQARGlyZWN0Um93AElucHV0MF9Qcm9jZXNzSW5w
+dXRSb3cATmV4dFJvdwBnZXRfU3VmZml4AGdldF9EaW1TdWZmaXgAZ2V0X0Fzc2VtYmx5AG9wX0lu
+ZXF1YWxpdHkAAAAAACFEAGkAZgBmAGUAcgBlAG4AdABDAG8AbAB1AG0AbgBzAAAXUwBhAG0AZQBD
+AG8AbAB1AG0AbgBzAAAPSQBuAHAAdQB0ACAAMAAAf1MAQwBfADcAMgBlADcANAA2ADgAMAA5ADIA
+NwBmADQAMwBhADAAYQBkAGIANAAyADIAZgAxADIANAAzAGQAYwAyAGMAZQAuAGMAcwBwAHIAbwBq
+AC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAwyjuz8JCRUOHQBgy
+BgObqgAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQkgAwESOR0IEj0DBhI5AwYdCAQgAQ4IBCAB
+AggDIAACBiACAg4RbQUgAR0ICAMHAQIFAAICDg4GAAEScRF1BCAAEnkGIAIBDhJ5CLd6XFYZNOCJ
+CImEXc2AgMyRAwYSEAMGEhQDBhJBAwYSUQMGElUDBhIgAyAADgkgBAEIDhI5Ej0FIAEBEggFIAEB
+EkEEAAASUQQAABJVBQABARJVBAAAEiADAAABAygADgMoAAIECAASUQQIABJVBAgAEiAIAQAIAAAA
+AAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAALwEAKlNDXzcyZTc0Njgw
+OTI3ZjQzYTBhZGI0MjJmMTI0M2RjMmNlLmNzcHJvagAABQEAAAAADgEACU1pY3Jvc29mdAAAHwEA
+GkNvcHlyaWdodCBAIE1pY3Jvc29mdCAyMDEwAABHAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0
+LjABAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEC5ORVQgRnJhbWV3b3JrIDQEAQAAALQAAADOyu++
+AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNp
+b249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRl
+MDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFE
+ULQAAACQOQAAAAAAAAAAAACqOQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnDkAAAAAAAAAAAAA
+AABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAABQBAAAAAAAAAAAAABQBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAEsAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAjAMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAADQACgABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAATQBpAGMAcgBvAHMAbwBmAHQAAAB+ACsAAQBGAGkAbABlAEQAZQBzAGMAcgBp
+AHAAdABpAG8AbgAAAAAAUwBDAF8ANwAyAGUANwA0ADYAOAAwADkAMgA3AGYANAAzAGEAMABhAGQA
+YgA0ADIAMgBmADEAMgA0ADMAZABjADIAYwBlAC4AYwBzAHAAcgBvAGoAAAAAADAACAABAEYAaQBs
+AGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAH4ALwABAEkAbgB0AGUAcgBuAGEA
+bABOAGEAbQBlAAAAUwBDAF8ANwAyAGUANwA0ADYAOAAwADkAMgA3AGYANAAzAGEAMABhAGQAYgA0
+ADIAMgBmADEAMgA0ADMAZABjADIAYwBlAC4AYwBzAHAAcgBvAGoALgBkAGwAbAAAAAAAWgAbAAEA
+TABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAATQBp
+AGMAcgBvAHMAbwBmAHQAIAAyADAAMQAwAAAAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0A
+YQByAGsAcwAAAAAAAAAAAIYALwABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABT
+AEMAXwA3ADIAZQA3ADQANgA4ADAAOQAyADcAZgA0ADMAYQAwAGEAZABiADQAMgAyAGYAMQAyADQA
+MwBkAGMAMgBjAGUALgBjAHMAcAByAG8AagAuAGQAbABsAAAAAAB2ACsAAQBQAHIAbwBkAHUAYwB0
+AE4AYQBtAGUAAAAAAFMAQwBfADcAMgBlADcANAA2ADgAMAA5ADIANwBmADQAMwBhADAAYQBkAGIA
+NAAyADIAZgAxADIANAAzAGQAYwAyAGMAZQAuAGMAcwBwAHIAbwBqAAAAAAA0AAgAAQBQAHIAbwBk
+AHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAOAAIAAEAQQBzAHMAZQBtAGIA
+bAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAvDkAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_72e74680927f43a0adb422f1243dc2ce</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">23f88561e46efdf818a3344c01e8c86c</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataShaChecksum"
+                  typeConverter="NOTBROWSABLE">ed8e972ee7711aaac6744f62f99c555b50149282</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[MiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[EmailAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[EmailAddress]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Phone"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[NameStyle]"
+                      cachedDataType="bool"
+                      cachedName="NameStyle"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[NameStyle]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[Title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Title"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[Suffix]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Suffix"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[Suffix]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[CompanyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="CompanyName"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[SalesPerson]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="256"
+                      cachedName="SalesPerson"
+                      lineageId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output].Columns[SalesPerson]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimTitle]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="DimTitle"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimTitle]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimFirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimFirstName"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimFirstName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimMiddleName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimMiddleName"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimMiddleName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimSuffix]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="DimSuffix"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimSuffix]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimLastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimLastName"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimLastName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimCompanyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="DimCompanyName"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimCompanyName]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimADWSalesPerson]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="256"
+                      cachedName="DimADWSalesPerson"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimADWSalesPerson]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimPhone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="DimPhone"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimPhone]" />
+                    <inputColumn
+                      refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0].Columns[DimEmailAddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DimEmailAddress"
+                      lineageId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output].Columns[DimEmailAddress]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Outputs[DifferentColumns]"
+                  exclusionGroup="1"
+                  name="DifferentColumns"
+                  synchronousInputId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Outputs[SameColumns]"
+                  exclusionGroup="1"
+                  name="SameColumns"
+                  synchronousInputId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[Derived Column Output]"
+              endId="Package\dft_DimCustomer_ups\der_NullColumns.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[Derived Column Output1]"
+              endId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DimCustomer_ups\der_NullColumns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[Derived Column Output2]"
+              endId="Package\dft_DimCustomer_ups\ole_dst_DimCustomer.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DimCustomer_ups\der_CurrentFlag.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[Derived Column Output3]"
+              endId="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[DifferentColumns]"
+              endId="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag.Inputs[Derived Column Input]"
+              name="DifferentColumns"
+              startId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Outputs[DifferentColumns]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[Lookup Match Output]"
+              endId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Inputs[Input 0]"
+              name="Lookup Match Output"
+              startId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[Lookup No Match Output]"
+              endId="Package\dft_DimCustomer_ups\der_CurrentFlag.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[OLE DB Source Output]"
+              endId="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft_DimCustomer_ups\ole_src_StgCustomer.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\dft_DimCustomer_ups.Paths[SameColumns]"
+              endId="Package\dft_DimCustomer_ups\Audit.Inputs[Audit Input 1]"
+              name="SameColumns"
+              startId="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns.Outputs[SameColumns]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\dft_DimCustomer_ups"
+          TopLeft="5.5,5.49999999999995" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_DimCustomer_ups">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\ole_dst_DimCustomer"
+          TopLeft="5.5,515.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\der_EndDate_CurrentFlag"
+          TopLeft="575.5,514.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\ole_cmd_upd_DimCustomer"
+          TopLeft="573.5,617.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\ole_src_StgCustomer"
+          TopLeft="289.5,5.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\der_LoadExecutionId_StartDate"
+          TopLeft="287,107.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\der_CurrentFlag"
+          TopLeft="5.5,413.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\der_NullColumns"
+          TopLeft="289.5,209.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\lkp_DimCustomer_customerid"
+          TopLeft="289.5,311.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\Audit"
+          TopLeft="289.5,515.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dft_DimCustomer_ups\scr_CheckForDifferentColumns"
+          TopLeft="289.5,413.5" />
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[Derived Column Output1]"
+          TopLeft="403.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[Derived Column Output]"
+          TopLeft="402.25,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[SameColumns]"
+          TopLeft="366.833333333333,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.6666666666667,60"
+              Start="0,0"
+              End="36.6666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2508710801394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2508710801394"
+                    Point2="0,24.2508710801394"
+                    Point3="4,24.2508710801394" />
+                  <mssgle:LineSegment
+                    End="32.6666666666667,24.2508710801394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.6666666666667,24.2508710801394"
+                    Point2="36.6666666666667,24.2508710801394"
+                    Point3="36.6666666666667,28.2508710801394" />
+                  <mssgle:LineSegment
+                    End="36.6666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-13.4999088541666,29.2508710801394,63.666484375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[OLE DB Source Output]"
+          TopLeft="402.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[Lookup No Match Output]"
+          TopLeft="366.833333333333,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-247.333333333333,60.0000000000001"
+              Start="0,0"
+              End="-247.333333333333,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2508710801394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2508710801394"
+                    Point2="0,24.2508710801394"
+                    Point3="-4,24.2508710801394" />
+                  <mssgle:LineSegment
+                    End="-243.333333333333,24.2508710801394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-243.333333333333,24.2508710801394"
+                    Point2="-247.333333333333,24.2508710801394"
+                    Point3="-247.333333333333,28.2508710801394" />
+                  <mssgle:LineSegment
+                    End="-247.333333333333,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-179.473053385417,29.2508710801394,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[Lookup Match Output]"
+          TopLeft="440.166666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36.6666666666666,60"
+              Start="0,0"
+              End="-36.6666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2508710801394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2508710801394"
+                    Point2="0,24.2508710801394"
+                    Point3="-4,24.2508710801394" />
+                  <mssgle:LineSegment
+                    End="-32.6666666666666,24.2508710801394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32.6666666666666,24.2508710801394"
+                    Point2="-36.6666666666666,24.2508710801394"
+                    Point3="-36.6666666666666,28.2508710801394" />
+                  <mssgle:LineSegment
+                    End="-36.6666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.5247200520833,29.2508710801394,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[DifferentColumns]"
+          TopLeft="440.166666666667,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="249.333333333333,59"
+              Start="0,0"
+              End="249.333333333333,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8466898954704" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.8466898954704"
+                    Point2="0,23.8466898954704"
+                    Point3="4,23.8466898954704" />
+                  <mssgle:LineSegment
+                    End="245.333333333333,23.8466898954704" />
+                  <mssgle:CubicBezierSegment
+                    Point1="245.333333333333,23.8466898954704"
+                    Point2="249.333333333333,23.8466898954704"
+                    Point3="249.333333333333,27.8466898954704" />
+                  <mssgle:LineSegment
+                    End="249.333333333333,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="86.0190885416667,28.8466898954704,77.29515625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[Derived Column Output3]"
+          TopLeft="688.5,556.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DimCustomer_ups.Paths[Derived Column Output2]"
+          TopLeft="119.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DimCustomer_ups\ole_dst_DimCustomer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DimCustomer_ups\ole_src_StgCustomer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

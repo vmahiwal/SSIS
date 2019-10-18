@@ -1,0 +1,2357 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{AF3767FA-A1B4-4FA1-A468-89EC1A12C761}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="RefreshCube"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="88"
+  DTS:VersionGUID="{75B0DE08-2CB3-479C-A4C7-184E490DE457}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_SSAS]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{96AEF07E-43D4-4879-8814-1ACDF13467EA}"
+      DTS:ObjectName="cmgr_SSAS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.\DEV2008R2;Initial Catalog=SalesOrder;Provider=MSOLAP.6;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="cfgn_SSISFrameworkDW"
+      DTS:ConfigurationType="5"
+      DTS:CreationName=""
+      DTS:DTSID="{70C5078C-ED5F-4362-9F7E-1F6DF816D206}"
+      DTS:ObjectName="cfgn_cmgr_DW" />
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;cmgr_DW&quot;;&quot;[SystemLog].[SystemConfigurations]&quot;;&quot;cmgr_Order_SSAS_Cube&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{74457AF0-6F9F-4592-83B1-8BA4CF27D862}"
+      DTS:ObjectName="cfgn_cmgr_Order_SSAS_Cube" />
+  </DTS:Configurations>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="cmgr_DW"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{22BFA7D3-71AF-4531-B09B-0B6DC10D1C69}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1D41B909-5CE1-4AB0-B124-4F8BC9E45E66}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ASDimensionList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E708AB0D-F1DA-41B5-B1AC-BCA12FF1886F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ASMeasureGroupList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1F45BB86-7184-44B6-9877-900BF5ADC6ED}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ASServer">
+      <DTS:VariableValue
+        DTS:DataType="8">.\DEV2008</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DC01DBBA-EC50-4F6E-B243-FAFEEA0AFA07}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Cube">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34BCF226-EB89-4A6F-A594-A90DE8B1BFA2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;&lt;Batch xmlns=\&quot;http://schemas.microsoft.com/analysisservices/2003/engine\&quot;&gt;&#xA;  &lt;Parallel&gt;&#xA;    &lt;Process xmlns:xsd=\&quot;http://www.w3.org/2001/XMLSchema\&quot; xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot;&gt;&#xA;      &lt;Object&gt;&#xA;        &lt;DatabaseID&gt;&quot; + @[User::Database]   + &quot;&lt;/DatabaseID&gt;&#xA;        &lt;CubeID&gt;&quot; +  @[User::Cube]  + &quot;&lt;/CubeID&gt;&#xA;        &lt;MeasureGroupID&gt;&quot; +  @[User::MeasureGroup]  + &quot;&lt;/MeasureGroupID&gt;&#xA;      &lt;/Object&gt;&#xA;      &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;      &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;    &lt;/Process&gt;&#xA;  &lt;/Parallel&gt;&#xA;&lt;/Batch&gt;&#xA;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CubeProcessingXMLA">
+      <DTS:VariableValue
+        DTS:DataType="8">&lt;Batch xmlns="http://schemas.microsoft.com/analysisservices/2003/engine"&gt;
+  &lt;Parallel&gt;
+    &lt;Process xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+      &lt;Object&gt;
+        &lt;DatabaseID&gt;&lt;/DatabaseID&gt;
+        &lt;CubeID&gt;&lt;/CubeID&gt;
+        &lt;MeasureGroupID&gt;&lt;/MeasureGroupID&gt;
+      &lt;/Object&gt;
+      &lt;Type&gt;ProcessFull&lt;/Type&gt;
+      &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;
+    &lt;/Process&gt;
+  &lt;/Parallel&gt;
+&lt;/Batch&gt;
+</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60C27A4A-DF07-4951-B680-D7DBA58DFBB5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Database">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5A71BC3-8A45-41BA-BAFE-BB4ED52462C5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Dimension">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B21443A1-188E-4882-B51F-4E33AEE2FD08}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;&lt;Batch xmlns=\&quot;http://schemas.microsoft.com/analysisservices/2003/engine\&quot;&gt;&#xA;  &lt;Parallel&gt;&#xA;    &lt;Process xmlns:xsd=\&quot;http://www.w3.org/2001/XMLSchema\&quot; xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot;&gt;&#xA;      &lt;Object&gt;&#xA;        &lt;DatabaseID&gt;&quot; + @[User::Database]  + &quot;&lt;/DatabaseID&gt;&#xA;        &lt;DimensionID&gt;&quot; +  @[User::Dimension]  + &quot;&lt;/DimensionID&gt;&#xA;      &lt;/Object&gt;&#xA;      &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;      &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;    &lt;/Process&gt;&#xA;  &lt;/Parallel&gt;&#xA;&lt;/Batch&gt;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DimensionProcessingXMLA">
+      <DTS:VariableValue
+        DTS:DataType="8">&lt;Batch xmlns="http://schemas.microsoft.com/analysisservices/2003/engine"&gt;
+  &lt;Parallel&gt;
+    &lt;Process xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+      &lt;Object&gt;
+        &lt;DatabaseID&gt;&lt;/DatabaseID&gt;
+        &lt;DimensionID&gt;&lt;/DimensionID&gt;
+      &lt;/Object&gt;
+      &lt;Type&gt;ProcessFull&lt;/Type&gt;
+      &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;
+    &lt;/Process&gt;
+  &lt;/Parallel&gt;
+&lt;/Batch&gt;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3820C58B-47A5-4646-AC16-05F6073B53C1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="SystemLog"
+      DTS:ObjectName="dtLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">4/21/2008 9:03:29 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF7837C0-1186-4825-ACB9-775A7EFAF2D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="SystemLog"
+      DTS:ObjectName="intLoadID">
+      <DTS:VariableValue
+        DTS:DataType="2">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A405D55C-C30F-45F9-AF19-506A4A7612E7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MeasureGroup">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{22BFA7D3-71AF-4531-B09B-0B6DC10D1C69}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\asp_ProcessCube"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{AD7521A1-BAD8-4604-9DF6-E48F98A95A26}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="asp_ProcessCube"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="cmgr_SSAS"
+          ProcessingCommands="&lt;Batch xmlns=&quot;http://schemas.microsoft.com/analysisservices/2003/engine&quot;&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;Dim Customer&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;Dim Time&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&#xA;      &lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&#xA;      &lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&#xA;      &lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&#xA;      &lt;DimensionID&gt;Dim Product&lt;/DimensionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessUpdate&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;  &lt;Process xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:ddl2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2&quot; xmlns:ddl2_2=&quot;http://schemas.microsoft.com/analysisservices/2003/engine/2/2&quot; xmlns:ddl100_100=&quot;http://schemas.microsoft.com/analysisservices/2008/engine/100/100&quot; xmlns:ddl200_200=&quot;http://schemas.microsoft.com/analysisservices/2010/engine/200/200&quot;&gt;&#xA;    &lt;Object&gt;&#xA;      &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&#xA;      &lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&#xA;      &lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&#xA;      &lt;PartitionID&gt;Fact Sales Order&lt;/PartitionID&gt;&#xA;    &lt;/Object&gt;&#xA;    &lt;Type&gt;ProcessFull&lt;/Type&gt;&#xA;    &lt;WriteBackTableCreation&gt;UseExisting&lt;/WriteBackTableCreation&gt;&#xA;  &lt;/Process&gt;&#xA;&lt;/Batch&gt;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dft_FactSalesOrder"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5FE027E4-687A-45A2-8ABB-E381FADCC6CF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_FactSalesOrder"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder"
+              componentClassID="Microsoft.PXPipelineProcessPartition"
+              description="Partition Processing"
+              name="md_dst_FactSalesOrder">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="ObjectRef">&lt;Object xmlns="http://schemas.microsoft.com/analysisservices/2003/engine"&gt;
+  &lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;
+  &lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;
+  &lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;
+  &lt;PartitionID&gt;Fact Sales Order&lt;/PartitionID&gt;
+&lt;/Object&gt;</property>
+                <property
+                  dataType="System.Boolean"
+                  name="UseDefaultConfiguration">true</property>
+                <property
+                  dataType="System.Int32"
+                  name="KeyErrorLimit">0</property>
+                <property
+                  dataType="System.Null"
+                  name="KeyErrorLogFile" />
+                <property
+                  dataType="System.Int32"
+                  name="KeyErrorAction"
+                  typeConverter="KeyErrorAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  name="KeyErrorLimitAction"
+                  typeConverter="KeyErrorLimitAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  name="KeyNotFound"
+                  typeConverter="KeyErrorHandling">0</property>
+                <property
+                  dataType="System.Int32"
+                  name="KeyDuplicate"
+                  typeConverter="KeyErrorHandling">0</property>
+                <property
+                  dataType="System.Int32"
+                  name="NullKeyConvertedToUnknown"
+                  typeConverter="KeyErrorHandling">0</property>
+                <property
+                  dataType="System.Int32"
+                  name="NullKeyNotAllowed"
+                  typeConverter="KeyErrorHandling">0</property>
+                <property
+                  dataType="System.Int32"
+                  name="ProcessType"
+                  typeConverter="ProcessType">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Connections[Analysis Services Connection]"
+                  connectionManagerID="Package.ConnectionManagers[cmgr_SSAS]"
+                  connectionManagerRefId="Package.ConnectionManagers[cmgr_SSAS]"
+                  description="Analysis Services Connection"
+                  name="Analysis Services Connection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput]"
+                  hasSideEffects="true"
+                  name="AnalysisServicesServerInput">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[Freight]"
+                      cachedDataType="cy"
+                      cachedName="Freight"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Freight]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[Freight]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Freight&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Freight&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[OrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="OrderDateKey"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Order Date.Time Key]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[OrderDateKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Order Date&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Time Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;OrderDateKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[DueDateKey]"
+                      cachedDataType="i4"
+                      cachedName="DueDateKey"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Due Date.Time Key]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[DueDateKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Due Date&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Time Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;DueDateKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[ShipDateKey]"
+                      cachedDataType="i4"
+                      cachedName="ShipDateKey"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Ship Date.Time Key]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[ShipDateKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Ship Date&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Time Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;ShipDateKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Dim Product.Product Key]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[ProductKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Dim Product&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Product Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;ProductKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Dim Customer.Customer Key]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[CustomerKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Dim Customer&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Customer Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;CustomerKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[SubTotal]"
+                      cachedDataType="cy"
+                      cachedName="SubTotal"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Sub Total]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[SubTotal]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Sub Total&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;SubTotal&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[TaxAmt]"
+                      cachedDataType="cy"
+                      cachedName="TaxAmt"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Tax Amt]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[TaxAmt]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Tax Amt&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;TaxAmt&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Total Due]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[TotalDue]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Total Due&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;TotalDue&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[OrderQty]"
+                      cachedDataType="i8"
+                      cachedName="OrderQty"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Order Qty]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[OrderQty]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Order Qty&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;OrderQty&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Unit Price]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[UnitPrice]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Unit Price&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;UnitPrice&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[LineTotal]"
+                      cachedDataType="cy"
+                      cachedName="LineTotal"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Line Total]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[LineTotal]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Line Total&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;LineTotal&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[Load_ID]"
+                      cachedDataType="i2"
+                      cachedName="Load_ID"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\918:invalid"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[Load_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Load ID&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Load_ID&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[UnitPriceDiscount]"
+                      cachedDataType="cy"
+                      cachedName="UnitPriceDiscount"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Unit Price Discount]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[UnitPriceDiscount]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Unit Price Discount&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;UnitPriceDiscount&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].Columns[SalesOrderNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="SalesOrderNumber"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\919:invalid"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Fact Sales Order&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Customer Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Copy of CustomerKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Copy of OrderDateKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Copy of DueDateKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Copy of ShipDateKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;Copy of ProductKey&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;SalesOrderNumber&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Order Date.Time Key]"
+                      dataType="i4"
+                      name="Order Date.Time Key">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="BindingItem">&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Order Date.Time Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;</property>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Order Date&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Time Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Order Date.Time Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Due Date.Time Key]"
+                      dataType="i4"
+                      name="Due Date.Time Key">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="BindingItem">&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Due Date.Time Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;</property>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Due Date&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Time Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Due Date.Time Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Ship Date.Time Key]"
+                      dataType="i4"
+                      name="Ship Date.Time Key">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="BindingItem">&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Ship Date.Time Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;</property>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Ship Date&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Time Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Ship Date.Time Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Dim Product.Product Key]"
+                      dataType="i4"
+                      name="Dim Product.Product Key">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="BindingItem">&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Dim Product.Product Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;</property>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Dim Product&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Product Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Dim Product.Product Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Dim Customer.Customer Key]"
+                      dataType="i4"
+                      name="Dim Customer.Customer Key">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="BindingItem">&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Dim Customer.Customer Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;</property>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;CubeDimensionID&gt;Dim Customer&lt;/CubeDimensionID&gt;&lt;AttributeID&gt;Customer Key&lt;/AttributeID&gt;&lt;KeyColumns&gt;&lt;KeyColumn&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Dim Customer.Customer Key?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/KeyColumn&gt;&lt;/KeyColumns&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Sub Total]"
+                      dataType="r8"
+                      name="Sub Total">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Sub Total&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Sub Total?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Tax Amt]"
+                      dataType="r8"
+                      name="Tax Amt">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Tax Amt&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Tax Amt?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Freight]"
+                      dataType="r8"
+                      name="Freight">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Freight&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Freight?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Total Due]"
+                      dataType="r8"
+                      name="Total Due">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Total Due&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Total Due?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Order Qty]"
+                      dataType="i8"
+                      name="Order Qty">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Order Qty&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Order Qty?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Unit Price]"
+                      dataType="r8"
+                      name="Unit Price">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Unit Price&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Unit Price?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Unit Price Discount]"
+                      dataType="r8"
+                      name="Unit Price Discount">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Unit Price Discount&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Unit Price Discount?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput].ExternalColumns[Line Total]"
+                      dataType="r8"
+                      name="Line Total">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="Binding">&lt;Binding xmlns="http://schemas.microsoft.com/analysisservices/2003/engine" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;DatabaseID&gt;SalesOrder&lt;/DatabaseID&gt;&lt;CubeID&gt;SalesOrder&lt;/CubeID&gt;&lt;MeasureGroupID&gt;Fact Sales Order&lt;/MeasureGroupID&gt;&lt;MeasureID&gt;Line Total&lt;/MeasureID&gt;&lt;Source xsi:type="ColumnBinding"&gt;&lt;TableID/&gt;&lt;ColumnID&gt;?Line Total?&lt;/ColumnID&gt;&lt;/Source&gt;&lt;/Binding&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ole_src_Datamart_FactSalesOrder"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        CustomerKey, OrderDateKey, DueDateKey, ShipDateKey, ProductKey, SubTotal, TaxAmt, Freight, TotalDue, OrderQty, UnitPrice, UnitPriceDiscount, LineTotal, 
+                         Load_ID, SalesOrderNumber
+FROM            Datamart.Fact_SalesOrder</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:invalid"
+                  connectionManagerRefId="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[OrderDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[OrderDateKey]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[OrderDateKey]"
+                      name="OrderDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[DueDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[DueDateKey]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[DueDateKey]"
+                      name="DueDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[ShipDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[ShipDateKey]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[ShipDateKey]"
+                      name="ShipDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                      name="SubTotal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                      name="TaxAmt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[Freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[Freight]"
+                      name="Freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      name="TotalDue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[OrderQty]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[OrderQty]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[OrderQty]"
+                      name="OrderQty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[UnitPriceDiscount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[UnitPriceDiscount]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[UnitPriceDiscount]"
+                      name="UnitPriceDiscount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[LineTotal]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[LineTotal]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[LineTotal]"
+                      name="LineTotal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[Load_ID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[Load_ID]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[Load_ID]"
+                      name="Load_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                      length="25"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[OrderDateKey]"
+                      dataType="i4"
+                      name="OrderDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[DueDateKey]"
+                      dataType="i4"
+                      name="DueDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[ShipDateKey]"
+                      dataType="i4"
+                      name="ShipDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                      dataType="cy"
+                      name="SubTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                      dataType="cy"
+                      name="TaxAmt" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[OrderQty]"
+                      dataType="i8"
+                      name="OrderQty" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[UnitPriceDiscount]"
+                      dataType="cy"
+                      name="UnitPriceDiscount" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[LineTotal]"
+                      dataType="cy"
+                      name="LineTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[Load_ID]"
+                      dataType="i2"
+                      name="Load_ID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="SalesOrderNumber" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[OrderDateKey]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[OrderDateKey]"
+                      name="OrderDateKey" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[DueDateKey]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[DueDateKey]"
+                      name="DueDateKey" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ShipDateKey]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ShipDateKey]"
+                      name="ShipDateKey" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                      name="SubTotal" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                      name="TaxAmt" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                      name="Freight" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      name="TotalDue" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[OrderQty]"
+                      dataType="i8"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[OrderQty]"
+                      name="OrderQty" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[UnitPriceDiscount]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[UnitPriceDiscount]"
+                      name="UnitPriceDiscount" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[LineTotal]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[LineTotal]"
+                      name="LineTotal" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[Load_ID]"
+                      dataType="i2"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[Load_ID]"
+                      name="Load_ID" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_FactSalesOrder.Paths[OLE DB Source Output]"
+              endId="Package\dft_FactSalesOrder\md_dst_FactSalesOrder.Inputs[AnalysisServicesServerInput]"
+              name="OLE DB Source Output"
+              startId="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{46D75425-7E23-44FF-BE77-6D4D18903B1E}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_36673d3574f447c79b336d731a5e681e"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="VisualBasic" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\scr_GetServer_DatabaseID"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{44C6BF01-AFB0-4731-BBE2-3AE833C13BEA}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="scr_GetServer_DatabaseID"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_1ae1369c909e468b90656de585515590"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="VisualBasic" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\seqc_ProcessUsingCubeMetedata"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EA2A4301-5305-4C2C-99F6-250DDF73D24B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seqc_ProcessUsingCubeMetedata">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{CAF1437C-1612-40BB-A78F-DFA098E3561A}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="seqc_CubeProcessing">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{81B3074A-4618-46B7-B7BB-6035919CC213}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="dft_GetMeasureGroups"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  BLOBTempStoragePath=""
+                  bufferTempStoragePath=""
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\rs_dst_MeasureGroups"
+                      componentClassID="Microsoft.RecordsetDestination"
+                      contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Creates and populates an in-memory ADO recordset."
+                      name="rs_dst_MeasureGroups">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the recordset."
+                          name="VariableName">User::ASMeasureGroupList</property>
+                      </properties>
+                      <inputs>
+                        <input
+                          refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\rs_dst_MeasureGroups.Inputs[Recordset Destination Input]"
+                          hasSideEffects="true"
+                          name="Recordset Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\rs_dst_MeasureGroups.Inputs[Recordset Destination Input].Columns[DatabaseName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="DatabaseName"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[DatabaseName]" />
+                            <inputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\rs_dst_MeasureGroups.Inputs[Recordset Destination Input].Columns[CubeName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="CubeName"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[CubeName]" />
+                            <inputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\rs_dst_MeasureGroups.Inputs[Recordset Destination Input].Columns[MeasureGroupName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="MeasureGroupName"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[MeasureGroupName]" />
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                    </component>
+                    <component
+                      refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups"
+                      componentClassID="Microsoft.ManagedComponentHost"
+                      contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="Executes a custom script."
+                      name="scr_src_MeasureGroups"
+                      version="9">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Stores the source code of the component"
+                          isArray="true"
+                          name="SourceCode"
+                          state="cdata">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Stores the binary representation of the component"
+                          isArray="true"
+                          name="BinaryCode"
+                          state="cdata">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                          name="VSTAProjectName"
+                          typeConverter="NOTBROWSABLE">SC_ad60b7938035450e84f5ef351fcd6229</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the programming language used by the script."
+                          name="ScriptLanguage"
+                          typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a comma-separated list of read-only variables."
+                          name="ReadOnlyVariables"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">User::ASServer</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a comma-separated list of read/write variables."
+                          name="ReadWriteVariables"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                        <property
+                          dataType="System.String"
+                          description="List of breakpoints present on the script."
+                          isArray="true"
+                          name="BreakpointCollection"
+                          typeConverter="NOTBROWSABLE">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                        <property
+                          dataType="System.String"
+                          description="Checksum to match component metedata against compiled codes."
+                          name="MetadataChecksum"
+                          typeConverter="NOTBROWSABLE">dc38c84a8d1b5a0b0a42f3b78879ecbb</property>
+                      </properties>
+                      <outputs>
+                        <output
+                          refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0]"
+                          hasSideEffects="true"
+                          name="Output 0">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[DatabaseName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[DatabaseName]"
+                              name="DatabaseName" />
+                            <outputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[CubeName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[CubeName]"
+                              name="CubeName" />
+                            <outputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[MeasureGroupName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0].Columns[MeasureGroupName]"
+                              name="MeasureGroupName" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups.Paths[Output 0]"
+                      endId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\rs_dst_MeasureGroups.Inputs[Recordset Destination Input]"
+                      name="Output 0"
+                      startId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups\scr_src_MeasureGroups.Outputs[Output 0]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Foreach Loop Container"
+              DTS:DTSID="{DEE3FA9D-F6F1-4F46-947B-486A70AEB0FB}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="felc_DatabaseCubeMeasureGroup">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                DTS:DTSID="{BE0828B7-CB1A-44B1-B195-97503129CA26}"
+                DTS:ObjectName="{BE0828B7-CB1A-44B1-B195-97503129CA26}">
+                <DTS:ObjectData>
+                  <FEEADO
+                    EnumType="EnumerateRowsInFirstTable"
+                    VarName="User::ASMeasureGroupList" />
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup\ase_ProcessMeasureGroups"
+                  DTS:CreationName="Microsoft.ASExecuteDDLTask"
+                  DTS:Description="Analysis Services Execute DDL Task"
+                  DTS:DTSID="{2BF61758-A49F-4B55-9981-BC7CCE366389}"
+                  DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="ase_ProcessMeasureGroups"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ASDdlData
+                      ConnectionName="cmgr_SSAS"
+                      SourceType="Variable"
+                      Source="User::CubeProcessingXMLA" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup\scr_Information"
+                  DTS:CreationName="Microsoft.ScriptTask"
+                  DTS:Description="Script Task"
+                  DTS:DTSID="{6b51878f-8138-4a49-a983-0b6bf3103eb2}"
+                  DTS:ExecutableType="Microsoft.ScriptTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="scr_Information"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ScriptProject
+                      Name="ST_4a84e87fb0f9417c9ef634a7e0b10d43"
+                      VSTAMajorVersion="3"
+                      VSTAMinorVersion="0"
+                      Language="VisualBasic" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{FC430E76-DC43-4634-BD89-C561B6C23DE7}"
+                  DTS:From="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup\scr_Information"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup\ase_ProcessMeasureGroups" />
+              </DTS:PrecedenceConstraints>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{B920EFE0-0714-4024-8A87-FC02A4759DD4}"
+                  DTS:ObjectName="{B920EFE0-0714-4024-8A87-FC02A4759DD4}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::Database" />
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{E7F4B02F-D3E6-4203-92B8-C3170CD1F1A7}"
+                  DTS:ObjectName="{E7F4B02F-D3E6-4203-92B8-C3170CD1F1A7}"
+                  DTS:ValueIndex="1"
+                  DTS:VariableName="User::Cube" />
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{3EA6B65E-E53E-47D6-B4AF-373E18875467}"
+                  DTS:ObjectName="{3EA6B65E-E53E-47D6-B4AF-373E18875467}"
+                  DTS:ValueIndex="2"
+                  DTS:VariableName="User::MeasureGroup" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{433903F4-6D0B-4FBE-8E81-F6EF73747382}"
+              DTS:From="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{804386A5-F2F6-4377-8B8C-4D85AFB44FD8}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="seqc_DimensionProcessing">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{8A3BD1FC-698C-4A00-85BD-5D43B50DA4F1}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="dft_GetDimensions"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  BLOBTempStoragePath=""
+                  bufferTempStoragePath=""
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\rs_dst_DimensionList"
+                      componentClassID="Microsoft.RecordsetDestination"
+                      contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Creates and populates an in-memory ADO recordset."
+                      name="rs_dst_DimensionList">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the recordset."
+                          name="VariableName">User::ASDimensionList</property>
+                      </properties>
+                      <inputs>
+                        <input
+                          refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\rs_dst_DimensionList.Inputs[Recordset Destination Input]"
+                          hasSideEffects="true"
+                          name="Recordset Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\rs_dst_DimensionList.Inputs[Recordset Destination Input].Columns[DatabaseName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="DatabaseName"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0].Columns[DatabaseName]" />
+                            <inputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\rs_dst_DimensionList.Inputs[Recordset Destination Input].Columns[DimensionName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="100"
+                              cachedName="DimensionName"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0].Columns[DimensionName]" />
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                    </component>
+                    <component
+                      refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames"
+                      componentClassID="Microsoft.ManagedComponentHost"
+                      contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="Executes a custom script."
+                      name="scr_src_SimensionNames"
+                      version="9">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Stores the source code of the component"
+                          isArray="true"
+                          name="SourceCode"
+                          state="cdata">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Stores the binary representation of the component"
+                          isArray="true"
+                          name="BinaryCode"
+                          state="cdata">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                          name="VSTAProjectName"
+                          typeConverter="NOTBROWSABLE">SC_bcd7be3d3674420f9b1023f5aed00210</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the programming language used by the script."
+                          name="ScriptLanguage"
+                          typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a comma-separated list of read-only variables."
+                          name="ReadOnlyVariables"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">User::ASServer</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a comma-separated list of read/write variables."
+                          name="ReadWriteVariables"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                        <property
+                          dataType="System.String"
+                          description="List of breakpoints present on the script."
+                          isArray="true"
+                          name="BreakpointCollection"
+                          typeConverter="NOTBROWSABLE">
+                          <arrayElements
+                            arrayElementCount="0" />
+                        </property>
+                        <property
+                          dataType="System.String"
+                          name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                        <property
+                          dataType="System.String"
+                          description="Checksum to match component metedata against compiled codes."
+                          name="MetadataChecksum"
+                          typeConverter="NOTBROWSABLE">d5407eb69247f23fe347a957d63c97ce</property>
+                      </properties>
+                      <outputs>
+                        <output
+                          refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0]"
+                          hasSideEffects="true"
+                          name="Output 0">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0].Columns[DatabaseName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0].Columns[DatabaseName]"
+                              name="DatabaseName" />
+                            <outputColumn
+                              refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0].Columns[DimensionName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="100"
+                              lineageId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0].Columns[DimensionName]"
+                              name="DimensionName" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions.Paths[Output 0]"
+                      endId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\rs_dst_DimensionList.Inputs[Recordset Destination Input]"
+                      name="Output 0"
+                      startId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions\scr_src_SimensionNames.Outputs[Output 0]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Foreach Loop Container"
+              DTS:DTSID="{DC480039-918A-47A0-8E25-C912794029E7}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="felc_DatabaseDimensions">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                DTS:DTSID="{D6B9B436-E8F6-4289-A434-8DAAD4E34D27}"
+                DTS:ObjectName="{D6B9B436-E8F6-4289-A434-8DAAD4E34D27}">
+                <DTS:ObjectData>
+                  <FEEADO
+                    EnumType="EnumerateRowsInFirstTable"
+                    VarName="User::ASDimensionList" />
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions\ase_ProcessDimensions"
+                  DTS:CreationName="Microsoft.ASExecuteDDLTask"
+                  DTS:Description="Analysis Services Execute DDL Task"
+                  DTS:DTSID="{47DE5EBD-2553-4588-9FA5-4BE211AC1D04}"
+                  DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="ase_ProcessDimensions"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ASDdlData
+                      ConnectionName="cmgr_SSAS"
+                      SourceType="Variable"
+                      Source="User::DimensionProcessingXMLA" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions\scr_Information"
+                  DTS:CreationName="Microsoft.ScriptTask"
+                  DTS:Description="Script Task"
+                  DTS:DTSID="{E44D03E4-C8EE-4D83-8B9B-286345EA5DB7}"
+                  DTS:ExecutableType="Microsoft.ScriptTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="scr_Information"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ScriptProject
+                      Name="ST_0d566ef69b2d45e2a135ab46e0c117a6"
+                      VSTAMajorVersion="3"
+                      VSTAMinorVersion="0"
+                      Language="VisualBasic" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{17AF4797-7C39-47D9-B2FA-F58AF6DAADC3}"
+                  DTS:From="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions\scr_Information"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions\ase_ProcessDimensions" />
+              </DTS:PrecedenceConstraints>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{151AD824-0949-47A3-9DA6-F7E63AE0C308}"
+                  DTS:ObjectName="{151AD824-0949-47A3-9DA6-F7E63AE0C308}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::Database" />
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{64FFEF62-4723-49AC-A3EC-70A144A7895F}"
+                  DTS:ObjectName="{64FFEF62-4723-49AC-A3EC-70A144A7895F}"
+                  DTS:ValueIndex="1"
+                  DTS:VariableName="User::Dimension" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{8CC39ECF-A44F-44B0-9272-10344D654D7E}"
+              DTS:From="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_ProcessUsingCubeMetedata.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A6E74CC3-5EF8-457A-8585-E18204193FB9}"
+          DTS:From="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5F072A8B-9BB3-4854-8780-6F1C749BDC1D}"
+      DTS:From="Package\scr_GetServer_DatabaseID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\seqc_ProcessUsingCubeMetedata" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{038C8701-0496-47A7-830D-4C4997C58745}"
+      DTS:EventID="99"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{35FB393A-A9E3-493B-AA65-6681E2C7CB10}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{8C9077C5-A093-4928-913B-1A055C6EEE04}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="strErrorCode">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{DAB60C41-ECCC-4532-92FF-75413A189AFD}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="strMessageText">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\sql_Log_Message_Error"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{f0289932-8f06-4d92-bc61-672901e1a2e9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_Log_Message_Error"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{f9a3a462-bec0-44c7-82d6-6075c34728db}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="SystemLog"
+              DTS:ObjectName="intCycleID">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{3f17f571-819a-4f38-890e-5934c31d2d24}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="SystemLog"
+              DTS:ObjectName="strMessageTypeToLog"
+              DTS:ReadOnly="True">
+              <DTS:VariableValue
+                DTS:DataType="8">Error</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+              SQLTask:SqlStatementSource="exec SystemLog.LogMessage ?,?,?,?,?,?,?,?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::VersionBuild"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::VersionMajor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::VersionMinor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::VersionComments"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="SystemLog::intLoadID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="SystemLog::intCycleID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="10"
+                SQLTask:DtsVariableName="SystemLog::strMessageTypeToLog"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPostExecute]"
+      DTS:CreationName="OnPostExecute"
+      DTS:DTSID="{1614810B-DA19-40E0-9AF2-4B22BFAFDF6A}"
+      DTS:EventID="332752528"
+      DTS:EventName="OnPostExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{70558048-783E-4C83-8470-588A4E86340E}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{8ed77bd2-f074-46fa-9404-07713949734c}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sequence Container">
+          <DTS:Variables />
+          <DTS:Executables />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\sql_ProcessTaskTransformLogUps"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{83d97955-148d-4c82-8888-2113333a2a79}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_ProcessTaskTransformLogUps"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+              SQLTask:SqlStatementSource="exec [SystemLog].[ProcessTaskTransformLogUps] ?,?,?,?,?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::VersionBuild"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::VersionMajor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::VersionMinor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::VersionComments"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="SystemLog::intLoadID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5e565e51-a13f-4388-9470-5b25f67f5bef}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[System::SourceID]==@[System::PackageID] &amp;&amp; @[System::InteractiveMode]==False"
+          DTS:From="Package.EventHandlers[OnPostExecute]\Sequence Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnPostExecute]\sql_ProcessTaskTransformLogUps" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnWarning]"
+      DTS:CreationName="OnWarning"
+      DTS:DTSID="{069B7AC4-B799-491A-9BF0-3F4B612FDF28}"
+      DTS:EventID="0"
+      DTS:EventName="OnWarning"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{39C51677-DAE4-4EB8-9E2D-2813D34C9AA6}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnWarning]\sql_Log_Message_Warning"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5e68a6e7-aa47-45d1-944e-65f7563023ec}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_Log_Message_Warning"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{3e1211e1-0d85-4e79-9fad-0baf092a38bc}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="SystemLog"
+              DTS:ObjectName="intCycleID">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{1f0bd2c0-6c10-4478-b832-7614af3e5dce}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="SystemLog"
+              DTS:ObjectName="strMessageTypeToLog"
+              DTS:ReadOnly="True">
+              <DTS:VariableValue
+                DTS:DataType="8">Warning</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+              SQLTask:SqlStatementSource="exec SystemLog.LogMessage ?,?,?,?,?,?,?,?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::VersionBuild"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::VersionMajor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::VersionMinor"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::VersionComments"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="SystemLog::intLoadID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="SystemLog::intCycleID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="10"
+                SQLTask:DtsVariableName="SystemLog::strMessageTypeToLog"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\asp_ProcessCube"
+          TopLeft="5.50000000000011,622.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\dft_FactSalesOrder"
+          TopLeft="227,622.5" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\scr_GetServer_DatabaseID"
+          TopLeft="474,5.5" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Script Task"
+          TopLeft="758.5,622.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\dft_GetMeasureGroups"
+          TopLeft="22,5.5" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup\ase_ProcessMeasureGroups"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup\scr_Information"
+          TopLeft="33,5.5" />
+        <EdgeLayout
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup.PrecedenceConstraints[Constraint]"
+          TopLeft="110,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="220,204"
+          Size="220,248"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing\felc_DatabaseCubeMeasureGroup"
+          TopLeft="5.50000000000004,107.5" />
+        <EdgeLayout
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing.PrecedenceConstraints[Constraint]"
+          TopLeft="115.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="231,410"
+          Size="231,454"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_CubeProcessing"
+          TopLeft="5.50000000000013,519.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\dft_GetDimensions"
+          TopLeft="22,5.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions\ase_ProcessDimensions"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions\scr_Information"
+          TopLeft="23.5,5.5" />
+        <EdgeLayout
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions.PrecedenceConstraints[Constraint]"
+          TopLeft="100.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="201,204"
+          Size="201,248"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing\felc_DatabaseDimensions"
+          TopLeft="5.50000000000004,107.5" />
+        <EdgeLayout
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing.PrecedenceConstraints[Constraint]"
+          TopLeft="106,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="212,410"
+          Size="212,454"
+          Id="Package\seqc_ProcessUsingCubeMetedata\seqc_DimensionProcessing"
+          TopLeft="15.0000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\seqc_ProcessUsingCubeMetedata.PrecedenceConstraints[Constraint]"
+          TopLeft="121,459.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="242,1028"
+          Size="242,1072"
+          Id="Package\seqc_ProcessUsingCubeMetedata"
+          TopLeft="456,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="577,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnError]\sql_Log_Message_Error"
+          TopLeft="NaN,NaN" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="NaN,NaN"
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnPostExecute]\Sequence Container"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnPostExecute]\sql_ProcessTaskTransformLogUps"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnWarning]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnWarning]\sql_Log_Message_Warning"
+          TopLeft="NaN,NaN" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\dft_FactSalesOrder">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\dft_FactSalesOrder\md_dst_FactSalesOrder"
+          TopLeft="30,107.5" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\dft_FactSalesOrder\ole_src_Datamart_FactSalesOrder"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\dft_FactSalesOrder.Paths[OLE DB Source Output]"
+          TopLeft="125,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="cmgr_AzureResourceManager"
+  DTS:DTSID="{A361D363-81D7-4BB7-BD79-EA3E6A0C7EE1}"
+  DTS:CreationName="AzureResourceManager">
+  <DTS:PropertyExpression
+    DTS:Name="ApplicationId">@[$Project::Cmgr_AzureResourceManager_ApplicationId]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ApplicationKey">@[$Project::Cmgr_AzureResourceManager_ApplicationKey]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="TenantId">@[$Project::Cmgr_AzureResourceManager_TenantId]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <AzureResourceManagerConnectionManager
+      ConnectionString="ApplicationId=753a0b6a-de54-4f36-84f4-062cd4e58305;TenantId=ae2153e2-576e-4b04-a024-5f7f7036a2db;Environment=AzureCloud;">
+      <ApplicationKey
+        Sensitive="1"></ApplicationKey>
+    </AzureResourceManagerConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

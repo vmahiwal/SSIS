@@ -1,0 +1,1729 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2017 10:36:27 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SSISCOOKBOOK"
+  DTS:CreatorName="SSISCOOKBOOK\Christian"
+  DTS:DTSID="{A53F3022-ABEB-45D7-A1D3-59B86CE854CE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0900.75"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StgAggregatedSalesFromCloudDW"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="118"
+  DTS:VersionGUID="{BBC0B4AF-06F7-428B-BEE9-482230A09771}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_AzureHDInsignt]"
+      DTS:CreationName="AzureHDInsight"
+      DTS:DTSID="{CD2E604D-8247-4982-B634-AA4C2F1539A3}"
+      DTS:ObjectName="cmgr_AzureHDInsignt">
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::AzureHDInsightCreateClusterTask_Password]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <AzureHDInsightConnectionManager
+          ConnectionString="ClusterDnsName=ssiscookbook.azurehdinsight.net;Username=admin;">
+          <Password
+            Sensitive="1"></Password>
+        </AzureHDInsightConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_Hadoop_Sandbox]"
+      DTS:CreationName="Hadoop"
+      DTS:DTSID="{52125156-F89B-4957-BBB6-0D49B368E3E3}"
+      DTS:ObjectName="cmgr_Hadoop_Sandbox">
+      <DTS:ObjectData>
+        <HadoopConnectionManager
+          ConnectionString="WebHdfsHost=sandbox.hortonworks.com;WebHdfsPort=50070;WebHdfsUserName=root;WebHCatHost=sandbox.hortonworks.com;WebHCatPort=50111;WebHCatUser=root;EnableWebHdfs=True;EnableWebHCat=True;WebHdfsAuthType=Basic;WebHdfsDomain=;WebHCatAuthType=Basic;WebHCatDomain=;WebHdfsIsHttps=False;WebHCatIsHttps=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C1868C4E-FB96-4766-9A6F-DEFDE1291B4D}"
+      DTS:ObjectName="AzureHDInsightCreateClusterTask_Password"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">SSISCookBook2016!</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{31E15C86-2C2C-4654-9A9E-591E44A2A2E5}"
+      DTS:ObjectName="AzureHDInsightCreateClusterTask_SshPassword"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Ccote2017</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{0E6452EF-B139-40BA-B949-D4C5B641BAF9}"
+      DTS:ObjectName="LoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{69355764-0B9C-41E8-89B3-EE49A3FF30BE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AzureAggregatedData">
+      <DTS:VariableValue
+        DTS:DataType="8">Export/part-m-00000</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2F2873FC-B2BF-4277-921D-EF34CF630832}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="HDPFileNamePath">
+      <DTS:VariableValue
+        DTS:DataType="8">/SSISCookBook/Export/000000_0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\acc_ssiscookbook"
+      DTS:CreationName="CreateHdiClusterTask"
+      DTS:Description="Azure HDInsight Create Cluster Task"
+      DTS:DTSID="{6B92EFBE-9291-4824-ACA7-73FF30D746AF}"
+      DTS:ExecutableType="CreateHdiClusterTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="acc_ssiscookbook"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::AzureHDInsightCreateClusterTask_Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="SshPassword">@[$Package::AzureHDInsightCreateClusterTask_SshPassword]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <CreateHdiClusterTask
+          AzureResourceManagerConnectionId="{A361D363-81D7-4BB7-BD79-EA3E6A0C7EE1}"
+          AzureStorageConnection="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}"
+          SubscriptionId="5d9a43ae-19f6-47f6-957b-b2855a5c069c"
+          ResourceGroup="ssiscookbook"
+          Location="Canada East"
+          ClusterName="ssiscookbook"
+          ClusterSize="1"
+          BlobContainer="ssiscookbook"
+          UserName="admin"
+          SshUserName="ccote"
+          FailIfExists="False">
+          <Password
+            Sensitive="1"></Password>
+          <SshPassword
+            Sensitive="1"></SshPassword>
+        </CreateHdiClusterTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\adc_ssiscookbook"
+      DTS:CreationName="DeleteHdiClusterTask"
+      DTS:Description="Azure HDInsight Delete Cluster Task"
+      DTS:DTSID="{F2731353-C279-4F0A-A4BC-1F0A18CFEC8F}"
+      DTS:ExecutableType="DeleteHdiClusterTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="adc_ssiscookbook"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <DeleteHdiClusterTask
+          AzureResourceManagerConnectionId="{A361D363-81D7-4BB7-BD79-EA3E6A0C7EE1}"
+          SubscriptionId="5d9a43ae-19f6-47f6-957b-b2855a5c069c"
+          ResourceGroup="ssiscookbook"
+          ClusterName="ssiscookbook"
+          FailIfNotExists="False" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\apt_AggregateData"
+      DTS:CreationName="PigTask"
+      DTS:Description="Azure HDInsight Pig Task"
+      DTS:DTSID="{749B86C4-C1EC-4E97-B6DF-ED4C869B7502}"
+      DTS:ExecutableType="PigTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="apt_AggregateData"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <PigTask
+          HDInsightConnectionId="{CD2E604D-8247-4982-B634-AA4C2F1539A3}"
+          AzureStorageConnectionId="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}"
+          BlobContainer="ssiscookbook"
+          LocalLogFolder="D:\"
+          Script="SalesExtractsSource = LOAD 'wasbs:///Import/FactOrdersAggregated.txt';&#xA;rmf wasbs:///Export/;&#xA;STORE SalesExtractsSource INTO 'wasbs:///Export/' USING PigStorage('|');" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\felc_HDP_Export"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{3BC84D28-55D1-4D6F-9A6E-72E1BB10559D}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="felc_HDP_Export">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="ForEachHdfsEnumerator"
+        DTS:DTSID="{5B98E47F-339A-4DE6-BB8B-012E392929C5}"
+        DTS:ObjectName="{5B98E47F-339A-4DE6-BB8B-012E392929C5}">
+        <DTS:ObjectData>
+          <FEEHdfsEnumerator
+            Connection="{52125156-F89B-4957-BBB6-0D49B368E3E3}"
+            RetrieveFileName="FullyQualified"
+            FileNameFilter="*"
+            IsRecursive="False"
+            DirectoryPath="/SSISCookBook/Export" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A59C7DE4-0AAC-4A26-AD67-64659AA0890F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_Transfert_HDP_Hive_Azure_Blob">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="[hfs_src_SSISCookBook_Export].[FilePath]">@[User::HDPFileNamePath]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="© Microsoft Corporation; All Rights Reserved;"
+                  description="Loads data into a blob in Azure Storage. The supported file formats are: Text and Avro."
+                  name="abd_dst_ssiscookbook_Import_FactOrdersAggregated"
+                  validateExternalMetadata="False">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of blob container"
+                      expressionType="Notify"
+                      name="Blob Container">ssiscookbook</property>
+                    <property
+                      dataType="System.String"
+                      description="The full name of blob"
+                      expressionType="Notify"
+                      name="Blob Name">Import/FactOrdersAggregated.txt</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The format of blob file"
+                      name="Blob Format"
+                      typeConverter="Microsoft.SqlServer.IntegrationService.CloudComponents.Utilities.AzBlobFormatEnumStringConverter">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Compress File"
+                      name="Compress File">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The compression type"
+                      name="Compression Type"
+                      typeConverter="Microsoft.SqlServer.IntegrationService.CloudComponents.Utilities.AzCompressionTypeEnumStringConverter">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The compression level"
+                      name="Compression Level"
+                      typeConverter="Microsoft.SqlServer.IntegrationService.CloudComponents.Utilities.AzCompressionLevelEnumStringConverter">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The character used to delimit columns in text file"
+                      name="Column Delimiter">|</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Column names in the first data row"
+                      name="First Row as Column Names">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">AzBlobDest</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Connections[Azure Storage]"
+                      connectionManagerID="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}:invalid"
+                      connectionManagerRefId="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}:invalid"
+                      description="Connection Manager for Azure Storage"
+                      name="Azure Storage" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input]"
+                      hasSideEffects="true"
+                      name="Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[company]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="company"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[company]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[company]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[category]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="category"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[category]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[category]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[qtyordered]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="qtyordered"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[qtyordered]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[qtyordered]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[unitprice]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="unitprice"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[unitprice]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[unitprice]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[discount]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="discount"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[discount]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[discount]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[tax]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="tax"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[tax]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[tax]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[freight]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="freight"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[freight]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[freight]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[ordernumber]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="ordernumber"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[ordernumber]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[ordernumber]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[po]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="po"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[po]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[po]" />
+                        <inputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].Columns[LoadExecutionId]"
+                          cachedDataType="i8"
+                          cachedName="LoadExecutionId"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[LoadExecutionId]"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[company]"
+                          dataType="wstr"
+                          length="100"
+                          name="company" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[category]"
+                          dataType="wstr"
+                          length="100"
+                          name="category" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[qtyordered]"
+                          dataType="wstr"
+                          length="100"
+                          name="qtyordered" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[unitprice]"
+                          dataType="wstr"
+                          length="100"
+                          name="unitprice" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[discount]"
+                          dataType="wstr"
+                          length="100"
+                          name="discount" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[tax]"
+                          dataType="wstr"
+                          length="100"
+                          name="tax" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[freight]"
+                          dataType="wstr"
+                          length="100"
+                          name="freight" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[ordernumber]"
+                          dataType="wstr"
+                          length="100"
+                          name="ordernumber" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[po]"
+                          dataType="wstr"
+                          length="100"
+                          name="po" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input].ExternalColumns[LoadExecutionId]"
+                          dataType="i8"
+                          name="LoadExecutionId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="der_LoadExecutionId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                          name="LoadExecutionId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::LoadExecutionId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::LoadExecutionId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="MicrosoftContactInfo"
+                  description="Extracts data from a file in HDFS. The supported file formats are: Text, Avro."
+                  name="hfs_src_SSISCookBook_Export"
+                  usesDispositions="true">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of HDFS file"
+                      expressionType="Notify"
+                      name="FilePath">/SSISCookBook/Export/000000_0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Column names in the first data row"
+                      expressionType="Notify"
+                      name="FirstRowAsColumnNames">false</property>
+                    <property
+                      dataType="System.String"
+                      description="The character used to delimit columns in text file"
+                      name="ColumnDelimiter">,</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The character used to delimit columns in text file"
+                      name="FileFormat">0</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">HdfsSource</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Connections[Hadoop Connection Manager]"
+                      connectionManagerID="Package.ConnectionManagers[cmgr_Hadoop_Sandbox]"
+                      connectionManagerRefId="Package.ConnectionManagers[cmgr_Hadoop_Sandbox]"
+                      description="It's used to connect Hadoop cluster"
+                      name="Hadoop Connection Manager" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output]"
+                      name="Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[company]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_0]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[company]"
+                          name="company"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[category]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_1]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[category]"
+                          name="category"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[qtyordered]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_2]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[qtyordered]"
+                          name="qtyordered"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[unitprice]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_3]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[unitprice]"
+                          name="unitprice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[discount]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_4]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[discount]"
+                          name="discount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[tax]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_5]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[tax]"
+                          name="tax"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[freight]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_6]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[freight]"
+                          name="freight"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[ordernumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_7]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[ordernumber]"
+                          name="ordernumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[po]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_8]"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].Columns[po]"
+                          name="po"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns>
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_0]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_0" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_1]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_1" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_2]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_2" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_3]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_3" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_4]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_4" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_5]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_5" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_6]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_6" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_7]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_7" />
+                        <externalMetadataColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output].ExternalColumns[Prop_8]"
+                          dataType="wstr"
+                          length="100"
+                          name="Prop_8" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output]"
+                      isErrorOut="true"
+                      name="Error output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_0]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_0]"
+                          name="Prop_0" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_1]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_1]"
+                          name="Prop_1" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_2]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_2]"
+                          name="Prop_2" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_3]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_3]"
+                          name="Prop_3" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_4]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_4]"
+                          name="Prop_4" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_5]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_5]"
+                          name="Prop_5" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_6]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_6]"
+                          name="Prop_6" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_7]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_7]"
+                          name="Prop_7" />
+                        <outputColumn
+                          refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_8]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Error output].Columns[Prop_8]"
+                          name="Prop_8" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob.Paths[Derived Column Output]"
+                  endId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated.Inputs[Input]"
+                  name="Derived Column Output"
+                  startId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob.Paths[Output]"
+                  endId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId.Inputs[Derived Column Input]"
+                  name="Output"
+                  startId="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export.Outputs[Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{AC1EF2D7-1E3A-4159-8EAE-D8098269A61E}"
+          DTS:ObjectName="{AC1EF2D7-1E3A-4159-8EAE-D8098269A61E}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::HDPFileNamePath" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\felc_StgCloudSales"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{BEC697C1-043B-48C1-A71E-158CE8C9B66A}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="felc_StgCloudSales">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="ForEachBlobEnumerator"
+        DTS:DTSID="{66C74F7E-4486-4656-93E1-08A08200CCDD}"
+        DTS:ObjectName="{66C74F7E-4486-4656-93E1-08A08200CCDD}">
+        <DTS:ObjectData>
+          <FEECloudEnumerator
+            Connection="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}"
+            Container="ssiscookbook"
+            BlobPath="Export/"
+            FileNameFilter="part*"
+            TimeRangeFrom="1/1/1900 12:00:00 AM -04:00"
+            TimeRangeTo="12/31/2200 12:00:00 AM -04:00" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\felc_StgCloudSales\dft_StgCloudSales"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{1CF7D75F-A0BC-46C3-BE96-73D7B9A01D10}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_StgCloudSales"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="[azure_blob_src_ExportBlob].[Blob Name]">@[User::AzureAggregatedData]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="© Microsoft Corporation; All Rights Reserved;"
+                  description="Extracts data from a blob in Azure Storage. The supported file formats are: Text and Avro."
+                  name="azure_blob_src_ExportBlob"
+                  usesDispositions="true"
+                  validateExternalMetadata="False">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of blob container"
+                      expressionType="Notify"
+                      name="Blob Container">ssiscookbook</property>
+                    <property
+                      dataType="System.String"
+                      description="The full name of blob"
+                      expressionType="Notify"
+                      name="Blob Name">Export/part-m-00000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The format of blob file"
+                      name="Blob Format"
+                      typeConverter="Microsoft.SqlServer.IntegrationService.CloudComponents.Utilities.AzBlobFormatEnumStringConverter">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Compress File"
+                      name="Compress File">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The compression type"
+                      name="Compression Type"
+                      typeConverter="Microsoft.SqlServer.IntegrationService.CloudComponents.Utilities.AzCompressionTypeEnumStringConverter">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The compression level"
+                      name="Compression Level"
+                      typeConverter="Microsoft.SqlServer.IntegrationService.CloudComponents.Utilities.AzCompressionLevelEnumStringConverter">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The character used to delimit columns in text file"
+                      name="Column Delimiter">|</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Column names in the first data row"
+                      name="First Row as Column Names">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">AzBlobSrc</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Connections[Azure Storage]"
+                      connectionManagerID="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}:invalid"
+                      connectionManagerRefId="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}:invalid"
+                      description="Connection Manager for Azure Storage"
+                      name="Azure Storage" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output]"
+                      name="Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[company]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[company]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[company]"
+                          name="company"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[category]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[category]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[category]"
+                          name="category"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[qtyordered]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[qtyordered]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[qtyordered]"
+                          name="qtyordered"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[unitprice]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[unitprice]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[unitprice]"
+                          name="unitprice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[discount]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[discount]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[discount]"
+                          name="discount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[tax]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[tax]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[tax]"
+                          name="tax"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[freight]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[freight]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[freight]"
+                          name="freight"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[ordernumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[ordernumber]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[ordernumber]"
+                          name="ordernumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[po]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[po]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[po]"
+                          name="po"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[LoadExecutionId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[LoadExecutionId]"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[LoadExecutionId]"
+                          name="LoadExecutionId"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[company]"
+                          dataType="wstr"
+                          length="255"
+                          name="company" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[category]"
+                          dataType="wstr"
+                          length="255"
+                          name="category" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[qtyordered]"
+                          dataType="wstr"
+                          length="255"
+                          name="qtyordered" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[unitprice]"
+                          dataType="wstr"
+                          length="255"
+                          name="unitprice" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[discount]"
+                          dataType="wstr"
+                          length="255"
+                          name="discount" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[tax]"
+                          dataType="wstr"
+                          length="255"
+                          name="tax" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[freight]"
+                          dataType="wstr"
+                          length="255"
+                          name="freight" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[ordernumber]"
+                          dataType="wstr"
+                          length="255"
+                          name="ordernumber" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[po]"
+                          dataType="wstr"
+                          length="255"
+                          name="po" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].ExternalColumns[LoadExecutionId]"
+                          dataType="wstr"
+                          length="255"
+                          name="LoadExecutionId" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output]"
+                      isErrorOut="true"
+                      name="Error output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[company]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[company]"
+                          name="company" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[category]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[category]"
+                          name="category" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[qtyordered]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[qtyordered]"
+                          name="qtyordered" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[unitprice]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[unitprice]"
+                          name="unitprice" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[discount]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[discount]"
+                          name="discount" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[tax]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[tax]"
+                          name="tax" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[freight]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[freight]"
+                          name="freight" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[ordernumber]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[ordernumber]"
+                          name="ordernumber" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[po]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[po]"
+                          name="po" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[LoadExecutionId]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Error output].Columns[LoadExecutionId]"
+                          name="LoadExecutionId" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="ole_dst_Staging_StgCloudSales"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[StgCloudSales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Connections[OleDbConnection]"
+                      connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:invalid"
+                      connectionManagerRefId="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:invalid"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[company]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="company"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[company]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[company]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[category]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="category"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[category]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[qtyordered]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="qtyordered"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[qtyordered]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[qtyordered]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[unitprice]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="unitprice"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[unitprice]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[unitprice]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[discount]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="discount"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[discount]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[tax]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="tax"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[tax]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[tax]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[freight]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="freight"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[freight]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[freight]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[ordernumber]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ordernumber"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[ordernumber]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[ordernumber]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[po]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="po"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[po]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[po]" />
+                        <inputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].Columns[LoadExecutionId]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="LoadExecutionId"
+                          externalMetadataColumnId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output].Columns[LoadExecutionId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[company]"
+                          dataType="wstr"
+                          length="255"
+                          name="company" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                          dataType="wstr"
+                          length="255"
+                          name="category" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[qtyordered]"
+                          dataType="wstr"
+                          length="255"
+                          name="qtyordered" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[unitprice]"
+                          dataType="wstr"
+                          length="255"
+                          name="unitprice" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                          dataType="wstr"
+                          length="255"
+                          name="discount" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[tax]"
+                          dataType="wstr"
+                          length="255"
+                          name="tax" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[freight]"
+                          dataType="wstr"
+                          length="255"
+                          name="freight" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[ordernumber]"
+                          dataType="wstr"
+                          length="255"
+                          name="ordernumber" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[po]"
+                          dataType="wstr"
+                          length="255"
+                          name="po" />
+                        <externalMetadataColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                          dataType="wstr"
+                          length="255"
+                          name="LoadExecutionId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\felc_StgCloudSales\dft_StgCloudSales.Paths[Output]"
+                  endId="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales.Inputs[OLE DB Destination Input]"
+                  name="Output"
+                  startId="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob.Outputs[Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{916E3176-EFBF-4A90-905B-8C38D977E23F}"
+          DTS:ObjectName="{916E3176-EFBF-4A90-905B-8C38D977E23F}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::AzureAggregatedData" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sql_truncate_Staging_StgCloudSales"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7C309F45-F4CD-475E-BC1A-FABF25ED96C6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sql_truncate_Staging_StgCloudSales"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[StgCloudSales];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3D8D11A0-8D6A-4D9B-B53D-64CA787FAEC1}"
+      DTS:From="Package\apt_AggregateData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\felc_StgCloudSales" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{61E781AC-9E71-4AFB-8D04-387C8DC93BE5}"
+      DTS:From="Package\felc_HDP_Export"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\acc_ssiscookbook" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B94E89A8-AC8B-46EC-97D2-D9236BF0278F}"
+      DTS:From="Package\apt_AggregateData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\adc_ssiscookbook" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{F3FBE01C-057F-4E55-A107-084C5B11895F}"
+      DTS:From="Package\acc_ssiscookbook"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\apt_AggregateData" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{47E6078C-45DE-46BE-9DFC-3CE4343298D4}"
+      DTS:From="Package\sql_truncate_Staging_StgCloudSales"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\felc_StgCloudSales" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="263,42"
+          Id="Package\acc_ssiscookbook"
+          TopLeft="5.5,211.5" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\adc_ssiscookbook"
+          TopLeft="5.50000000000006,467.5" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\apt_AggregateData"
+          TopLeft="5.5,313.5" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="263,102"
+          Size="263,146"
+          Id="Package\felc_HDP_Export"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\felc_StgCloudSales\dft_StgCloudSales"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="175,102"
+          Size="190,145"
+          Id="Package\felc_StgCloudSales"
+          TopLeft="373.5,415.5" />
+        <NodeLayout
+          Size="250,42"
+          Id="Package\sql_truncate_Staging_StgCloudSales"
+          TopLeft="329.5,313.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="137,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="137,355.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,112"
+              Start="0,0"
+              End="0,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,104.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="137,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="454.5,355.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.3333333333334,60"
+              Start="0,0"
+              End="44.3333333333334,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6993736951983" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6993736951983"
+                    Point2="0,35.6993736951983"
+                    Point3="4,35.6993736951983" />
+                  <mssgle:LineSegment
+                    End="40.3333333333334,35.6993736951983" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.3333333333334,35.6993736951983"
+                    Point2="44.3333333333334,35.6993736951983"
+                    Point3="44.3333333333334,39.6993736951983" />
+                  <mssgle:LineSegment
+                    End="44.3333333333334,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="179.5,355.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="258.666666666667,60"
+              Start="0,0"
+              End="258.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9139083261263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9139083261263"
+                    Point2="0,29.9139083261263"
+                    Point3="4,29.9139083261263" />
+                  <mssgle:LineSegment
+                    End="254.666666666667,29.9139083261263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="254.666666666667,29.9139083261263"
+                    Point2="258.666666666667,29.9139083261263"
+                    Point3="258.666666666667,33.9139083261263" />
+                  <mssgle:LineSegment
+                    End="258.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="333,42"
+          Id="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\der_LoadExecutionId"
+          TopLeft="5.5,107.5" />
+        <NodeLayout
+          Size="332,42"
+          Id="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated"
+          TopLeft="8.50000000000003,210.5" />
+        <NodeLayout
+          Size="333,42"
+          Id="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob.Paths[Output]"
+          TopLeft="172,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob.Paths[Derived Column Output]"
+          TopLeft="173.375,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\abd_dst_ssiscookbook_Import_FactOrdersAggregated">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\felc_HDP_Export\dft_Transfert_HDP_Hive_Azure_Blob\hfs_src_SSISCookBook_Export">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\felc_StgCloudSales\dft_StgCloudSales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales"
+          TopLeft="6.50000000000001,107.5" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\felc_StgCloudSales\dft_StgCloudSales.Paths[Output]"
+          TopLeft="119,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\felc_StgCloudSales\dft_StgCloudSales\azure_blob_src_ExportBlob">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\felc_StgCloudSales\dft_StgCloudSales\ole_dst_Staging_StgCloudSales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

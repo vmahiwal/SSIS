@@ -1,0 +1,2463 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/28/2014 10:13:00 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="L080027"
+  DTS:CreatorName="TELUS\x167115"
+  DTS:DTSID="{A8E2F007-10D7-4CEF-B919-DEF01BC64F68}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="3084"
+  DTS:ObjectName="DimTime"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{AFAE94E1-842F-4A6B-8AF4-FF09450F541B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:Description="Reference to ETLFrameworl load identifier."
+      DTS:DTSID="{33A945D6-A5D2-4DF7-9FAD-04A184633D12}"
+      DTS:ObjectName="LoadId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_DW_DimTime"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6AFBB7C5-26FA-4215-95B8-583FE977D255}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:ISOLevel="4096"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_DW_DimTime"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_DW_DimTime\der_LoadId"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="der_LoadId"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DW_DimTime\der_LoadId.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DW_DimTime\der_LoadId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Output].Columns[LoadId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Output].Columns[LoadId]"
+                      name="LoadId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadId]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadId]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DW_DimTime\der_LoadId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DW_DimTime\der_Time_Attributes"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="der_Time_Attributes"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_DW_DimTime\der_Time_Attributes.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Inputs[Derived Column Input].Columns[TimeCol]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeCol"
+                      lineageId="Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_DW_DimTime\der_Time_Attributes.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalHour]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalHour]"
+                      name="InternationalHour"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)[DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)DATEPART("Hh",TimeCol)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Minute]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Minute]"
+                      name="Minute"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)[DATEPART]("mi",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)DATEPART("mi",TimeCol)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Second]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Second]"
+                      name="Second"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)[DATEPART]("s",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)DATEPART("s",TimeCol)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalFullTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalFullTime]"
+                      name="InternationalFullTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,8,1252)([RIGHT]("0" + (DT_WSTR,2)[DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2) + ":" + [RIGHT]("0" + (DT_WSTR,2)[DATEPART]("mi",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2) + ":" + [RIGHT]("0" + (DT_WSTR,2)[DATEPART]("s",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,8,1252)(RIGHT("0" + (DT_WSTR,2)DATEPART("Hh",TimeCol),2) + ":" + RIGHT("0" + (DT_WSTR,2)DATEPART("mi",TimeCol),2) + ":" + RIGHT("0" + (DT_WSTR,2)DATEPART("s",TimeCol),2))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardFullTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardFullTime]"
+                      name="StandardFullTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,8,1252)([RIGHT]("0" + (DT_WSTR,2)([DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}) &gt; 12 ? [DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}) - 12 : [DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]})),2) + ":" + [RIGHT]("0" + (DT_WSTR,2)[DATEPART]("mi",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2) + ":" + [RIGHT]("0" + (DT_WSTR,2)[DATEPART]("s",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,8,1252)(RIGHT("0" + (DT_WSTR,2)(DATEPART("Hh",TimeCol) &gt; 12 ? DATEPART("Hh",TimeCol) - 12 : DATEPART("Hh",TimeCol)),2) + ":" + RIGHT("0" + (DT_WSTR,2)DATEPART("mi",TimeCol),2) + ":" + RIGHT("0" + (DT_WSTR,2)DATEPART("s",TimeCol),2))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[AmPm]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[AmPm]"
+                      name="AmPm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)(([DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}) &gt; 12 ? "PM" : "AM"))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)((DATEPART("Hh",TimeCol) &gt; 12 ? "PM" : "AM"))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardHour]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardHour]"
+                      name="StandardHour"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,2,1252)((DT_WSTR,2)([DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}) &gt; 12 ? [DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}) - 12 : [DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]})))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,2,1252)((DT_WSTR,2)(DATEPART("Hh",TimeCol) &gt; 12 ? DATEPART("Hh",TimeCol) - 12 : DATEPART("Hh",TimeCol)))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,6,1252)([RIGHT]("0" + (DT_WSTR,2)[DATEPART]("Hh",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DATEPART]("mi",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DATEPART]("s",#{Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]}),2))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,6,1252)(RIGHT("0" + (DT_WSTR,2)DATEPART("Hh",TimeCol),2) + RIGHT("0" + (DT_WSTR,2)DATEPART("mi",TimeCol),2) + RIGHT("0" + (DT_WSTR,2)DATEPART("s",TimeCol),2))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_DW_DimTime\der_Time_Attributes.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="lkp_DW_DimTime_AllCols"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TimeKey, StandardFullTime, InternationalFullTime, StandardHour, InternationalHour, [Minute], [Second], AmPm
+FROM     DW.DimTime2</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT TimeKey, StandardFullTime, InternationalFullTime, StandardHour, InternationalHour, [Minute], [Second], AmPm
+FROM     Datamart.DimTime) [refTable]
+where [refTable].[InternationalHour] = ? and [refTable].[Minute] = ? and [refTable].[Second] = ? and [refTable].[InternationalFullTime] = ? and [refTable].[StandardFullTime] = ? and [refTable].[AmPm] = ? and [refTable].[StandardHour] = ? and [refTable].[TimeKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TimeKey" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StandardFullTime" dataType="DT_STR" length="8" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InternationalFullTime" dataType="DT_STR" length="8" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StandardHour" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InternationalHour" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Minute" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Second" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AmPm" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalHour]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Minute]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Second]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalFullTime]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardFullTime]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[AmPm]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardHour]};#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[TimeKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="TimeKey"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TimeKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[StandardHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="StandardHour"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardHour]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StandardHour</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[AmPm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="AmPm"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[AmPm]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AmPm</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[Second]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Second"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Second]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Second</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[Minute]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Minute"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Minute]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Minute</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[InternationalHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="InternationalHour"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalHour]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">InternationalHour</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[StandardFullTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="StandardFullTime"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardFullTime]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StandardFullTime</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input].Columns[InternationalFullTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="InternationalFullTime"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalFullTime]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">InternationalFullTime</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="lkp_DW_DimTime_timekey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TimeKey
+FROM     DW.DimTime2</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT TimeKey
+FROM     DW.DimTime2) [refTable]
+where [refTable].[TimeKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TimeKey" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Inputs[Lookup Input].Columns[TimeKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="TimeKey"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TimeKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="ole_cmd_upd_DW_DimTime_Type1Cols"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DW].[DimTime2]
+   SET [StandardFullTime] = ?
+      ,[InternationalFullTime] = ?
+      ,[StandardHour] = ?
+      ,[InternationalHour] = ?
+      ,[Minute] = ?
+      ,[Second] = ?
+      ,[AmPm] = ?
+      ,[LoadId] = ?
+ WHERE [TimeKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[StandardFullTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="StandardFullTime"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardFullTime]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[InternationalFullTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="InternationalFullTime"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalFullTime]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[StandardHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="StandardHour"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardHour]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[InternationalHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="InternationalHour"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalHour]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[Minute]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Minute"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Minute]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[Second]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Second"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Second]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[AmPm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="AmPm"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[AmPm]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[LoadId]"
+                      cachedDataType="i4"
+                      cachedName="LoadId"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Output].Columns[LoadId]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].Columns[TimeKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="TimeKey"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i4"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ole_dst_DW_DimTime"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DimTime2]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[Minute]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Minute"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[Minute]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Minute]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[Second]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Second"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[Second]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[Second]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[InternationalFullTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="InternationalFullTime"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[InternationalFullTime]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalFullTime]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[StandardFullTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="StandardFullTime"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[StandardFullTime]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardFullTime]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[AmPm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="AmPm"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[AmPm]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[AmPm]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[StandardHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="StandardHour"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[StandardHour]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[StandardHour]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[TimeKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="TimeKey"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[TimeKey]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[InternationalHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="InternationalHour"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[InternationalHour]"
+                      lineageId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output].Columns[InternationalHour]" />
+                    <inputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].Columns[LoadId]"
+                      cachedDataType="i4"
+                      cachedName="LoadId"
+                      externalMetadataColumnId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[LoadId]"
+                      lineageId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Output].Columns[LoadId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="TimeKey" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[StandardFullTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="StandardFullTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[InternationalFullTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="InternationalFullTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[StandardHour]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="StandardHour" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[InternationalHour]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="InternationalHour" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[Minute]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Minute" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[Second]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Second" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[AmPm]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="AmPm" />
+                    <externalMetadataColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input].ExternalColumns[LoadId]"
+                      dataType="i4"
+                      name="LoadId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_DW_DimTime\scr_src_Seconds"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;8"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="scr_src_Seconds"
+              version="10">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+  
+    public override void CreateNewOutputRows()
+    {
+
+        DateTime _DateTime = new DateTime(1900, 1, 1, 0, 0, 0);
+        DateTime _LimitDateTime = new DateTime(1900, 1, 1, 23, 59, 59);
+
+
+        while (_DateTime <= _LimitDateTime)
+        {
+            Output0Buffer.AddRow();
+            Output0Buffer.TimeCol = _DateTime;
+
+            _DateTime = _DateTime.AddSeconds(1);
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Output0Buffer: ScriptBuffer
+
+{
+    public Output0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public DateTime TimeCol
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool TimeCol_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3c9724ba1ac24269af4ddf6dba293453.Properties.Settings.get_Default():SC_3c9724ba1ac24269af4ddf6dba293453.Properties.Sett" +
+    "ings")]
+
+namespace SC_3c9724ba1ac24269af4ddf6dba293453.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>SC_3c9724ba1ac24269af4ddf6dba293453</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>SC_3c9724ba1ac24269af4ddf6dba293453</msb:DisplayName>
+		<msb:ProjectId>{C26ABB35-A796-42CB-BD9D-94D8EA9652C7}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="SC_3c9724ba1ac24269af4ddf6dba293453.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:Breakpoint Include="16329d6fa24d4ceb8bd656104e154790">
+			<msb:FileName>main.cs</msb:FileName>
+			<msb:ColumnNumber>9</msb:ColumnNumber>
+			<msb:Enabled>True</msb:Enabled>
+			<msb:LineNumber>83</msb:LineNumber>
+			<msb:Condition></msb:Condition>
+			<msb:ConditionType>1</msb:ConditionType>
+			<msb:Language>C#</msb:Language>
+			<msb:HitCountType>1</msb:HitCountType>
+			<msb:HitCountTarget>1</msb:HitCountTarget>
+		</msb:Breakpoint>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_3c9724ba1ac24269af4ddf6dba293453")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("TELUS Communications Inc")]
+[assembly: AssemblyProduct("SC_3c9724ba1ac24269af4ddf6dba293453")]
+[assembly: AssemblyCopyright("Copyright @ TELUS Communications Inc 2014")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3c9724ba1ac24269af4ddf6dba293453.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{985ab808-09b3-44e5-ba03-f7774e19bab5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3c9724ba1ac24269af4ddf6dba293453</RootNamespace>
+    <AssemblyName>SC_3c9724ba1ac24269af4ddf6dba293453</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_3c9724ba1ac24269af4ddf6dba293453" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3c9724ba1ac24269af4ddf6dba293453.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3c9724ba1ac24269af4ddf6dba293453.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3c9724ba1ac24269af4ddf6dba293453.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_3c9724ba1ac24269af4ddf6dba293453.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_3c9724ba1ac24269af4ddf6dba293453.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3c9724ba1ac24269af4ddf6dba293453.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDALfaiFkAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAA7jEA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAJwxAABPAAAAAEAAAKgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA9BEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAKgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADQ
+MQAAAAAAAEgAAAACAAUAGCIAAMwOAAABAAAAAAAAAOQwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBwBZAAAAAQAAERIAIGwHAAAXFxYWFigQAAAKEgEgbAcA
+ABcXHxcfOx87KBAAAAorKAJ7AwAABG8GAAAGAnsDAAAEBm8EAAAGEgAjAAAAAAAA8D8oEQAACgoG
+BygSAAAKLc8qHgIoCQAABioqAgMEBSgTAAAKKjoCFgOMDgAAASgUAAAKKloDLAgCFigVAAAKKnIB
+AABwcxYAAAp6HgIoFwAACioeAigYAAAKKh4CKBkAAAoqfgIoGgAACgICcw4AAAZ9AQAABAICcw8A
+AAZ9AgAABCoGKm4CewMAAAQsEgJ7AwAABG8HAAAGAhR9AwAABCoTMAUASQAAAAIAABEWCisuBAaU
+DgRyngAAcCgbAAAKMxkCBQaaAgQGlCgcAAAKDgRzAwAABn0DAAAEBhdYCgYDMs4Cbw0AAAYCbwoA
+AAYCKAsAAAYqOgIoHQAACgIDfQQAAAQqOgIoHQAACgIDfQUAAAQqHgIoHQAACiqufgYAAAQtHnKw
+AABw0AcAAAIoHgAACm8fAAAKcyAAAAqABgAABH4GAAAEKhp+BwAABCoeAoAHAAAEKhp+CAAABCoe
+AighAAAKKi5zFQAABoAIAAAEKgAAAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAA
+ABwFAAAjfgAAiAUAACgGAAAjU3RyaW5ncwAAAACwCwAAJAEAACNVUwDUDAAAEAAAACNHVUlEAAAA
+5AwAAOgBAAAjQmxvYgAAAAAAAAACAAABVxWiAQkBAAAA+gEzABYAAAEAAAAeAAAACAAAAAgAAAAW
+AAAADAAAACEAAAAQAAAAAgAAAAMAAAAFAAAABgAAAAEAAAAEAAAAAQAAAAAA9gIBAAAAAAAGAPsB
+WQQGAI8CWQQGAEcBOwQPAM0EAAAGAHQBlgMGAN4BlgMGAL8BlgMGAHYClgMGABsClgMGADQClgMG
+AIsBlgMGAKYBswIKAE8ClAAGAIsATgMKAAMElAAOAPQDlAAKAM4DlAAKALkFlAAGAHkFTgMGACoB
+OwQGABQEeQQGAMIDgQMSAPoA4AISAFsB4AISAOIAbAMGAA8BWQQGAKgDTgMGALUATgMGAGcATgMG
+AB4GlgMAAAAAJQAAAAAAAQABAAEAEABhAwAAEAABAAEAAQAQAOYDAAA9AAEAAwABABAAmwUAAEkA
+AQAJAAEAEABDBQAATQAEAA4AAQAQAAsFAABNAAUADwAAABAAgATcBE0ABgAQAAABEAA6BdwEZQAI
+ABQABgBDBYQABgALBYgABgDmA4wAAQCpBZAAAQCpBZAAEQBVA5QAEQDSAJgAEQBXAJwAUCAAAAAA
+xgBlBQYAAQC1IAAAAACGGCQEBgABAL0gAAAAAIYYJAQ6AAEAyCAAAAAAhgg5A6AABADXIAAAAACG
+CB4DpgAFAO4gAAAAAIYAEwYGAAYA9iAAAAAAhgCABQYABgD+IAAAAACGAIMFSgAGAAYhAAAAAIYY
+JAQGAAYAJiEAAAAAxgFXBQYABgAoIQAAAACBAEMABgAGAEQhAAAAAMYABwarAAYAJiEAAAAAxgFl
+BQYACgCZIQAAAACGGCQEtwAKAKghAAAAAIYYJAS3AAsAtyEAAAAAgxgkBAYADAC/IQAAAACTCBAE
+vQAMAOshAAAAAJMIugDCAAwA8iEAAAAAkwjGAMcADAD6IQAAAACWCI8FzQANAAEiAAAAAIYYJAQG
+AA0ACSIAAAAAkRgqBNIADQAAAAEACQQAAAIAFQUAAAMA3AMAAAEArQIAAAEArQIAAAEAXQUAAAIA
+MQQAAAMATwUAAAQA3AMAAAEAvwUAAAEAvwUAAAEArQIJACQEAQARACQEBgAZACQECgApACQEEAAx
+ACQEEAA5ACQEEABBACQEEABJACQEEABRACQEEABZACQEEABhACQEEABpACQEBgChACQEBgDBACQE
+FQDRACQEBgBxACQEIgBxAE4ELABxAM0CMgB5ACQEOgB5AEUDRAB5ADEDAQDZACQEEAB5ABMGBgB5
+AIAFBgB5AIMFSgCRACQEBgCRAC4AUgCRACkFWQCZACQEBgDhAHkAXwDhABoGZgCpACQEawDJACQE
+BgAuAAsA7gAuABMA9wAuABsAFgEuACMAHwEuACsASAEuADMASAEuADsATgEuAEMAHwEuAEsAbAEu
+AFMASAEuAFsAmwFDAGMA4wFpAHMAFgGJAHMAFgHjAGsA4wEBAXsA4wEbAE4AAwABAAcAAwAIAAUA
+AAA9A9YAAAAiA9sAAAAUBN8AAADaAOQAAACTBekAAQAEAAMAAQAFAAUAAgARAAcAAgASAAkAAQAT
+AAkAAgAUAAsABIAAAAEAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAHIAOgAAAAAADQAAAAAA
+AAAAAAAAewDJBQAAAAANAAAAAAAAAAAAAAB7AOYFAAAAAAQAAAAAAAAAAAAAAHIATgMAAAAAAAAA
+AAEAAACKBAAAAAAAAABTQ18zYzk3MjRiYTFhYzI0MjY5YWY0ZGRmNmRiYTI5MzQ1MwA8TW9kdWxl
+PgBHZXRPdXRwdXRJRABtc2NvcmxpYgBNYXJrT3V0cHV0c0ZpbmlzaGVkAGRlZmF1bHRJbnN0YW5j
+ZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBEYXRlVGltZQBNaWNyb3NvZnQu
+U3FsU2VydmVyLkR0cy5QaXBlbGluZQBUeXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291
+cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBD
+b21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERl
+YnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVB
+dHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmli
+dXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0
+cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0
+cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRy
+eVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJp
+bGl0eUF0dHJpYnV0ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAG9wX0xlc3NUaGFu
+T3JFcXVhbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfM2M5NzI0YmExYWMyNDI2OWFmNGRkZjZk
+YmEyOTM0NTMuZGxsAHNldF9UaW1lQ29sX0lzTnVsbABTZXROdWxsAHNldF9UaW1lQ29sAHNldF9J
+dGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5
+c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNl
+cHRpb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAAT3V0cHV0MEJ1ZmZlcgBQ
+aXBlbGluZUJ1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0
+b3IAT3V0cHV0SURzAFN5c3RlbS5EaWFnbm9zdGljcwBBZGRTZWNvbmRzAFN5c3RlbS5SdW50aW1l
+LkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ18zYzk3MjRiYTFhYzI0MjY5YWY0
+ZGRmNmRiYTI5MzQ1My5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9k
+ZXMAU0NfM2M5NzI0YmExYWMyNDI2OWFmNGRkZjZkYmEyOTM0NTMuUHJvcGVydGllcwBWYXJpYWJs
+ZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAENvbm5lY3Rp
+b25zAEJ1ZmZlcnMARmluaXNoT3V0cHV0cwBDcmVhdGVOZXdPdXRwdXRSb3dzAE9iamVjdABTZXRF
+bmRPZlJvd3NldABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3Jp
+cHRDb21wb25lbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2Vy
+dmVyLlBpcGVsaW5lSG9zdABQcmltZU91dHB1dABBZGRSb3cAZ2V0X0Fzc2VtYmx5AAAAgJtJAHMA
+TgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0
+AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQA
+aABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AABFPAHUAdABwAHUAdAAgADAAAHFT
+AEMAXwAzAGMAOQA3ADIANABiAGEAMQBhAGMAMgA0ADIANgA5AGEAZgA0AGQAZABmADYAZABiAGEA
+MgA5ADMANAA1ADMALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAAAA
+BWitixa22EW6HbOkThGLqwAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQYHAhE5ETkJIAYBCAgI
+CAgIBSABETkNBwACAhE5ETkJIAMBEkEdCBJFBSACAQgcAyAAAgMHAQgGAAIIEkUOBSABHQgIBgAB
+EnERdQQgABJ5BiACAQ4SeQi3elxWGTTgiQiJhF3NgIDMkQMGEhQDBhIYAwYSDAMGEkkDBhJVAwYS
+WQMGEiAFIAEBETkEIAEBAgsgBAEIHQgdEkESRQUgAQESSQQAABJVBAAAElkFAAEBElkEAAASIAMA
+AAEEKAAROQMoAAIECAASVQQIABJZBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRp
+b25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzNjOTcyNGJhMWFjMjQyNjlhZjRkZGY2ZGJhMjkzNDUz
+AAAFAQAAAAAdAQAYVEVMVVMgQ29tbXVuaWNhdGlvbnMgSW5jAAAuAQApQ29weXJpZ2h0IEAgVEVM
+VVMgQ29tbXVuaWNhdGlvbnMgSW5jIDIwMTQAAEcBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQu
+MAEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUQLk5FVCBGcmFtZXdvcmsgNAQBAAAAtAAAAM7K774B
+AAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lv
+bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUw
+ODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQ
+tAAAAMQxAAAAAAAAAAAAAN4xAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQMQAAAAAAAAAAAAAA
+AF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAATAQAAAAAAAAAAAAATAQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBKwDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAIgDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAABSABkAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAFQARQBMAFUAUwAgAEMAbwBtAG0AdQBuAGkAYwBhAHQAaQBvAG4AcwAg
+AEkAbgBjAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBDAF8A
+MwBjADkANwAyADQAYgBhADEAYQBjADIANAAyADYAOQBhAGYANABkAGQAZgA2AGQAYgBhADIAOQAz
+ADQANQAzAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADAALgAwAAAA
+cAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwAzAGMAOQA3ADIANABiAGEAMQBh
+AGMAMgA0ADIANgA5AGEAZgA0AGQAZABmADYAZABiAGEAMgA5ADMANAA1ADMALgBkAGwAbAAAAHgA
+KgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAg
+AFQARQBMAFUAUwAgAEMAbwBtAG0AdQBuAGkAYwBhAHQAaQBvAG4AcwAgAEkAbgBjACAAMgAwADEA
+NAAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwBy
+AGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAQwBfADMAYwA5ADcAMgA0AGIAYQAxAGEA
+YwAyADQAMgA2ADkAYQBmADQAZABkAGYANgBkAGIAYQAyADkAMwA0ADUAMwAuAGQAbABsAAAAaAAk
+AAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwAzAGMAOQA3ADIANABiAGEAMQBhAGMA
+MgA0ADIANgA5AGEAZgA0AGQAZABmADYAZABiAGEAMgA5ADMANAA1ADMAAAA0AAgAAQBQAHIAbwBk
+AHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAOAAIAAEAQQBzAHMAZQBtAGIA
+bAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAPAxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_3c9724ba1ac24269af4ddf6dba293453</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="1">
+                    <arrayElement
+                      dataType="System.String">&lt;SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;
+&lt;SOAP-ENV:Body&gt;
+&lt;a1:ScriptBreakpointInfo id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/Microsoft.SqlServer.VSTAHosting/Microsoft.SqlServer.VSTAScriptingLib%2C%20Version%3D13.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D89845dcd8080cc91"&gt;
+&lt;Enabled&gt;true&lt;/Enabled&gt;
+&lt;File id="ref-3"&gt;main.cs&lt;/File&gt;
+&lt;FileLine&gt;83&lt;/FileLine&gt;
+&lt;FileColumn&gt;9&lt;/FileColumn&gt;
+&lt;/a1:ScriptBreakpointInfo&gt;
+&lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;
+</arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">14ec9ae941ebfa4c6dffedc0e1edf21c</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataShaChecksum"
+                  typeConverter="NOTBROWSABLE">b5959a3b6861de74833667ce5b59ef813cc77bc3</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0]"
+                  hasSideEffects="true"
+                  name="Output 0">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0].Columns[TimeCol]"
+                      name="TimeCol" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_DW_DimTime.Paths[Derived Column Output]"
+              endId="Package\dft_DW_DimTime\der_LoadId.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DW_DimTime\der_Time_Attributes.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DW_DimTime.Paths[Derived Column Output1]"
+              endId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\dft_DW_DimTime\der_LoadId.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_DW_DimTime.Paths[Lookup Match Output]"
+              endId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\dft_DW_DimTime.Paths[Lookup No Match Output]"
+              endId="Package\dft_DW_DimTime\ole_dst_DW_DimTime.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dft_DW_DimTime.Paths[Lookup No Match Output1]"
+              endId="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols.Inputs[OLE DB Command Input]"
+              name="Lookup No Match Output"
+              startId="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dft_DW_DimTime.Paths[Output 0]"
+              endId="Package\dft_DW_DimTime\der_Time_Attributes.Inputs[Derived Column Input]"
+              name="Output 0"
+              startId="Package\dft_DW_DimTime\scr_src_Seconds.Outputs[Output 0]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\dft_DW_DimTime"
+          TopLeft="4.92857141884006,5.49999999999995" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_DW_DimTime">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\der_Time_Attributes"
+          TopLeft="358.5,107.1" />
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\ole_dst_DW_DimTime"
+          TopLeft="5.50000000000003,411.9" />
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\lkp_DW_DimTime_AllCols"
+          TopLeft="358.5,411.9" />
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\ole_cmd_upd_DW_DimTime_Type1Cols"
+          TopLeft="358.5,513.500000000001" />
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\scr_src_Seconds"
+          TopLeft="358.5,5.49999999999995" />
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\der_LoadId"
+          TopLeft="358.5,208.7" />
+        <NodeLayout
+          Size="292.8,41.6"
+          Id="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey"
+          TopLeft="358.5,310.3" />
+        <EdgeLayout
+          Id="Package\dft_DW_DimTime.Paths[Output 0]"
+          TopLeft="504.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DW_DimTime.Paths[Lookup No Match Output1]"
+          TopLeft="504.9,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000002"
+              Start="0,0"
+              End="0,52.5000000000002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,20.4453125000001,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DW_DimTime.Paths[Lookup No Match Output]"
+          TopLeft="457.433333333333,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-305.533333333333,60.0000000000001"
+              Start="0,0"
+              End="-305.533333333333,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1956521739131" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1956521739131"
+                    Point2="0,24.1956521739131"
+                    Point3="-4,24.1956521739131" />
+                  <mssgle:LineSegment
+                    End="-301.533333333333,24.1956521739131" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-301.533333333333,24.1956521739131"
+                    Point2="-305.533333333333,24.1956521739131"
+                    Point3="-305.533333333333,28.1956521739131" />
+                  <mssgle:LineSegment
+                    End="-305.533333333333,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-208.573053385417,29.1956521739131,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DW_DimTime.Paths[Lookup Match Output]"
+          TopLeft="552.366666666667,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-47.4666666666667,60.0000000000001"
+              Start="0,0"
+              End="-47.4666666666667,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1956521739131" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1956521739131"
+                    Point2="0,24.1956521739131"
+                    Point3="-4,24.1956521739131" />
+                  <mssgle:LineSegment
+                    End="-43.4666666666667,24.1956521739131" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43.4666666666667,24.1956521739131"
+                    Point2="-47.4666666666667,24.1956521739131"
+                    Point3="-47.4666666666667,28.1956521739131" />
+                  <mssgle:LineSegment
+                    End="-47.4666666666667,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-71.9247200520834,29.1956521739131,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DW_DimTime.Paths[Derived Column Output1]"
+          TopLeft="504.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_DW_DimTime.Paths[Derived Column Output]"
+          TopLeft="504.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.2500000000001,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DW_DimTime\ole_dst_DW_DimTime">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_DW_DimTime\lkp_DW_DimTime_timekey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ac6d18e3-0304-4103-a9df-9a1e7208ab8b" ChangeDateTime="02/11/2017 22:47:58">
+    <Property Name="ElementName" Value="[SystemLog].[LoadExecutions].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[LoadExecutions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LoadExecutionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="af2a52ef-9849-474a-8e2f-aaa73c1b87c7" ChangeDateTime="02/11/2017 22:54:30">
+    <Property Name="ElementName" Value="[SystemLog].[ExecutionStatictics].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[ExecutionStatictics]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExecutionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="48e4b2c8-2d9d-4162-a16d-8fc71ccdbd55" ChangeDateTime="02/13/2017 22:25:17">
+    <Property Name="ElementName" Value="[SystemLog].[ExecutionStatictics].[SSISProjec]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[ExecutionStatictics]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[SSISProjectName]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b223277-9589-432b-b351-b906e56f4865" ChangeDateTime="02/13/2017 22:27:23">
+    <Property Name="ElementName" Value="[SystemLog].[ExecutionStatictics].[ExecutionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[ExecutionStatictics]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[ExecutionStatisticId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1b2ac67f-a323-4f66-a9ba-8ea07f304f38" ChangeDateTime="02/13/2017 22:35:36">
+    <Property Name="ElementName" Value="[SystemLog].[ExecutionMessageTypes].[ExecutionMessageName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[ExecutionMessageTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[ExecutionMessageTypeName]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3580fd6f-89d1-484e-995c-5a567bf5dece" ChangeDateTime="02/14/2017 13:39:15">
+    <Property Name="ElementName" Value="[SystemLog].[LoadRejects]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[SystemLog]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[LoadExecutionRejects]]]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fb66c37a-f818-45c1-8d43-1315864b9e45" ChangeDateTime="02/14/2017 13:39:41">
+    <Property Name="ElementName" Value="[SystemLog].[FK_LoadRejects_To_LoadExecutions]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[SystemLog].[LoadExecutionRejects]]]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_LoadExecutionRejects_To_LoadExecutions]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fba45c74-a971-4dfa-b8d5-6e829f0672b3" ChangeDateTime="02/14/2017 13:41:33">
+    <Property Name="ElementName" Value="[SystemLog].[LoadExecutionRejects]]]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[SystemLog]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[LoadExecutionRejects]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fe9b15a4-94ab-421d-b54c-2dd46c8cb67b" ChangeDateTime="02/14/2017 13:42:52">
+    <Property Name="ElementName" Value="[SystemLog].[LoadExecutionRejects]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[SystemLog]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[ExecutionRejects]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d7af03f8-3975-465a-a46f-219a251c2f53" ChangeDateTime="02/14/2017 13:43:12">
+    <Property Name="ElementName" Value="[SystemLog].[ExecutionRejects].[LoadRejectsId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[ExecutionRejects]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[ExecutionRejectsId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="883b5e62-b663-4459-902b-59f25c9f0f64" ChangeDateTime="03/04/2017 12:35:35">
+    <Property Name="ElementName" Value="[Staging].[StgAddress].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgAddress]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="97fb77c7-b08c-4654-bdca-7bd951f00653" ChangeDateTime="03/04/2017 12:38:17">
+    <Property Name="ElementName" Value="[Staging].[StgCustomer].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgCustomer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fe114ee8-e69a-4dd3-8cd5-2fdd615315be" ChangeDateTime="03/04/2017 12:38:50">
+    <Property Name="ElementName" Value="[Staging].[StgCustomerAddress].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgCustomerAddress]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eea55d82-7050-4a7e-8ab2-7fc748706c31" ChangeDateTime="03/04/2017 12:39:14">
+    <Property Name="ElementName" Value="[Staging].[StgProduct].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgProduct]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ace9f8b8-b4f1-49d1-80f4-12c0b40644fe" ChangeDateTime="03/04/2017 12:40:34">
+    <Property Name="ElementName" Value="[Staging].[StgProductCategory].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgProductCategory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5a200521-80b9-42e0-b39c-8ffcf2ff9eeb" ChangeDateTime="03/04/2017 12:41:03">
+    <Property Name="ElementName" Value="[Staging].[StgProductDescription].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgProductDescription]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d4636434-094f-4575-b8b0-e8eb1f180b61" ChangeDateTime="03/04/2017 12:41:35">
+    <Property Name="ElementName" Value="[Staging].[StgProductModel].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgProductModel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b967f637-87c5-4b9b-8a1d-918a869c96a7" ChangeDateTime="03/04/2017 12:42:24">
+    <Property Name="ElementName" Value="[Staging].[StgProductModelProductDescription].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgProductModelProductDescription]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="883eb137-d6fb-4c02-85d5-b0e6abb98ef7" ChangeDateTime="03/04/2017 12:42:42">
+    <Property Name="ElementName" Value="[Staging].[StgSalesOrderDetail].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgSalesOrderDetail]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5a51cec-5d93-40a9-893b-5f7f3349702a" ChangeDateTime="03/04/2017 12:43:23">
+    <Property Name="ElementName" Value="[Staging].[StgSalesOrderHeader].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Staging].[StgSalesOrderHeader]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="581bcdea-f576-4805-b7ec-c726076fefe5" ChangeDateTime="03/04/2017 12:44:00">
+    <Property Name="ElementName" Value="[DW].[DimAddress].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DW].[DimAddress]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5f82f72d-f460-4d87-a0fc-9ecd96f6744a" ChangeDateTime="03/04/2017 12:44:43">
+    <Property Name="ElementName" Value="[DW].[DimCustomer].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DW].[DimCustomer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1d529888-4230-4c86-8539-606063f42a6e" ChangeDateTime="03/04/2017 12:45:30">
+    <Property Name="ElementName" Value="[DW].[DimOrderProvenance].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DW].[DimOrderProvenance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="26a18f2b-ba8c-42ac-8220-345a9f67b20c" ChangeDateTime="03/04/2017 12:46:01">
+    <Property Name="ElementName" Value="[DW].[DimProduct].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DW].[DimProduct]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="139e9e17-d35d-4679-8ccd-de3e394f8494" ChangeDateTime="03/04/2017 12:46:44">
+    <Property Name="ElementName" Value="[DW].[FactOrders].[LoadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DW].[FactOrders]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[LoadExecutionId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="151bd019-ce88-4c66-9d20-9f09dd1fde58" ChangeDateTime="03/04/2017 12:48:22">
+    <Property Name="ElementName" Value="[DW].[FactOrders].[PurchareOrderNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DW].[FactOrders]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[PurchaseOrderNumber]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="63cde1c8-a9fc-49b2-b6b3-d455685ec8cd" ChangeDateTime="08/07/2017 21:35:19">
+    <Property Name="ElementName" Value="[SystemLog].[LoadEnvironments].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[LoadEnvironments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LoadEnvironmentId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9892c272-1765-4ac9-ae8f-c8522d3c4e74" ChangeDateTime="08/07/2017 23:43:22">
+    <Property Name="ElementName" Value="[SystemLog].[ExecutionMessageTypes].[SSISMessageType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[ExecutionMessageTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[SSISDBMessageType]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b92ce09f-106c-45ce-a4dd-e00c91a26814" ChangeDateTime="08/11/2017 19:06:19">
+    <Property Name="ElementName" Value="[SystemLog].[LoadEnvironments].[EnvironmewntName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[SystemLog].[LoadEnvironments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[EnvironmentName]" />
+  </Operation>
+</Operations>

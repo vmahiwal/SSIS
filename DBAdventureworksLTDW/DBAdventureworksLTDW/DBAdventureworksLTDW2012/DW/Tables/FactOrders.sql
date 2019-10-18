@@ -1,0 +1,28 @@
+﻿CREATE TABLE [DW].[FactOrders] (
+    [IDOrderDate]         BIGINT       NOT NULL,
+    [IDShipDate]          BIGINT       NOT NULL,
+    [IDDueDate]           BIGINT       NOT NULL,
+    [IDProduct]           SMALLINT     NOT NULL,
+    [IDCustomer]          INT          NOT NULL,
+    [IDBillingAddress]    INT          NOT NULL,
+    [IDShippingAddress]   INT          NOT NULL,
+    [IDOrderProvenance]   SMALLINT     NOT NULL,
+    [OrderQy]             SMALLINT     NOT NULL,
+    [UnitPrice]           MONEY        NOT NULL,
+    [Discount]            MONEY        NOT NULL,
+    [TaxAmount]           MONEY        NOT NULL,
+    [Freight]             MONEY        NOT NULL,
+    [SalesOrderNumber]    VARCHAR (25) NOT NULL,
+    [PurchaseOrderNumber] VARCHAR (25) NULL,
+    [LoadExecutionId]     BIGINT          NOT NULL,
+    CONSTRAINT [FactOrders_PK] PRIMARY KEY CLUSTERED ([IDOrderDate] ASC, [IDProduct] ASC, [IDCustomer] ASC, [IDBillingAddress] ASC, [IDShippingAddress] ASC, [IDShipDate] ASC, [IDDueDate] ASC),
+    CONSTRAINT [DimAddress_FactOrders_FK1] FOREIGN KEY ([IDBillingAddress]) REFERENCES [DW].[DimAddress] ([IDAddress]),
+    CONSTRAINT [DimAddress_FactOrders_FK2] FOREIGN KEY ([IDShippingAddress]) REFERENCES [DW].[DimAddress] ([IDAddress]),
+    CONSTRAINT [DimCustomer_FactOrders_FK1] FOREIGN KEY ([IDCustomer]) REFERENCES [DW].[DimCustomer] ([IDCustomer]),
+    CONSTRAINT [DimOrderProvenance_FactOrders_FK1] FOREIGN KEY ([IDOrderProvenance]) REFERENCES [DW].[DimOrderProvenance] ([IDOrderProvenance]),
+    CONSTRAINT [DimProduct_FactOrders_FK1] FOREIGN KEY ([IDProduct]) REFERENCES [DW].[DimProduct] ([IDProduct]),
+    CONSTRAINT [DimTime_FactOrders_FK1] FOREIGN KEY ([IDOrderDate]) REFERENCES [DW].[DimTime] ([IDTime]),
+    CONSTRAINT [DimTime_FactOrders_FK2] FOREIGN KEY ([IDShipDate]) REFERENCES [DW].[DimTime] ([IDTime]),
+    CONSTRAINT [DimTime_FactOrders_FK3] FOREIGN KEY ([IDDueDate]) REFERENCES [DW].[DimTime] ([IDTime])
+);
+

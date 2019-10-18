@@ -1,0 +1,1719 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{D9E2DC93-F895-4968-AECF-005FD6C2068B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ReadFromCube"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{88F623F5-8E51-4C82-9085-6C4B159574AF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ccmgr_SSAS]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{D6B61CCF-18C6-451B-B97F-7F898646D5B5}"
+      DTS:ObjectName="ccmgr_SSAS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;PROVIDER=MSOLAP.6;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_SalesOrder]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E19E7E0A-2548-4BB5-ABFF-9746923D98C5}"
+      DTS:ObjectName="cmgr_SalesOrder">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=SalesOrder;Provider=MSOLAP.6;Integrated Security=SSPI;Extended Properties=Format=Tabular;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="cmgr_DW"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{22BFA7D3-71AF-4531-B09B-0B6DC10D1C69}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3820C58B-47A5-4646-AC16-05F6073B53C1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">4/21/2008 9:03:29 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF7837C0-1186-4825-ACB9-775A7EFAF2D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intLoadID">
+      <DTS:VariableValue
+        DTS:DataType="2">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{22BFA7D3-71AF-4531-B09B-0B6DC10D1C69}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_FactSalesOrder"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5FE027E4-687A-45A2-8ABB-E381FADCC6CF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_FactSalesOrder"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_FactSalesOrder\dcnv_Int"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="dcnv_Int"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_FactSalesOrder\dcnv_Int.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\dcnv_Int.Inputs[Data Conversion Input].Columns[[$Fact Sales Order].[Customer Key]]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="[$Fact Sales Order].[Customer Key]"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Customer Key]]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\dcnv_Int.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Output].Columns[Copy of [$Fact Sales Order].[Customer Key]]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Output].Columns[Copy of [$Fact Sales Order].[Customer Key]]"
+                      name="Copy of [$Fact Sales Order].[Customer Key]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Customer Key]]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\dcnv_Int.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_FactSalesOrder\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_FactSalesOrder\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_FactSalesOrder\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_FactSalesOrder\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Looks up values in a reference dataset by using exact matching."
+              name="lkp_Dim_Customer_customerkey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        CustomerKey, AccountNumber, FirstName
+FROM            Datamart.Dim_Customer</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        CustomerKey, AccountNumber, FirstName
+FROM            Datamart.Dim_Customer) [refTable]
+where [refTable].[CustomerKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AccountNumber" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Output].Columns[Copy of [$Fact Sales Order].[Customer Key]]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:invalid"
+                  connectionManagerRefId="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:invalid"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Inputs[Lookup Input].Columns[Copy of [$Fact Sales Order].[Customer Key]]"
+                      cachedDataType="i4"
+                      cachedName="Copy of [$Fact Sales Order].[Customer Key]"
+                      lineageId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Output].Columns[Copy of [$Fact Sales Order].[Customer Key]]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Match Output].Columns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="25"
+                      lineageId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Match Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AccountNumber</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Match Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Match Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">FirstName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ole_src_FactSalesOrder"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[$Fact Sales Order].[$Fact Sales Order]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[cmgr_SalesOrder]"
+                  connectionManagerRefId="Package.ConnectionManagers[cmgr_SalesOrder]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Customer Key]]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Customer Key]]"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Customer Key]]"
+                      name="[$Fact Sales Order].[Customer Key]"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Order Date Key]]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Order Date Key]]"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Order Date Key]]"
+                      name="[$Fact Sales Order].[Order Date Key]"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Due Date Key]]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Due Date Key]]"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Due Date Key]]"
+                      name="[$Fact Sales Order].[Due Date Key]"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Ship Date Key]]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Ship Date Key]]"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Ship Date Key]]"
+                      name="[$Fact Sales Order].[Ship Date Key]"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Product Key]]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Product Key]]"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Product Key]]"
+                      name="[$Fact Sales Order].[Product Key]"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Fact Sales Order - Customer Key]]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Fact Sales Order - Customer Key]]"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].Columns[[$Fact Sales Order].[Fact Sales Order - Customer Key]]"
+                      name="[$Fact Sales Order].[Fact Sales Order - Customer Key]"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Customer Key]]"
+                      dataType="wstr"
+                      length="255"
+                      name="[$Fact Sales Order].[Customer Key]" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Order Date Key]]"
+                      dataType="wstr"
+                      length="255"
+                      name="[$Fact Sales Order].[Order Date Key]" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Due Date Key]]"
+                      dataType="wstr"
+                      length="255"
+                      name="[$Fact Sales Order].[Due Date Key]" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Ship Date Key]]"
+                      dataType="wstr"
+                      length="255"
+                      name="[$Fact Sales Order].[Ship Date Key]" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Product Key]]"
+                      dataType="wstr"
+                      length="255"
+                      name="[$Fact Sales Order].[Product Key]" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output].ExternalColumns[[$Fact Sales Order].[Fact Sales Order - Customer Key]]"
+                      dataType="wstr"
+                      length="255"
+                      name="[$Fact Sales Order].[Fact Sales Order - Customer Key]" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Customer Key]]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Customer Key]]"
+                      name="[$Fact Sales Order].[Customer Key]" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Order Date Key]]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Order Date Key]]"
+                      name="[$Fact Sales Order].[Order Date Key]" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Due Date Key]]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Due Date Key]]"
+                      name="[$Fact Sales Order].[Due Date Key]" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Ship Date Key]]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Ship Date Key]]"
+                      name="[$Fact Sales Order].[Ship Date Key]" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Product Key]]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Product Key]]"
+                      name="[$Fact Sales Order].[Product Key]" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Fact Sales Order - Customer Key]]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[[$Fact Sales Order].[Fact Sales Order - Customer Key]]"
+                      name="[$Fact Sales Order].[Fact Sales Order - Customer Key]" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_FactSalesOrder.Paths[Data Conversion Output]"
+              endId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\dft_FactSalesOrder\dcnv_Int.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\dft_FactSalesOrder.Paths[Lookup Match Output]"
+              endId="Package\dft_FactSalesOrder\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\dft_FactSalesOrder.Paths[OLE DB Source Output]"
+              endId="Package\dft_FactSalesOrder\dcnv_Int.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft_FactSalesOrder\ole_src_FactSalesOrder.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{038C8701-0496-47A7-830D-4C4997C58745}"
+      DTS:EventID="99"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{35FB393A-A9E3-493B-AA65-6681E2C7CB10}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{8C9077C5-A093-4928-913B-1A055C6EEE04}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="strErrorCode">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{DAB60C41-ECCC-4532-92FF-75413A189AFD}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="strMessageText">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\ept_ErrorLog"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package ErrorLog.dtsx"
+          DTS:DTSID="{4D4E5E1D-7907-4240-A491-7D4B6D0879F5}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_ErrorLog"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <Connection>{C548EEC7-5F64-4C2E-ABFF-50187A21681F}</Connection>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\scr_Transfer_ErrorCodeMessage_PackageVars"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{97d47e6b-659c-464e-a622-0673b0b14a00}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="scr_Transfer_ErrorCodeMessage_PackageVars">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_5e10f166eb5341f38416f5f4fba97ae8"
+              VSTAMajorVersion="3"
+              VSTAMinorVersion="0"
+              Language="CSharp"
+              ReadOnlyVariables="System::ErrorCode,System::ErrorDescription,System::PackageName"
+              ReadWriteVariables="User::strErrorCode,User::strMessageText">
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="st_5e10f166eb5341f38416f5f4fba97ae8.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>ST_f5ecdfa5407d444cb361e91194c57d79.csproj</RootNamespace>
+    <AssemblyName>st_5e10f166eb5341f38416f5f4fba97ae8</AssemblyName>
+    <ProjectGuid>{38F7CB28-754F-42C9-94A6-38081246B68A}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" />
+        <Host Name="SSIS_ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST120</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[/*
+   Microsoft SQL Server Integration Services Script Task
+   Write scripts using Microsoft Visual C# 2008.
+   The ScriptMain is the entry point class of the script.
+*/
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+
+namespace ST_f5ecdfa5407d444cb361e91194c57d79.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        /*
+		The execution engine calls this method when the task executes.
+		To access the object model, use the Dts property. Connections, variables, events,
+		and logging features are available as members of the Dts property as shown in the following examples.
+
+		To reference a variable, call Dts.Variables["MyCaseSensitiveVariableName"].Value;
+		To post a log entry, call Dts.Log("This is my log text", 999, null);
+		To fire an event, call Dts.Events.FireInformation(99, "test", "hit the help message", "", 0, true);
+
+		To use the connections collection use something like the following:
+		ConnectionManager cm = Dts.Connections.Add("OLEDB");
+		cm.ConnectionString = "Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=False;";
+
+		Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+		
+		To open Help, press F1.
+	*/
+        public void Main()
+        {
+          try
+            {
+                if (Dts.Variables.Contains("User::strErrorCode"))
+                {
+                    Dts.Variables["User::strErrorCode"].Value = Dts.Variables["System::ErrorCode"].Value.ToString();
+                }
+                if (Dts.Variables.Contains("User::strMessageText"))
+                {
+                    Dts.Variables["User::strMessageText"].Value = Dts.Variables["System::ErrorDescription"].Value.ToString();
+                }
+                Dts.TaskResult = (int)ScriptResults.Success;
+
+            }
+            catch(Exception ex)
+            {
+                Dts.Events.FireError(0, Dts.Variables["System::PackageName"].Value.ToString(), ex.Message, string.Empty, 0);
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:NoContent>Reference;Import;Folder</msb:NoContent>
+		<msb:ProjectId>{971F1266-F0F9-4271-A61D-C6C8C700F4B4}</msb:ProjectId>
+		<msb:CodeName>st_5e10f166eb5341f38416f5f4fba97ae8</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>st_5e10f166eb5341f38416f5f4fba97ae8</msb:DisplayName>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+		<msb:Project Include="st_5e10f166eb5341f38416f5f4fba97ae8.csproj"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties.Settings.get_Default():ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_f5ecdfa5407d444cb361e91194c57d79.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_f5ecdfa5407d444cb361e91194c57d79.csproj")]
+[assembly: AssemblyCopyright("Copyright @  2009")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_f5ecdfa5407d444cb361e91194c57d79.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="st_5e10f166eb5341f38416f5f4fba97ae8.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDACDlnFMAAAAAAAAAAOAAAiELAQsAABIAAAAIAAAAAAAAbjAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACAwAABLAAAAAEAAACgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAdBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAACgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABQ
+MAAAAAAAAEgAAAACAAUAmCIAAIgNAAABAAAAAAAAAOAhAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
+AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
+BoADAAAEKh4CKBQAAAoqABswBgD7AAAAAgAAEQIoFgAACm8XAAAKcoEAAHBvGAAACiw5AigWAAAK
+bxcAAApygQAAcG8ZAAAKAigWAAAKbxcAAApypwAAcG8ZAAAKbxoAAApvGwAACm8cAAAKAigWAAAK
+bxcAAApyywAAcG8YAAAKLDkCKBYAAApvFwAACnLLAABwbxkAAAoCKBYAAApvFwAACnL1AABwbxkA
+AApvGgAACm8bAAAKbxwAAAoCKBYAAAoWbx0AAAreTAoCKBYAAApvHgAAChYCKBYAAApvFwAACnIn
+AQBwbxkAAApvGgAACm8bAAAKBm8fAAAKfiAAAAoWbyEAAAomAigWAAAKF28dAAAK3gAqAAEQAAAA
+AAAArq4ATB8AAAEeAigiAAAKKgAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMu
+UmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRp
+bWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAQlNKQgEAAQAAAAAADAAAAHY0LjAu
+MzAzMTkAAAAABQBsAAAA9AMAACN+AABgBAAARAYAACNTdHJpbmdzAAAAAKQKAABQAQAAI1VTAPQL
+AAAQAAAAI0dVSUQAAAAEDAAAhAEAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6JTMAFgAAAQAA
+ACAAAAAFAAAABgAAAAkAAAABAAAAIgAAAAIAAAAPAAAAAgAAAAIAAAADAAAABAAAAAEAAAAEAAAA
+AQAAAAEAAAAAAAoAAQAAAAAABgDPAMgACgDrANYADgBLASIBBgBnAcgABgB9AWwBBgCuAZkBBgBl
+AksCBgCQAn4CBgCnAn4CBgDEAn4CBgDjAn4CBgD8An4CBgAVA34CBgAwA34CBgBLA34CBgBkA34C
+BgCdA30DBgC9A30DBgASBP8DBgAvBMgABgA0BMgABgBYBH4CCgCEBG4ECgCdBG4EBgCyBH0DDgDU
+BCIBDgD2BCIBEgBPBS8FEgBwBS8FDgCuBSIBBgDNBcgABgDjBcgAAAAAAAEAAAAAAAEAAQAAABAA
+MgA8AAUAAQABAAABEAByADwACQADAAUAAQAQAHsAhgANAAQACAADAQAAsQAAABEABAAKABEAjQET
+ABEAugEXABEABAI5AAYGLQJHAFaANQJKAFaAPQJKAFAgAAAAAIMYygEbAAEAWCAAAAAAkwjQAR8A
+AQCRIAAAAACTCOQBJAABAJggAAAAAJMI8AEpAAEAoCAAAAAAlggUAj0AAgCzIAAAAACGGMoBGwAC
+AKcgAAAAAJEYzQSJAAIAvCAAAAAAhgAoAhsAAgDUIQAAAACGGMoBGwACAAAAAQBFAjkAygFYAEEA
+ygFYAEkAygFYAFEAygFYAFkAygFYAGEAygFYAGkAygFYAHEAygFYAHkAygFYAIEAygFYAIkAygFd
+AJEAygEbAJkAygEbAAkAygEbAKEARgRiAKEAYQRpACkAygFuALkAygF6AMkAygEbABEAygEbANEA
+ygEbABkACAWNANkAWQWSAOEAZwWXAOEAeQWcAOkAggWiAAkAjAWmAOkAlQWqANkAnwVdANkAwgWv
+APkA1wWmAAEB6gW0APEA8AW3ABkAygEbAAgAFABOAAgAGABTACkAkwCAAC4AGwA9AS4AIwA9AS4A
+YwBjAS4ACwDFAC4AEwANAS4AMwANAS4AKwA9AS4AOwBDAS4AQwA9AS4AWwBaAUMAawBTAEkAkwCA
+AGEAmwBTAIMAqwBTAHUAwAACAAEAAwADAAAAfQEvAAAA/AE0AAAAIAJCAAIAAgADAAIAAwAFAAEA
+BAAFAAIABQAHAASAAAABAAAAnhQohwAAAAAAANsDAAAEAAAAAAAAAAAAAAABAL8AAAAAAAQAAAAA
+AAAAAAAAAAEAyAAAAAAADAAAAAAAAAAAAAAACgADAQAAAAAMAAAAAAAAAAAAAAAKABAFAAAAAAAA
+AAABAAAA+gUAAAUABAAAAAA8TW9kdWxlPgBzdF81ZTEwZjE2NmViNTM0MWYzODQxNmY1ZjRmYmE5
+N2FlOC5kbGwAUmVzb3VyY2VzAFNUX2Y1ZWNkZmE1NDA3ZDQ0NGNiMzYxZTkxMTk0YzU3ZDc5LmNz
+cHJvai5Qcm9wZXJ0aWVzAFNldHRpbmdzAFNjcmlwdE1haW4AU1RfZjVlY2RmYTU0MDdkNDQ0Y2Iz
+NjFlOTExOTRjNTdkNzkuY3Nwcm9qAFNjcmlwdFJlc3VsdHMAbXNjb3JsaWIAU3lzdGVtAE9iamVj
+dABTeXN0ZW0uQ29uZmlndXJhdGlvbgBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBNaWNyb3NvZnQu
+U3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0
+VGFzawBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UARW51bQBTeXN0ZW0uUmVzb3VyY2VzAFJl
+c291cmNlTWFuYWdlcgByZXNvdXJjZU1hbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBDdWx0dXJlSW5m
+bwByZXNvdXJjZUN1bHR1cmUALmN0b3IAZ2V0X1Jlc291cmNlTWFuYWdlcgBnZXRfQ3VsdHVyZQBz
+ZXRfQ3VsdHVyZQBDdWx0dXJlAGRlZmF1bHRJbnN0YW5jZQBnZXRfRGVmYXVsdABEZWZhdWx0AE1h
+aW4AdmFsdWVfXwBTdWNjZXNzAEZhaWx1cmUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmlu
+ZwBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAU3lzdGVtLlJlZmxlY3Rpb24AQXNzZW1ibHlUaXRs
+ZUF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJh
+dGlvbkF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0
+cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmli
+dXRlAEFzc2VtYmx5Q3VsdHVyZUF0dHJpYnV0ZQBBc3NlbWJseVZlcnNpb25BdHRyaWJ1dGUAU3lz
+dGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmli
+dXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAHN0XzVlMTBmMTY2ZWI1MzQxZjM4NDE2
+ZjVmNGZiYTk3YWU4AFN5c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmli
+dXRlAFR5cGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQXNzZW1ibHkAZ2V0
+X0Fzc2VtYmx5AFN5c3RlbS5Db21wb25lbnRNb2RlbABFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUA
+RWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUALmNjdG9yAFNT
+SVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBTY3JpcHRPYmplY3RNb2RlbABnZXRfRHRz
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5S
+dW50aW1lAFZhcmlhYmxlcwBnZXRfVmFyaWFibGVzAENvbnRhaW5zAFZhcmlhYmxlAGdldF9JdGVt
+AGdldF9WYWx1ZQBUb1N0cmluZwBzZXRfVmFsdWUAc2V0X1Rhc2tSZXN1bHQARXZlbnRzT2JqZWN0
+V3JhcHBlcgBnZXRfRXZlbnRzAEV4Y2VwdGlvbgBnZXRfTWVzc2FnZQBTdHJpbmcARW1wdHkARmly
+ZUVycm9yAFNUX2Y1ZWNkZmE1NDA3ZDQ0NGNiMzYxZTkxMTk0YzU3ZDc5LmNzcHJvai5Qcm9wZXJ0
+aWVzLlJlc291cmNlcy5yZXNvdXJjZXMAAH9TAFQAXwBmADUAZQBjAGQAZgBhADUANAAwADcAZAA0
+ADQANABjAGIAMwA2ADEAZQA5ADEAMQA5ADQAYwA1ADcAZAA3ADkALgBjAHMAcAByAG8AagAuAFAA
+cgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAJVUAcwBlAHIAOgA6AHMAdABy
+AEUAcgByAG8AcgBDAG8AZABlAAAjUwB5AHMAdABlAG0AOgA6AEUAcgByAG8AcgBDAG8AZABlAAAp
+VQBzAGUAcgA6ADoAcwB0AHIATQBlAHMAcwBhAGcAZQBUAGUAeAB0AAAxUwB5AHMAdABlAG0AOgA6
+AEUAcgByAG8AcgBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AACdTAHkAcwB0AGUAbQA6ADoAUABhAGMA
+awBhAGcAZQBOAGEAbQBlAAAAzkgQ0tDHh06NpRz07xrrcgAIt3pcVhk04IkIiYRdzYCAzJEDBhIV
+AwYSGQMgAAEEAAASFQQAABIZBQABARIZBAgAEhUECAASGQMGEgwEAAASDAQIABIMAgYIAwYRFAQA
+AAAABAEAAAAEIAEBDgQgAQEIBgABElERVQQgABJZBiACAQ4SWQQHARIVBSABARFhCAEAAgAAAAAA
+AwAAAQQgABJtBCAAEnEEIAECHAUgARJ1HAMgABwDIAAOBCABARwEIAASeQIGDgggBQIIDg4OCAQH
+ARJ9RwEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFt
+ZRAuTkVUIEZyYW1ld29yayA0LwEAKlNUX2Y1ZWNkZmE1NDA3ZDQ0NGNiMzYxZTkxMTk0YzU3ZDc5
+LmNzcHJvagAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDA5AAAIAQAIAAAAAAAeAQABAFQCFldy
+YXBOb25FeGNlcHRpb25UaHJvd3MBAABIMAAAAAAAAAAAAABeMAAAACAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAUDAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAA0AMAAAAAAAAAAAAA0AM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABACiHnhQAAAEAKIeeFD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBDADAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAAwDAAABADAAMAAw
+ADAAMAA0AGIAMAAAAIAAKwABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAFQA
+XwBmADUAZQBjAGQAZgBhADUANAAwADcAZAA0ADQANABjAGIAMwA2ADEAZQA5ADEAMQA5ADQAYwA1
+ADcAZAA3ADkALgBjAHMAcAByAG8AagAAAAAAQAAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAA
+AAAxAC4AMAAuADUAMgA3ADgALgAzADQANgAwADAAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABO
+AGEAbQBlAAAAcwB0AF8ANQBlADEAMABmADEANgA2AGUAYgA1ADMANAAxAGYAMwA4ADQAMQA2AGYA
+NQBmADQAZgBiAGEAOQA3AGEAZQA4AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQBy
+AGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAwADkAAAB4ACgAAQBPAHIA
+aQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAcwB0AF8ANQBlADEAMABmADEANgA2AGUAYgA1
+ADMANAAxAGYAMwA4ADQAMQA2AGYANQBmADQAZgBiAGEAOQA3AGEAZQA4AC4AZABsAGwAAAB4ACsA
+AQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfAGYANQBlAGMAZABmAGEANQA0ADAANwBk
+ADQANAA0AGMAYgAzADYAMQBlADkAMQAxADkANABjADUANwBkADcAOQAuAGMAcwBwAHIAbwBqAAAA
+AABEAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADUAMgA3ADgALgAz
+ADQANgAwADAAAAAAAEgADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4A
+MAAuADUAMgA3ADgALgAzADQANgAwADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAHAwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{CA64E51C-7D38-45BB-BAF4-EEDFC79A6844}"
+          DTS:From="Package.EventHandlers[OnError]\scr_Transfer_ErrorCodeMessage_PackageVars"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnError]\ept_ErrorLog" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPostExecute]"
+      DTS:CreationName="OnPostExecute"
+      DTS:DTSID="{67054D5F-8469-43D4-9F67-A076B8DC2B34}"
+      DTS:EventID="0"
+      DTS:EventName="OnPostExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{95F7B5CD-C5A3-4752-B028-8DF41F763351}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\ept_LogProcessTaskComponent"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package LogProcessTaskComponent.dtsx"
+          DTS:DTSID="{bf512216-a4bc-4072-bf6a-6a662c607262}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_LogProcessTaskComponent"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <Connection>{298B0803-195E-4E90-A37F-140F741442B4}</Connection>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{C89F21A7-216D-41A3-B396-7A19F323FC3C}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sequence Container">
+          <DTS:Variables />
+          <DTS:Executables />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8007E452-E230-4C9E-ACAA-05F5D142322C}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[SourceID]==@[PackageID]"
+          DTS:From="Package.EventHandlers[OnPostExecute]\Sequence Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnPostExecute]\ept_LogProcessTaskComponent" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPreExecute]"
+      DTS:CreationName="OnPreExecute"
+      DTS:DTSID="{2E3D98DF-311B-411A-9A5A-D7831ED0B1F3}"
+      DTS:EventID="0"
+      DTS:EventName="OnPreExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{3F7FB7F7-B57D-43DC-9EF5-538C9056E665}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPreExecute]\ept_GetCurrentLoadID"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package GetCurrentLoadID.dtsx"
+          DTS:DTSID="{6d61c4b0-d534-4342-83a6-fd141889401c}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_GetCurrentLoadID"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <Connection>{7FFAA627-440B-41C0-A1DE-30257AF90D00}</Connection>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPreExecute]\Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{17B2446F-7680-42EE-91E8-E9B8E4B75622}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sequence Container">
+          <DTS:Variables />
+          <DTS:Executables />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnPreExecute].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B697CB83-D8AF-4243-9A0B-5209EEBE6CE7}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[SourceID]==@[PackageID]"
+          DTS:From="Package.EventHandlers[OnPreExecute]\Sequence Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnPreExecute]\ept_GetCurrentLoadID" />
+      </DTS:PrecedenceConstraints>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\dft_FactSalesOrder"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnError]\ept_ErrorLog"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnError]\scr_Transfer_ErrorCodeMessage_PackageVars"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnPostExecute]\ept_LogProcessTaskComponent"
+          TopLeft="NaN,NaN" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="NaN,NaN"
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnPostExecute]\Sequence Container"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnPostExecute].PrecedenceConstraints[Constraint]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnPreExecute]\ept_GetCurrentLoadID"
+          TopLeft="NaN,NaN" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="NaN,NaN"
+          Size="NaN,NaN"
+          Id="Package.EventHandlers[OnPreExecute]\Sequence Container"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnPreExecute].PrecedenceConstraints[Constraint]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\dft_FactSalesOrder">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="233,42"
+          Id="Package\dft_FactSalesOrder\Derived Column"
+          TopLeft="5.50000000000003,311.5" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\dft_FactSalesOrder\lkp_Dim_Customer_customerkey"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\dft_FactSalesOrder\ole_src_FactSalesOrder"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\dft_FactSalesOrder\dcnv_Int"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\dft_FactSalesOrder.Paths[OLE DB Source Output]"
+          TopLeft="122,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_FactSalesOrder.Paths[Lookup Match Output]"
+          TopLeft="122,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_FactSalesOrder.Paths[Data Conversion Output]"
+          TopLeft="122,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

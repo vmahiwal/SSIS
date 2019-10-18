@@ -1,0 +1,1016 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2017 4:11:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SSISCOOKBOOK"
+  DTS:CreatorName="SSISCOOKBOOK\Christian"
+  DTS:DTSID="{B8303FF4-3BD5-444D-A73F-00D41D51B30B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="CopyFactOrdersToHDPCuster"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{36D91508-05D1-4208-970B-98A4A3DC8890}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_Hadoop_Sandbox]"
+      DTS:CreationName="Hadoop"
+      DTS:DTSID="{52125156-F89B-4957-BBB6-0D49B368E3E3}"
+      DTS:ObjectName="cmgr_Hadoop_Sandbox">
+      <DTS:ObjectData>
+        <HadoopConnectionManager
+          ConnectionString="WebHdfsHost=sandbox.hortonworks.com;WebHdfsPort=50070;WebHdfsUserName=root;WebHCatHost=sandbox.hortonworks.com;WebHCatPort=50111;WebHCatUser=root;EnableWebHdfs=True;EnableWebHCat=True;WebHdfsAuthType=Basic;WebHdfsDomain=;WebHCatAuthType=Basic;WebHCatDomain=;WebHdfsIsHttps=False;WebHCatIsHttps=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AdventureWorksLTDW2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F55729F9-C2FC-44F6-B170-C4D6B4CEC067}"
+      DTS:ObjectName="LocalHost.AdventureWorksLTDW2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorksLTDW2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{07C93AB0-7EEA-4735-BA49-176E7CF071A7}"
+      DTS:ObjectName="LoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_FactOrders"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{318E2464-9C15-4727-B2FF-E995730A9920}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_FactOrders">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_FactOrders\der_LoadExecutionId"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="der_LoadExecutionId"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_FactOrders\der_LoadExecutionId.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_FactOrders\der_LoadExecutionId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      name="LoadExecutionId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionId]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionId]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_FactOrders\der_LoadExecutionId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_FactOrders\hdfs_dst_FactOrders"
+              componentClassID="Microsoft.ManagedComponentHost"
+              description="Loads data into a file in HDFS. The supported file formats are: Text, Avro, Orc."
+              name="hdfs_dst_FactOrders"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of HDFS file"
+                  expressionType="Notify"
+                  name="FilePath">/SSISCookBook/Import/FactOrders.txt</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Column names in the first data row"
+                  expressionType="Notify"
+                  name="FirstRowAsColumnNames">true</property>
+                <property
+                  dataType="System.String"
+                  description="The character used to delimit columns in text file"
+                  expressionType="Notify"
+                  name="ColumnDelimiter">|</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable batch mode"
+                  expressionType="Notify"
+                  name="IsBatchMode">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Batch size"
+                  expressionType="Notify"
+                  name="BatchSize">10000</property>
+                <property
+                  dataType="System.Int32"
+                  description="File Format"
+                  expressionType="Notify"
+                  name="FileFormat">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">HdfsDest</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Connections[Hadoop Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[cmgr_Hadoop_Sandbox]"
+                  connectionManagerRefId="Package.ConnectionManagers[cmgr_Hadoop_Sandbox]"
+                  name="Hadoop Connection Manager" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input]"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[OrderDate]"
+                      cachedDataType="dbDate"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[FirstName]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[LastName]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[CompanyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[CompanyName]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[Category]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[Category]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[ProductName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[ProductName]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[ProvenanceCode]"
+                      cachedDataType="i2"
+                      cachedName="ProvenanceCode"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[ProvenanceCode]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProvenanceCode]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[ProvenanceDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProvenanceDescription"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[ProvenanceDescription]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProvenanceDescription]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[EnglishDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="400"
+                      cachedName="EnglishDescription"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[EnglishDescription]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[EnglishDescription]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[OrderQy]"
+                      cachedDataType="i2"
+                      cachedName="OrderQy"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[OrderQy]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[OrderQy]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[Discount]"
+                      cachedDataType="cy"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[Discount]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[TaxAmount]"
+                      cachedDataType="cy"
+                      cachedName="TaxAmount"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[TaxAmount]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[TaxAmount]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[Freight]"
+                      cachedDataType="cy"
+                      cachedName="Freight"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[Freight]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Freight]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[SalesOrderNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="SalesOrderNumber"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[SalesOrderNumber]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[PurchareOrderNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="PurchareOrderNumber"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[PurchareOrderNumber]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[PurchareOrderNumber]" />
+                    <inputColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].Columns[LoadExecutionId]"
+                      cachedDataType="i8"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[LoadExecutionId]"
+                      lineageId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[OrderDate]"
+                      dataType="dbDate"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[ProvenanceCode]"
+                      dataType="i2"
+                      name="ProvenanceCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[ProvenanceDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProvenanceDescription" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[EnglishDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      name="EnglishDescription" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[OrderQy]"
+                      dataType="i2"
+                      name="OrderQy" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[Discount]"
+                      dataType="cy"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[TaxAmount]"
+                      dataType="cy"
+                      name="TaxAmount" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="SalesOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[PurchareOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="PurchareOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input].ExternalColumns[LoadExecutionId]"
+                      dataType="i8"
+                      name="LoadExecutionId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ole_src_DW_vwFactOrders"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Cube].[FactOrders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        OrderDate, FirstName, LastName, CompanyName, Category, ProductName, ProvenanceCode, ProvenanceDescription, EnglishDescription, OrderQy, UnitPrice, Discount, TaxAmount, Freight, SalesOrderNumber, 
+                         PurchareOrderNumber
+FROM            DW.vwFactOrders</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AdventureWorksLTDW2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AdventureWorksLTDW2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      length="128"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      name="CompanyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProvenanceCode]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[ProvenanceCode]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProvenanceCode]"
+                      name="ProvenanceCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProvenanceDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[ProvenanceDescription]"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[ProvenanceDescription]"
+                      name="ProvenanceDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[EnglishDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[EnglishDescription]"
+                      length="400"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[EnglishDescription]"
+                      name="EnglishDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[OrderQy]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[OrderQy]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[OrderQy]"
+                      name="OrderQy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Discount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[TaxAmount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[TaxAmount]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[TaxAmount]"
+                      name="TaxAmount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[Freight]"
+                      name="Freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                      length="25"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[PurchareOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[PurchareOrderNumber]"
+                      length="25"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].Columns[PurchareOrderNumber]"
+                      name="PurchareOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbDate"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[ProvenanceCode]"
+                      dataType="i2"
+                      name="ProvenanceCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[ProvenanceDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProvenanceDescription" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[EnglishDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      name="EnglishDescription" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[OrderQy]"
+                      dataType="i2"
+                      name="OrderQy" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      dataType="cy"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[TaxAmount]"
+                      dataType="cy"
+                      name="TaxAmount" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="SalesOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output].ExternalColumns[PurchareOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="PurchareOrderNumber" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbDate"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      name="CompanyName" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[Category]"
+                      name="Category" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ProvenanceCode]"
+                      dataType="i2"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ProvenanceCode]"
+                      name="ProvenanceCode" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ProvenanceDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ProvenanceDescription]"
+                      name="ProvenanceDescription" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[EnglishDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[EnglishDescription]"
+                      name="EnglishDescription" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[OrderQy]"
+                      dataType="i2"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[OrderQy]"
+                      name="OrderQy" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      name="Discount" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[TaxAmount]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[TaxAmount]"
+                      name="TaxAmount" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                      dataType="cy"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                      name="Freight" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[PurchareOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[PurchareOrderNumber]"
+                      name="PurchareOrderNumber" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_FactOrders.Paths[Derived Column Output]"
+              endId="Package\dft_FactOrders\hdfs_dst_FactOrders.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\dft_FactOrders\der_LoadExecutionId.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_FactOrders.Paths[OLE DB Source Output]"
+              endId="Package\dft_FactOrders\der_LoadExecutionId.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft_FactOrders\ole_src_DW_vwFactOrders.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\hht_HDPDWHiveTable"
+      DTS:CreationName="HadoopHiveTask"
+      DTS:Description="Hadoop Hive Task"
+      DTS:DTSID="{3472F3F9-DA93-49A1-8889-7A7572898979}"
+      DTS:ExecutableType="HadoopHiveTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="hht_HDPDWHiveTable"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <HadoopHiveTask
+          HadoopConnectionId="{52125156-F89B-4957-BBB6-0D49B368E3E3}"
+          SourceType="DirectInput"
+          InlineScript="USE SSISCookBook;&#xA;&#xA;DROP TABLE SalesExtracts;&#xA;&#xA;CREATE EXTERNAL TABLE SalesExtracts(&#xA;OrderDate timestamp,&#xA;FirstName string ,&#xA;LastName string ,&#xA;CompanyName string ,&#xA;Category string ,&#xA;ProductName string ,&#xA;ProvenanceCode smallint ,&#xA;ProvenanceDescription string ,&#xA;EnglishDescription string ,&#xA;OrderQy int,&#xA;UnitPrice decimal(12,4),&#xA;Discount decimal(12,4),&#xA;TaxAmount decimal(12,4),&#xA;Freight decimal(12,4),&#xA;SalesOrderNumber string ,&#xA;PurchaseOrderNumber string,&#xA;LoadExecutionId int&#xA;)&#xA;ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'&#xA;STORED AS TEXTFILE&#xA;LOCATION '/SSISCookBook/Import/'&#xA;tblproperties(&quot;skip.header.line.count&quot;=&quot;1&quot;); &#xA;&#xA;&#xA;CREATE TABLE IF NOT EXISTS HDPDWHiveTable&#xA;(                                  &#xA;    company         string,                                   &#xA;    category        string,  &#xA;    qtyordered      int,&#xA;    unitprice       decimal(12,4),&#xA;    discount        decimal(3,2),&#xA;    tax             decimal(12,4),&#xA;    freight         decimal(12,4),&#xA;    ordernumber     string,&#xA;    po              string                               &#xA;) &#xA;ROW FORMAT DELIMITED FIELDS TERMINATED BY ',|' LINES TERMINATED BY '10' STORED AS TEXTFILE&#xA;LOCATION '/SSISCookBook/Export/';&#xA;&#xA;&#xA;INSERT OVERWRITE TABLE HDPDWHiveTable&#xA;SELECT CompanyName, Category ,   SUM(OrderQy) AS OrderQy, AVG(UnitPrice) AS UnitPrice, SUM(Discount) AS Discount, SUM(TaxAmount) AS TaxAmount, SUM(Freight) AS Freight, &#xA;             SalesOrderNumber, PurchaseOrderNumber&#xA;FROM   SalesExtracts&#xA;GROUP BY CompanyName, Category, SalesOrderNumber, PurchaseOrderNumber;"
+          TimeoutInMinutes="1440" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9FD2FC29-8CF9-488E-9C6C-0169B6F40728}"
+      DTS:From="Package\dft_FactOrders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\hht_HDPDWHiveTable" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\dft_FactOrders"
+          TopLeft="9.25,5.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\hht_HDPDWHiveTable"
+          TopLeft="9.25,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="101.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_FactOrders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\dft_FactOrders\ole_src_DW_vwFactOrders"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\dft_FactOrders\hdfs_dst_FactOrders"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\dft_FactOrders\der_LoadExecutionId"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\dft_FactOrders.Paths[Derived Column Output]"
+          TopLeft="108,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_FactOrders.Paths[OLE DB Source Output]"
+          TopLeft="108,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_FactOrders\ole_src_DW_vwFactOrders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_FactOrders\hdfs_dst_FactOrders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
